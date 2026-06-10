@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zielgruppen-Fragenkatalog Mehrwertfilm</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 100%;
+    margin: 0;
+    padding: 40px 56px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+
+  .header-left h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .header-left h1 span {
+    color: #ED940F;
+  }
+
+  .header-left .subtitle {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 6px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .logo-box {
+    text-align: right;
+    flex-shrink: 0;
+    padding-left: 24px;
+  }
+
+  .logo-box .logo-text {
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .logo-box .logo-sub {
+    font-size: 8pt;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  /* Block */
+  .block {
+    margin-bottom: 32px;
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .block-number {
+    background: #ED940F;
+    color: #fff;
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .block-title {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+  }
+
+  /* Frage */
+  .question-item {
+    margin-bottom: 22px;
+  }
+
+  .question-text {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .q-num {
+    color: #ED940F;
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 20px;
+  }
+
+  .answer-lines {
+    padding-left: 28px;
+  }
+
+  .line {
+    border-bottom: 1px solid #d0d0d0;
+    height: 22px;
+    margin-bottom: 4px;
+  }
+
+  /* Block divider */
+  .block-divider {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+    margin: 28px 0;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-note {
+    font-size: 8.5pt;
+    color: #888;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .footer-brand {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #ED940F;
+    text-align: right;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 32px 56px; }
+    .question-item { page-break-inside: avoid; }
+    .block { page-break-inside: avoid; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Zielgruppen-<span>Fragenkatalog</span></h1>
+      <p class="subtitle">Für Fabian | Bitte so konkret wie möglich antworten,<br>gerne mit echten Beispielen aus Kundengesprächen.</p>
+    </div>
+    <div class="logo-box">
+      <div class="logo-text">Mehrwertfilm</div>
+      <div class="logo-sub">Zielgruppen-Analyse</div>
+    </div>
+  </div>
+
+  <!-- Block 1 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 1</span>
+      <span class="block-title">Der Kunde, wer sitzt dir gegenüber?</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">1.</span>
+        <span>Wer kontaktiert dich meistens als erstes? (Geschäftsführer, Vertriebsleiter, Marketingverantwortlicher oder jemand anderes?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">2.</span>
+        <span>In welcher Branche sind die meisten deiner Kunden? Gibt es eine Branche, die besonders häufig vorkommt oder besonders gut funktioniert?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">3.</span>
+        <span>Wie groß sind diese Unternehmen typischerweise? (Mitarbeiterzahl, Umsatzgröße)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">4.</span>
+        <span>Ist dein Ansprechpartner auch der Entscheider, oder muss er das Projekt intern noch "verkaufen"? Wer hat das letzte Wort?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="block-divider">
+
+  <!-- Block 2 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 2</span>
+      <span class="block-title">Die Situation vor dem Kauf, was hat sie bewegt?</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">5.</span>
+        <span>Was war der konkrete Auslöser, dass jemand bei dir angefragt hat? Was ist kurz vorher passiert? (Messe, Kundenbesuch, Wettbewerber, interner Druck?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">6.</span>
+        <span>Was haben sie vorher gemacht, um das Problem zu lösen? (selbst gedrehte Videos, andere Agenturen, gar nichts?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">7.</span>
+        <span>Welches Problem beschreiben sie in ihren eigenen Worten, wenn sie dich anrufen? Wie formulieren sie es, was sagen sie wortwörtlich?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">8.</span>
+        <span>Was nervt sie am meisten an ihrer aktuellen Situation? Was kostet sie am meisten Zeit, Nerven oder Geld?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">9.</span>
+        <span>Was war bisher ihr größtes Hindernis, das Problem zu lösen? (Zeit, Budget, kein Anbieter gefunden, intern nicht priorisiert?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="block-divider">
+
+  <!-- Block 3 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 3</span>
+      <span class="block-title">Die Entscheidung, was hat den Ausschlag gegeben?</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">10.</span>
+        <span>Warum haben sie sich für dich entschieden und nicht für einen anderen Videoanbieter? Was haben sie dir konkret gesagt?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">11.</span>
+        <span>Welches Argument oder welche Aussage von dir hat am meisten gezogen? Was hat sie überzeugt?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">12.</span>
+        <span>Wie lange hat der Entscheidungsprozess gedauert, vom ersten Kontakt bis zur Unterschrift? Was hat diesen Prozess beschleunigt oder verlangsamt?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">13.</span>
+        <span>Hat die BAFA-Förderung bei der Entscheidung eine Rolle gespielt? Wie haben Kunden darauf reagiert, als du es erwähnt hast?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">14.</span>
+        <span>Gab es einen Moment, wo du gemerkt hast: "Der kauft jetzt"? Was hat sich verändert?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="block-divider">
+
+  <!-- Block 4 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 4</span>
+      <span class="block-title">Einwände und Ängste, was hat sie zögern lassen?</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">15.</span>
+        <span>Was sind die häufigsten Einwände oder Bedenken, die du hörst, bevor jemand unterschreibt? (Preis, Zeit, interner Aufwand, Unsicherheit über den Nutzen?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">16.</span>
+        <span>Welche Frage stellen fast alle, bevor sie sich entscheiden?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">17.</span>
+        <span>Was ist die größte Angst, die jemand hat, wenn er ein Erklärvideo in Auftrag gibt? Was befürchten sie, dass schiefläuft?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">18.</span>
+        <span>Gab es Interessenten, die nicht gekauft haben? Woran lag es, was haben sie gesagt?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="block-divider">
+
+  <!-- Block 5 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 5</span>
+      <span class="block-title">Der Erfolg, was hat das Video gebracht?</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">19.</span>
+        <span>Was berichten Kunden nach dem Projekt? Was hat sich für sie verändert?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">20.</span>
+        <span>Gibt es ein konkretes Beispiel, wo ein Video einen messbaren Unterschied gemacht hat? (Messe, Vertrieb, Website, Bewerbungen?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">21.</span>
+        <span>Was sagen Kunden, wenn sie das fertige Video das erste Mal sehen? Wie reagieren sie, welche Worte benutzen sie?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">22.</span>
+        <span>Wie setzen Kunden das Video meistens ein? (Website, LinkedIn, Messe, Vertriebspräsentation, Bewerber-Ansprache?)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">23.</span>
+        <span>Was wünschen sich Kunden rückblickend, hätten sie etwas früher oder anders gemacht?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="block-divider">
+
+  <!-- Block 6 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 6</span>
+      <span class="block-title">Sprache und Wordings, die Goldmine</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">24.</span>
+        <span>Welche Formulierungen oder Sätze hörst du von Kunden immer wieder, positiv wie negativ? (Wörtliche Zitate sind Gold wert.)</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">25.</span>
+        <span>Wie beschreiben Kunden deine Arbeit gegenüber Dritten? Wenn jemand dich weiterempfiehlt, was sagt er dann?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">26.</span>
+        <span>Gibt es ein Thema, das in fast jedem Erstgespräch auftaucht, das wir aber noch nie in der Werbung erwähnt haben?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="block-divider">
+
+  <!-- Block 7 -->
+  <div class="block">
+    <div class="block-header">
+      <span class="block-number">Block 7</span>
+      <span class="block-title">Das Produkt, wobei hilfst du deinen Kunden wirklich?</span>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">27.</span>
+        <span>Wenn du in einem Satz erklärst, wobei du Kunden hilfst, was sagst du dann? Nicht die Leistung, sondern das Ergebnis.</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">28.</span>
+        <span>Was können Kunden nach einem Projekt mit dir, was sie vorher nicht konnten?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">29.</span>
+        <span>Welches Problem löst du, das der Kunde vorher vielleicht gar nicht als Problem bezeichnet hätte?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">30.</span>
+        <span>Gibt es einen Unterschied zwischen dem, womit Kunden zu dir kommen, und dem, was sie eigentlich brauchen?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">31.</span>
+        <span>Was macht dein Video, das ein normales Agenturvideo nicht macht? Was ist der konkrete Unterschied im Ergebnis?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">
+        <span class="q-num">32.</span>
+        <span>Für welche Art von Aufgabe oder Situation ist dein Video das perfekte Werkzeug? Wann entfaltet es den größten Nutzen?</span>
+      </div>
+      <div class="answer-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-note">Danke für die ehrlichen Antworten, je konkreter desto besser wird die Copy.</div>
+    <div class="footer-brand">mehrwertfilm.de</div>
+  </div>
+
+</div>
+</body>
+</html>

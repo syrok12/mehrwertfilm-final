@@ -342,14 +342,9 @@
     /* SOLUTION */
     .sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; margin-top: 44px; }
     .sol-visual {
-      background: var(--dark); border-radius: var(--rl);
-      aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
-      font-size: 5rem; position: relative; overflow: hidden;
+      border-radius: var(--rl); overflow: hidden;
+      position: relative; min-height: 400px;
     }
-    @media (min-width: 861px) {
-      .sol-visual { aspect-ratio: unset; min-height: 100%; }
-    }
-    .sol-visual::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,216,135,0.12) 0%, transparent 60%); }
     .sol-list { display: flex; flex-direction: column; gap: 24px; }
     .sol-item { display: flex; gap: 18px; align-items: flex-start; }
     .sol-num {
@@ -359,7 +354,22 @@
       border-radius: 6px; padding: 5px 9px; flex-shrink: 0; margin-top: 2px;
     }
     .sol-item h3 { margin-bottom: 6px; }
-    @media (max-width: 768px) { .sol-grid { grid-template-columns: 1fr; } .sol-visual { display: none; } }
+    @media (max-width: 768px) {
+      .sol-grid { grid-template-columns: 1fr; }
+      .sol-visual { display: block; height: 280px; min-height: unset; }
+    }
+
+    /* MARQUEE */
+    .marquee-wrap { width: 100%; height: 100%; position: absolute; inset: 0; overflow: hidden; border-radius: var(--rl); display: flex; flex-direction: column; gap: 4px; justify-content: space-between; padding: 0; }
+    .marquee-track { display: flex; gap: 4px; width: max-content; }
+    .marquee-track-1 { animation: marquee-left 60s linear infinite; }
+    .marquee-track-2 { animation: marquee-right 70s linear infinite; }
+    .marquee-track-3 { animation: marquee-left 65s linear infinite; }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    .marquee-img { height: 210px; width: auto; border-radius: 8px; object-fit: cover; flex-shrink: 0; display: block; }
+    @media (max-width: 860px) { .marquee-img { height: 88px; } }
+    @keyframes marquee-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
     /* RESULTS */
     .res-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 44px; }
@@ -964,7 +974,40 @@
       <p class="mt4" style="max-width:620px;margin-left:auto;margin-right:auto;">Stellen Sie sich einen Werkzeugkoffer vor: nicht ein einzelnes Werkzeug, sondern ein Arsenal für jeden Moment im Vertrieb.</p>
     </div>
     <div class="sol-grid">
-      <div class="sol-visual r">🎯</div>
+      <div class="sol-visual r">
+        <div class="marquee-wrap">
+          <div class="marquee-track marquee-track-1">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_1 - SMT.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_1-IMG_6646.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_2-IMG_6648.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC02865.JPG" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_1 - SMT.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_1-IMG_6646.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_2-IMG_6648.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC02865.JPG" alt="">
+          </div>
+          <div class="marquee-track marquee-track-2">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_5-_00A8010.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_9 - Sascha smile.png" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC02579.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC02974.JPG" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_5-_00A8010.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_9 - Sascha smile.png" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC02579.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC02974.JPG" alt="">
+          </div>
+          <div class="marquee-track marquee-track-3">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC03797.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_IMG_6486.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_Screenshot 2023-12-11 at 21.42.44.png" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_Screenshot 2023-12-11 at 21.42.47.png" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_DSC03797.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_IMG_6486.jpg" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_Screenshot 2023-12-11 at 21.42.44.png" alt="">
+            <img class="marquee-img" src="assets/Bühne Slideshow/PRE-Final_Screenshot 2023-12-11 at 21.42.47.png" alt="">
+          </div>
+        </div>
+      </div>
       <div class="sol-list">
         <div class="sol-item r"><div class="sol-num">01</div><div><h3>Verkaufspsychologisch aufgebaut</h3><p>Nicht schön fürs Auge, sondern wirkungsvoll für Ihren Vertrieb. Jeder Film ist auf Ihre Zielgruppe und Ihren Verkaufsprozess ausgerichtet.</p></div></div>
         <div class="sol-item r" style="transition-delay:0.08s;"><div class="sol-num">02</div><div><h3>Film-System für alle Vertriebssituationen</h3><p>Vom Akquise-Video über das Erklärvideo bis zur Mitarbeitergewinnung. Ein Arsenal für jeden Kontaktpunkt im Vertrieb.</p></div></div>

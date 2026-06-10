@@ -1,101 +1,145 @@
-﻿# CLAUDE.md – Mehrwertfilm
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Wer ist der Kunde?
 
-**Name:** Mehrwertfilm
-**Branche:** B2B, Mehrwertfilme in für die Industrie um Produkte einfacher zu erklären, Perfomance Marketing, Content Generierung
+**Name:** Mehrwertfilm (Fabian Dalhoff)
+**Branche:** B2B Videoproduktion + BAFA-förderfähige Unternehmensberatung für Industrie & Handwerk
 **Website:** https://www.mehrwertfilm.de/
-**Besonderheiten:** {{BESONDERHEITEN}}
+**Onepage-Seiten:** mehrwertfilm.de/mehrwertfilm-kennenlernen, mehrwertfilm.de/shk-masterclass, mehrwertfilm.de/shk-bewerber
 
 ## Wer bin ich (der Nutzer)?
 
-Performance Marketer. Zuständig für: Website, Meta Ads, Google Ads, Ad-Erstellung, Copywriting, Marketing-Automatisierung.
+Performance Marketer. Zuständig für: Website, Meta Ads, Google Ads, Landing Pages, Copywriting, Marketing-Automatisierung. Ich liefere, Fabian (Kunde) dreht und produziert.
 
 ---
 
 ## Projektstruktur
 
 ```
-Mehrwertfilm/
-├── CLAUDE.md              ← diese Datei (immer zuerst lesen)
-├── assets/brand-guide.md  ← Pflichtlektüre vor jeder Copy-Aufgabe
-├── website/               ← Kunden-Website Code
-├── ads/meta/              ← Facebook & Instagram Kampagnen
-├── ads/google/            ← Google Ads Kampagnen
-├── ads/templates/         ← Wiederverwendbare Ad-Vorlagen
-├── copy/landing-pages/    ← LP-Copy
-├── copy/email/            ← E-Mail-Sequenzen
-├── copy/social/           ← LinkedIn & Social Posts
-└── tools/                 ← Scripts (copy-generator.py, validate.ps1)
+MEHRWERTFILM FINAL/
+├── CLAUDE.md                          ← diese Datei
+├── assets/brand-guide.md              ← Pflichtlektüre vor jeder Copy-Aufgabe
+├── ads/meta/                          ← Facebook & Instagram Kampagnen + Briefings
+│   ├── mehrwertfilm-b2b-briefing.md   ← B2B Kampagnenstrategie
+│   ├── shk-masterclass-copy.md        ← SHK Ad-Copy
+│   └── shk-skripte-selfie.md          ← Selfie-Video-Skripte für Fabian
+├── copy/landing-pages/
+│   ├── mehrwertfilm-b2b-lp.html       ← Haupt-LP (Dark→Hell, Three.js, Kalkulator, Calendly)
+│   └── mehrwertfilm-b2b-onepage.html  ← Onepage-kompatible Version (kein html/head/body)
+├── tools/
+│   ├── validate.ps1                   ← Ad-Copy Zeichenlimit-Validator (PowerShell)
+│   └── validate.py                    ← Python-Version des Validators
+└── .mcp.json                          ← Onepage MCP Server
 ```
 
 ---
 
-## Pflichtregeln für jede Aufgabe
+## Wichtigste Datei: mehrwertfilm-b2b-lp.html
 
-### Vor dem Schreiben von Copy:
-1. `assets/brand-guide.md` lesen – immer, ohne Ausnahme
-2. Ton und Sprache aus Brand Guide übernehmen
-3. Primären CTA prüfen (steht im Brand Guide)
-4. Zeichenlimits einhalten
+Die Landing Page ist eine **self-contained HTML-Datei** ohne externe Build-Tools. Alles inline: CSS, JS, Three.js, SVG-Logo. Änderungen direkt in der Datei, dann im Browser öffnen.
 
-### Nach dem Schreiben von Ads:
+**Starten:**
+```bash
+# Lokaler Server (empfohlen für Meta Pixel Testing)
+cd copy/landing-pages && python -m http.server 8080
+# Dann: http://localhost:8080/mehrwertfilm-b2b-lp.html
+
+# Oder direkt öffnen
+start copy/landing-pages/mehrwertfilm-b2b-lp.html
+```
+
+**Nach Änderungen deployen:**
+```bash
+# Onepage-Version generieren (ohne html/head/body Tags)
+node -e "
+const fs = require('fs');
+let html = fs.readFileSync('copy/landing-pages/mehrwertfilm-b2b-lp.html', 'utf8');
+const style = html.match(/<style>([\s\S]*?)<\/style>/)[1];
+const body  = html.match(/<body>([\s\S]*?)<\/body>/)[1];
+const links = '<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap\" rel=\"stylesheet\">';
+const threejs = '<script src=\"https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js\"><\/script>';
+fs.writeFileSync('copy/landing-pages/mehrwertfilm-b2b-onepage.html', threejs + links + '<style>' + style + '</style>' + body);
+"
+```
+Dann `mehrwertfilm-b2b-onepage.html` als Custom Code in Onepage einfügen (unter Head-Sektion, nicht als Block).
+
+**Ad-Copy validieren:**
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\validate.ps1 ads\meta\<datei>.md
+```
+
+---
+
+## Landing Page Architektur
+
+**Tech-Stack:** Vanilla HTML/CSS/JS + Three.js (r128) + Wistia + Calendly + Zapier Webhook + Meta Pixel
+
+**Wichtige Integrationen:**
+- **Three.js Hero:** Animierte Wireframe-Objekte, Partikel-Feld, Gyroscope-Parallax auf Mobile
+- **Kalkulator:** 2 Tabs — "Was Sie sparen" (Budget-Slider bis 7.000€, 50%/80% Buttons) + "Was Sie verdienen" (Umsatzpotenzial)
+- **Video-Galerie:** 8 Wistia-Videos mit Thumbnails von Onepage CDN (onecdn.io), Modal-Player
+- **Zapier Webhook:** `https://hooks.zapier.com/hooks/catch/26713449/4b4fqhy/` — feuert beim Formular-Submit mit URLSearchParams (kein JSON!)
+- **Meta Pixel:** `fbq('track', 'Lead')` beim Submit, Onepage CAPI übernimmt serverseitig
+- **Calendly:** erscheint nach Formular-Submit, ersetzt das Formular
+
+**Farben (helles Design):**
+- `--bg: #F8F4ED` (Cream)
+- `--accent: #ED940F` (Orange)
+- `--text: #1a1a1a`
+
+---
+
+## Wistia Thumbnails — kritische Regel
+
+**NIEMALS** `embed-ssl.wistia.com/deliveries/HASH.jpg` oder `/swatch` URLs verwenden — diese liefern falsche Auto-Thumbnails.
+
+**Korrekte Methode:** Onepage-Quellcode von mehrwertfilm.de fetchen → `<script id="one-page-data">` JSON parsen → pro Video `placeholder_src` nehmen → `https://onecdn.io/media/UUID/md2x`
+
+**Aktuelles Mapping:**
+| Wistia ID | Projekt | Onepage UUID |
+|---|---|---|
+| zacn7mle1d | Gesau Technology | 6d2bc702-62fa-40fe-bb6d-56d0ef02ba13 |
+| 8l7b4blflz | Melitta | 3cabe3a5-6a30-45db-aad8-1342cb8e322f |
+| csobehdvei | Anka-Metall | a51385dc-b925-41dd-9651-55c9a27b5239 |
+| qghru4vqf2 | Exquisa | 82ae4368-afb0-42d7-b835-7f3b58079944 |
+| adzj589yqw | HBT-Group | e6287a17-243f-4780-bdb7-1c19835a58c5 |
+| 5v05hhmz2c | NORTEC 24 | b703dfe1-b335-4830-9352-924b967694e6 |
+| hrdgulqaxd | Dresselhaus x Schraubtec | 9449df57-5753-4b21-8a8d-ee3cbed4ce11 |
+
+---
+
+## Copy-Regeln (immer einhalten)
+
+- **Keine Gedankenstriche** (weder – noch —) in Ad-Copy, Headlines oder Scripts
+- **Skripte als reine Prosa** — keine Labels wie [HOOK], keine Regieanweisungen
+- **Anrede:** immer "Sie"
+- **Ton:** direkt, auf Augenhöhe mit Unternehmern, kein Marketing-Sprech
+- **BAFA-Formulierung:** "BAFA-gelisteter Berater" (nicht "BAFA-zertifiziert"), "förderfähige Beratungskosten" (nicht "Video gefördert")
+- **Mehrwertfilm-Positionierung:** Abschlussquote erhöhen + schnellere Entscheidungen (Messe-Feedback), nicht "Anfragen generieren"
+
+**Zeichenlimits:**
 - Meta Headline: max. 40 Zeichen
-- Meta Beschreibung: max. 30 Zeichen
+- Meta Description: max. 30 Zeichen
 - Google Headline: max. 30 Zeichen
 - Google Description: max. 90 Zeichen
-- Validierung: `powershell -ExecutionPolicy Bypass -File tools\validate.ps1 <datei>`
-
-### Nach jeder Implementierung (Verification Loop – Tipp 5):
-- Bei Website-Änderungen: `website/index.html` im Browser prüfen
-- Bei Copy: gegen Brand Guide lesen und Zeichenlimits prüfen
-- Bei Scripts: einmal testweise ausführen
 
 ---
 
-## Häufige Fehler – nie wieder machen
+## MCP-Server
 
-- ❌ Copy ohne Brand-Guide-Prüfung liefern
-- ❌ Zeichenlimits für Ads ignorieren
-- ❌ Primären CTA vergessen
-- ❌ Ungetesteten Code abliefern
+- **Onepage MCP** (`mcp.onepage.io`) — für Onepage.io Seiten-Verwaltung
+- **Notion MCP** — Kosten-Datenbank in globalem CLAUDE.md dokumentiert
 
 ---
 
-## Workflow-Tipps
+## Automatisierung — immer zuerst versuchen
 
-### Tipp 1 – Plan Mode immer zuerst
-`Shift + Tab` zweimal → Plan iterieren → dann implementieren.
-
-### Tipp 2 – Parallele Worktrees
-```bash
-git worktree add ../Mehrwertfilm-feature-x -b feature/feature-x
-git worktree list
-git worktree remove ../Mehrwertfilm-feature-x
-```
-
-### Tipp 3 – Diese CLAUDE.md nach jedem Fehler updaten
-Nach jedem Incident: Claude anweisen → "Update die CLAUDE.md damit das nie wieder passiert."
-
-### Tipp 5 – Verification Loop
-Immer mit: *"Führe tools/validate.ps1 aus und zeige das Ergebnis."*
-
-### Tipp 8 – /simplify nach Code-Änderungen
-Nach Website-Änderungen einfach `/simplify` anhängen.
-
-### Tipp 9 – /loop und /schedule
-- Monatliche Reports oder Content: `/schedule` einrichten
-- Laufende Tasks: `/loop` nutzen
-
----
-
-## API-Keys & Umgebungsvariablen
-
-```
-ANTHROPIC_API_KEY=<hier eintragen für copy-generator.py>
-```
-
-Setzen in PowerShell: `$env:ANTHROPIC_API_KEY = "dein-key"`
+Bevor du den Nutzer nach URLs, IDs oder Assets fragst: WebFetch auf die Zielseite machen und selbst extrahieren. Gilt für:
+- Wistia Video-IDs → aus mehrwertfilm.de Quellcode
+- Logo-URLs → aus Onepage `onecdn.io` CDN
+- Thumbnail-URLs → `placeholder_src` aus `<script id="one-page-data">`
 
 ---
 
@@ -107,10 +151,8 @@ fix:  Fehlerkorrektur
 copy: neue oder geänderte Texte/Copy
 ads:  Ad-Kampagnen Änderungen
 web:  Website-Änderungen
+lp:   Landing Page Änderungen
 ```
 
----
-
 ## Zuletzt aktualisiert
-2026-05-13 – Initiale Erstellung.
-
+2026-06-03 – Vollständige Überarbeitung nach B2B Landing Page Launch.

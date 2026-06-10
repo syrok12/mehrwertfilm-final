@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kampagnen-Briefing: SHK Recruiting – Meta Funnel OWL</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #1f2937;
+    background: #f8fafc;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    background: #0f172a;
+    color: #fff;
+    padding: 48px 56px 40px;
+  }
+  .doc-header .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 10px;
+  }
+  .doc-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+  .meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+  }
+  .chip strong { color: #fff; margin-right: 4px; }
+
+  /* ── LAYOUT ── */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 28px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+  }
+  .section-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+  }
+  .section-body {
+    padding: 24px 28px;
+  }
+
+  /* ── KPI TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  th {
+    background: #1e3a8a;
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  tr:nth-child(even) td { background: #f0f9ff; }
+  tr:last-child td { border-bottom: none; }
+  .kpi-value { font-weight: 700; color: #2563eb; }
+
+  /* ── LABELS ── */
+  .label-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .tag {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── FUNNEL ── */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 8px 0;
+  }
+  .funnel-step {
+    width: 100%;
+    max-width: 540px;
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .funnel-step small {
+    display: block;
+    font-weight: 400;
+    font-size: 12.5px;
+    opacity: .85;
+    margin-top: 3px;
+  }
+  .step-cold { background: #1e3a8a; color: #fff; }
+  .step-tofu { background: #2563eb; color: #fff; }
+  .step-lp   { background: #eff6ff; color: #1e3a8a; border: 2px solid #bfdbfe; }
+  .step-ret  { background: #7c3aed; color: #fff; }
+  .step-bofu { background: #065f46; color: #fff; }
+  .funnel-arrow {
+    font-size: 22px;
+    color: #94a3b8;
+    line-height: 1;
+    margin: 3px 0;
+  }
+  .funnel-principle {
+    margin-top: 20px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 13.5px;
+  }
+  .funnel-principle ul { margin-left: 16px; margin-top: 6px; }
+  .funnel-principle li { margin-bottom: 4px; }
+
+  /* ── HOOKS ── */
+  .hook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .hook-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+  }
+  .hook-card .hook-type {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 6px;
+  }
+  .hook-card blockquote {
+    color: #111827;
+    font-style: italic;
+    line-height: 1.5;
+    border: none;
+    padding: 0;
+  }
+
+  /* ── PRODUCTION REQUIREMENTS ── */
+  .req-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+  .req-list li {
+    padding: 7px 0 7px 26px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    position: relative;
+  }
+  .req-list li:last-child { border-bottom: none; }
+  .req-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: 700;
+  }
+
+  /* ── MESSAGING ── */
+  .core-message {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    font-size: 14.5px;
+    font-style: italic;
+    color: #1e3a8a;
+    margin: 12px 0;
+    line-height: 1.6;
+  }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .rule-box {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .rule-box h4 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #6b7280;
+    margin-bottom: 8px;
+  }
+  .rule-box.must h4 { color: #166534; }
+  .rule-box.never h4 { color: #991b1b; }
+  .rule-box ul { margin-left: 16px; font-size: 13.5px; }
+  .rule-box li { margin-bottom: 4px; }
+
+  /* ── ANGLES ── */
+  .angle-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .angle-card:last-child { margin-bottom: 0; }
+  .angle-header {
+    padding: 14px 20px;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+  }
+  .angle-1 .angle-header { background: #1d4ed8; }
+  .angle-2 .angle-header { background: #6d28d9; }
+  .angle-3 .angle-header { background: #065f46; }
+  .angle-body { padding: 18px 20px; }
+  .insight-box {
+    background: #f8fafc;
+    border-left: 3px solid #94a3b8;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-style: italic;
+    color: #374151;
+    margin-bottom: 14px;
+  }
+  .angle-body h4 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #6b7280;
+    margin: 14px 0 8px;
+  }
+  .angle-body h4:first-of-type { margin-top: 0; }
+  .primary-text {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #374151;
+    margin-bottom: 14px;
+  }
+  .hooks-list {
+    list-style: none;
+  }
+  .hooks-list li {
+    padding: 6px 0 6px 20px;
+    font-size: 13.5px;
+    border-bottom: 1px solid #f3f4f6;
+    position: relative;
+  }
+  .hooks-list li:last-child { border-bottom: none; }
+  .hooks-list li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: #6b7280;
+  }
+  .headlines-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .pill {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12.5px;
+    color: #374151;
+  }
+  .char-note {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+  }
+
+  /* ── CAMPAIGN STRUCTURE ── */
+  .campaign-block {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .campaign-block:last-child { margin-bottom: 0; }
+  .campaign-title {
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .camp-tofu .campaign-title { background: #2563eb; }
+  .camp-ret .campaign-title { background: #7c3aed; }
+  .budget-badge {
+    background: rgba(255,255,255,.2);
+    border-radius: 6px;
+    padding: 3px 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .campaign-meta {
+    padding: 12px 20px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+    color: #374151;
+  }
+  .campaign-meta span { margin-right: 24px; }
+  .campaign-meta strong { color: #111827; }
+  .adsets {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .adset {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .adset-title {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  .adset-desc {
+    font-size: 13px;
+    color: #4b5563;
+  }
+
+  /* ── TO-DO LISTS ── */
+  .todo-owner {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .todo-owner:last-child { margin-bottom: 0; }
+  .todo-owner-header {
+    padding: 14px 22px;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+  }
+  .todo-fabian .todo-owner-header { background: #2563eb; }
+  .todo-celebi .todo-owner-header { background: #7c3aed; }
+  .todo-phase {
+    border-top: 1px solid #e5e7eb;
+  }
+  .todo-phase:first-of-type { border-top: none; }
+  .todo-phase-title {
+    padding: 12px 22px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #6b7280;
+    background: #f9fafb;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .todo-items {
+    list-style: none;
+    padding: 8px 22px 12px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+  }
+  .todo-fabian .todo-items { border-left: 3px solid #2563eb; }
+  .todo-celebi .todo-items { border-left: 3px solid #7c3aed; }
+  .todo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .todo-item:last-child { border-bottom: none; }
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #d1d5db;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .todo-fabian .checkbox { border-color: #2563eb; }
+  .todo-celebi .checkbox { border-color: #7c3aed; }
+  .todo-item strong { color: #111827; }
+
+  /* ── OPEN QUESTIONS ── */
+  .questions-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .questions-box ol {
+    margin-left: 20px;
+    font-size: 14.5px;
+  }
+  .questions-box li {
+    padding: 7px 0;
+    border-bottom: 1px solid #fef3c7;
+    line-height: 1.55;
+  }
+  .questions-box li:last-child { border-bottom: none; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .doc-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section { break-inside: avoid; page-break-inside: avoid; }
+    .angle-card { break-inside: avoid; }
+    .campaign-block { break-inside: avoid; }
+    .todo-owner { break-inside: avoid; }
+  }
+
+  @media (max-width: 640px) {
+    .doc-header { padding: 32px 24px; }
+    .content { padding: 24px 16px 48px; }
+    .section-body { padding: 18px 18px; }
+    .hook-grid { grid-template-columns: 1fr; }
+    .rules-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header class="doc-header">
+  <div class="label">Kampagnen-Briefing</div>
+  <h1>SHK Recruiting<br>Meta Funnel – Ostwestfalen-Lippe</h1>
+  <div class="meta-chips">
+    <div class="chip"><strong>Erstellt:</strong> 13.05.2026</div>
+    <div class="chip"><strong>Plattform:</strong> Meta (Facebook + Instagram)</div>
+    <div class="chip"><strong>Region:</strong> OWL</div>
+    <div class="chip"><strong>Budget:</strong> 50 €/Tag</div>
+    <div class="chip"><strong>Status:</strong> Bilder &amp; Skripte folgen</div>
+  </div>
+</header>
+
+<div class="content">
+
+  <!-- ═══════════════════ 1. KPIs ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>Conversion-Ziel &amp; KPIs</h2>
+    </div>
+    <div class="section-body">
+      <div style="margin-bottom:18px">
+        <div class="label-row">
+          <span class="tag">Primäres Ziel</span>
+        </div>
+        <p>Lead Generation – Opt-in auf <strong>mehrwertfilm.de/shk-masterclass</strong> (E-Mail + Telefonnummer) → sofortiger Zugang zum kostenlosen Videotraining (20 Min)</p>
+        <div class="label-row" style="margin-top:12px">
+          <span class="tag">Sekundäres Ziel</span>
+        </div>
+        <p>Lead → Mehrwertgespräch buchen auf <strong>mehrwertfilm.de/shk-bewerber</strong></p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>KPI</th>
+            <th>Zielwert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CPL (Cost per Lead)</td><td class="kpi-value">25 – 50 €</td></tr>
+          <tr><td>Lead-to-Call-Rate</td><td class="kpi-value">5 – 15 %</td></tr>
+          <tr><td>Leads pro Monat</td><td class="kpi-value">10 – 15 qualifizierte Leads</td></tr>
+          <tr><td>Testbudget Phase 1</td><td class="kpi-value">50 €/Tag</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 2. ZIELGRUPPE ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Zielgruppe</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr><th>Merkmal</th><th>Definition</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Wer</td><td>Inhaber / Geschäftsführer von SHK-Handwerksbetrieben</td></tr>
+          <tr><td>Betriebsgröße</td><td>3 – 20 Mitarbeiter</td></tr>
+          <tr><td>Region</td><td>OWL – Bielefeld, Herford, Gütersloh, Detmold, Minden, Paderborn + ~50 km Umkreis</td></tr>
+          <tr><td>Alter</td><td>35 – 60 Jahre</td></tr>
+          <tr><td>Core-Problem</td><td>Keine qualifizierten Fachkräfte-Bewerbungen trotz aktiver Suche</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 3. FUNNEL ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>Funnel-Architektur</h2>
+    </div>
+    <div class="section-body">
+      <div class="funnel">
+        <div class="funnel-step step-cold">Cold Traffic (Meta Ads, OWL)<small>Broad Audience · 35–60 Jahre · Ostwestfalen-Lippe</small></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step step-tofu">Kampagne 1 – TOFU<small>Problem-Ad: Fachkräftemangel ansprechen</small></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step step-lp">Landing Page: /shk-masterclass<small>Opt-in: E-Mail + Telefon → sofortiger Zugang zur Masterclass</small></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step step-ret">Kampagne 2 – Retargeting<small>LP-Besucher ohne Opt-in + Opt-ins ohne Terminbuchung</small></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step step-bofu">/shk-bewerber → Mehrwertgespräch buchen<small>Direkter Gesprächstermin, kein Zwischenschritt</small></div>
+      </div>
+      <div class="funnel-principle">
+        <strong>Kernprinzip:</strong>
+        <ul>
+          <li>Ad benennt den Schmerz – keine qualifizierten Bewerber trotz aktiver Suche</li>
+          <li>LP übernimmt mit konkretem Versprechen: 2 Monteure in 5 Wochen, gratis</li>
+          <li>Reibung minimal halten: nur E-Mail + Telefon abfragen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 4. CREATIVES ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>Creative-Anforderungen</h2>
+    </div>
+    <div class="section-body">
+      <div class="label-row" style="margin-bottom:16px">
+        <span class="tag">5 Bilder – erstellt von Celebi</span>
+        <span class="tag">5 Skripte – geschrieben von Celebi</span>
+      </div>
+
+      <h4 style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-bottom:10px">Hook-Varianten zum A/B-Testen</h4>
+      <div class="hook-grid">
+        <div class="hook-card">
+          <div class="hook-type">Pain</div>
+          <blockquote>"Kein einziger qualifizierter Bewerber seit Monaten – das ist kein Zufall."</blockquote>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Curiosity</div>
+          <blockquote>"Warum stellen SHK-Betriebe in OWL trotz Fachkräftemangel 2+ Monteure pro Quartal ein?"</blockquote>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Result</div>
+          <blockquote>"In 5 Wochen 2 Kundendienstmonteure einstellen – ohne Headhunter, ohne horrende Gehälter."</blockquote>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Social Proof</div>
+          <blockquote>"Wie [Betrieb X aus OWL] in 5 Wochen 2 Monteure eingestellt hat."</blockquote>
+        </div>
+      </div>
+
+      <h4 style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin:20px 0 10px">Anforderungen für den Drehtag</h4>
+      <ul class="req-list">
+        <li>Fabian Dalhoff ist Hauptgesicht – spricht frei in die Kamera, kein Skript ablesen</li>
+        <li>Location: authentisch – Büro oder neutraler Hintergrund, kein Greenscreen</li>
+        <li>Mehrere Takes pro Hook einplanen für A/B-Testing</li>
+        <li>Untertitel sind Pflicht: 80 % der Nutzer schauen ohne Ton</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 5. MESSAGING ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>Messaging &amp; Angles</h2>
+    </div>
+    <div class="section-body">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+        <div><strong>Ton:</strong> Direkt, auf Augenhöhe mit Handwerks-Unternehmern – kein Marketing-Sprech</div>
+        <div><strong>Anrede:</strong> Sie</div>
+      </div>
+      <div class="core-message">
+        SHK-Betriebe in OWL finden keine Fachkräfte – nicht weil es keine gibt, sondern weil sie falsch suchen. Das kostenlose Videotraining zeigt in 20 Minuten, was die erfolgreichen Betriebe anders machen.
+      </div>
+      <div class="rules-grid">
+        <div class="rule-box must">
+          <h4>Jede Copy muss enthalten</h4>
+          <ul>
+            <li>Spezifischer Schmerz: Fachkräftemangel</li>
+            <li>Geograf. Bezug: OWL / Ostwestfalen-Lippe</li>
+            <li>Konkrete Zahlen: 2 Monteure, 5 Wochen</li>
+            <li>CTA: "Jetzt kostenlos sichern"</li>
+          </ul>
+        </div>
+        <div class="rule-box never">
+          <h4>Verboten</h4>
+          <ul>
+            <li>"Revolutionär", "einzigartig", "das Beste"</li>
+            <li>Buzzwords ohne Substanz</li>
+            <li>Versprechen ohne konkrete Zahlen</li>
+            <li>"Jetzt kaufen" als CTA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:28px">
+
+        <!-- ANGLE 1 -->
+        <div class="angle-card angle-1">
+          <div class="angle-header">Angle 1 – Positionierung als Arbeitgeber</div>
+          <div class="angle-body">
+            <div class="insight-box">Der Fachkräftemangel ist kein Marktproblem – er ist ein Auftritt-Problem. Fachkräfte gibt es genug. Sie wählen nur die Betriebe, die sich richtig präsentieren.</div>
+            <h4>Primärtext-Richtung</h4>
+            <div class="primary-text">Die meisten SHK-Betriebe in OWL schalten dieselben Stellenanzeigen auf denselben Portalen – und wundern sich, warum niemand antwortet. Fachkräfte werden nicht gesucht. Sie werden angezogen. In diesem kostenlosen 20-Minuten-Training zeige ich Ihnen, wie Sie Ihren Betrieb so positionieren, dass Monteure sich bei Ihnen bewerben wollen – nicht umgekehrt.</div>
+            <h4>Hook-Varianten</h4>
+            <ul class="hooks-list">
+              <li>"Der Fachkräftemangel ist ein Mythos. Das Problem ist Ihr Betriebsauftritt."</li>
+              <li>"Es gibt genug SHK-Monteure in OWL. Die arbeiten nur nicht bei Ihnen."</li>
+              <li>"Warum bekommt Ihr Betrieb keine Bewerbungen, obwohl andere SHK-Betriebe in OWL gerade einstellen?"</li>
+              <li>"Ihr nächster Monteur sucht gerade einen neuen Job. Die Frage ist nur: Findet er Ihren Betrieb?"</li>
+            </ul>
+            <h4>Headlines <span class="char-note">(max. 40 Zeichen)</span></h4>
+            <div class="headlines-pills">
+              <span class="pill">Warum bewerben sich keine Monteure?</span>
+              <span class="pill">Fachkräfte wählen – bewerben Sie sich</span>
+              <span class="pill">So werden Sie der attraktive Arbeitgeber</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANGLE 2 -->
+        <div class="angle-card angle-2">
+          <div class="angle-header">Angle 2 – Der stille Wettbewerb</div>
+          <div class="angle-body">
+            <div class="insight-box">Während du auf Bewerbungen wartest, stellt dein Mitbewerber drei Straßen weiter gerade ein – weil er ein System hat, das du noch nicht kennst. First Mover in der Region gewinnt.</div>
+            <h4>Primärtext-Richtung</h4>
+            <div class="primary-text">In OWL gibt es SHK-Betriebe, die dieses Jahr bereits 3–5 Fachkräfte eingestellt haben. Keine Headhunter, keine Agentur, kein Glück. Die haben ein System. Während andere noch auf Bewerbungsportale warten, füllen diese Betriebe ihre Kapazitäten auf – und wachsen. In diesem kostenlosen Training erfahren Sie genau, was diese Betriebe anders machen. Und wie Sie das in 5 Wochen replizieren können.</div>
+            <h4>Hook-Varianten</h4>
+            <ul class="hooks-list">
+              <li>"Während Sie warten, hat der Betrieb 3 Straßen weiter gerade 2 Monteure eingestellt."</li>
+              <li>"Manche SHK-Betriebe in OWL haben kein Recruiting-Problem. Was die anders machen?"</li>
+              <li>"Die nächste Generation SHK-Monteure entscheidet sich gerade. Für Ihren Betrieb – oder den nebenan."</li>
+              <li>"Ihr Mitbewerber stellt ein. Sie warten noch auf die erste Bewerbung."</li>
+            </ul>
+            <h4>Headlines <span class="char-note">(max. 40 Zeichen)</span></h4>
+            <div class="headlines-pills">
+              <span class="pill">Was machen erfolgreiche SHK-Betriebe?</span>
+              <span class="pill">Ihr Mitbewerber stellt gerade ein</span>
+              <span class="pill">Das System hinter SHK-Recruiting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANGLE 3 -->
+        <div class="angle-card angle-3">
+          <div class="angle-header">Angle 3 – Der Inhaber als Engpass</div>
+          <div class="angle-body">
+            <div class="insight-box">Fehlende Monteure sind keine HR-Frage – sie sind ein Umsatzproblem. Jeder abgelehnte Auftrag ist direkter Verlust. Der Inhaber kann nicht skalieren, solange er keine Leute hat.</div>
+            <h4>Primärtext-Richtung</h4>
+            <div class="primary-text">Wie viele Aufträge haben Sie diesen Monat abgelehnt – weil Ihnen die Kapazität fehlt? Ein Kundendienstmonteur bringt einem SHK-Betrieb im Schnitt 8.000–12.000 € Umsatz pro Monat. Jeder Monat ohne Einstellung ist ein Monat verschenkten Wachstums. In diesem kostenlosen 20-Minuten-Training zeige ich Ihnen, wie SHK-Betriebe in OWL dieses Problem in 5 Wochen lösen – ohne teure Agenturen und ohne horrende Gehälter.</div>
+            <h4>Hook-Varianten</h4>
+            <ul class="hooks-list">
+              <li>"Wie viele Aufträge haben Sie diesen Monat abgelehnt, weil Ihnen Monteure fehlen?"</li>
+              <li>"Jeder Tag ohne Bewerber kostet Ihren Betrieb echte Aufträge."</li>
+              <li>"Ein Monteur mehr = ~10.000 € mehr Umsatz pro Monat. Der muss nur erst da sein."</li>
+              <li>"Ihr Betrieb wächst nicht, weil Ihnen Kapazität fehlt – nicht weil der Markt zu klein wäre."</li>
+            </ul>
+            <h4>Headlines <span class="char-note">(max. 40 Zeichen)</span></h4>
+            <div class="headlines-pills">
+              <span class="pill">Aufträge ablehnen wegen fehlender Monteure</span>
+              <span class="pill">10.000 € mehr – mit einem Monteur mehr</span>
+              <span class="pill">Wachstum stoppt ohne Fachkräfte</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 6. KAMPAGNENSTRUKTUR ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Kampagnenstruktur Meta</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="campaign-block camp-tofu">
+        <div class="campaign-title">
+          Kampagne 1 – TOFU (Cold Traffic)
+          <span class="budget-badge">40 €/Tag</span>
+        </div>
+        <div class="campaign-meta">
+          <span><strong>Ziel:</strong> Lead Generation (Masterclass Opt-in)</span>
+          <span><strong>Audience:</strong> Broad OWL, 35–60 Jahre</span>
+        </div>
+        <div class="adsets">
+          <div class="adset">
+            <div class="adset-title">Ad Set 1 – Videos</div>
+            <div class="adset-desc">Alle 5 Video-Creatives · Meta optimiert intern nach Performance</div>
+          </div>
+          <div class="adset">
+            <div class="adset-title">Ad Set 2 – Bilder</div>
+            <div class="adset-desc">Alle 5 Bild-Ads · Meta optimiert intern nach Performance</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-block camp-ret">
+        <div class="campaign-title">
+          Kampagne 2 – Retargeting
+          <span class="budget-badge">10 €/Tag</span>
+        </div>
+        <div class="campaign-meta">
+          <span><strong>Ziel:</strong> Mehrwertgespräch buchen (/shk-bewerber)</span>
+          <span><strong>Start:</strong> Ab &gt; 500 Besucher ohne Konversion</span>
+          <span><strong>Audience:</strong> LP-Besucher ohne Opt-in (7 Tage) + Opt-ins ohne Buchung (14 Tage)</span>
+        </div>
+        <div class="adsets">
+          <div class="adset">
+            <div class="adset-title">Ad Set 1 – Alle Creatives</div>
+            <div class="adset-desc">Videos + Bilder gemeinsam · Meta wählt bestes Creative für die Warm Audience</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 7. TO-DOS ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>To-Do-Listen</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- FABIAN -->
+      <div class="todo-owner todo-fabian">
+        <div class="todo-owner-header">Fabians To-Dos</div>
+
+        <div class="todo-phase">
+          <div class="todo-phase-title">Phase 1 – Vorbereitung</div>
+          <ul class="todo-items">
+            <li class="todo-item"><div class="checkbox"></div><span>Drehtag-Termin festlegen und in Kalender eintragen</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Location entscheiden: Büro, Werkstatt oder neutraler Hintergrund</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Skripte von Celebi durchlesen und für den Dreh verinnerlichen</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>SHK-Kunden kontaktieren, die als Testimonial auftreten können und Termine einplanen</span></li>
+          </ul>
+        </div>
+
+        <div class="todo-phase">
+          <div class="todo-phase-title">Phase 2 – Produktion</div>
+          <ul class="todo-items">
+            <li class="todo-item"><div class="checkbox"></div><span>Skripte abdrehen – jedes Skript in <strong>mehreren Varianten und Takes</strong> aufnehmen</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>So viele Testimonial-Ads wie möglich aufnehmen – Quantität zählt</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Für jedes Skript: mindestens 2–3 Hook-Varianten als separaten Take aufnehmen</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Untertitel in Post-Produktion einbauen (Pflicht)</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Geschnittene Videos zur Freigabe an Celebi schicken</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CELEBI -->
+      <div class="todo-owner todo-celebi">
+        <div class="todo-owner-header">Celebis To-Dos</div>
+
+        <div class="todo-phase">
+          <div class="todo-phase-title">Phase 1 – Vorbereitung</div>
+          <ul class="todo-items">
+            <li class="todo-item"><div class="checkbox"></div><span>5 Skripte schreiben (nach Angles aus Abschnitt 5) und an Fabian übergeben</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>5 Bild-Ads erstellen (Format: 1:1 für Feed, 9:16 für Stories/Reels, hohe Auflösung)</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Meta Pixel auf /shk-masterclass prüfen: Lead-Event korrekt gefeuert?</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Danke-Seite prüfen: Pixel feuert Lead-Event nach Opt-in?</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>/shk-masterclass auf Mobile testen – über 70 % des Traffics kommt mobil</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Retargeting-Audiences im Meta Ads Manager anlegen (LP-Besucher, Opt-ins)</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>UTM-Struktur festlegen: Schema für alle Ads definieren</span></li>
+          </ul>
+        </div>
+
+        <div class="todo-phase">
+          <div class="todo-phase-title">Phase 2 – Setup</div>
+          <ul class="todo-items">
+            <li class="todo-item"><div class="checkbox"></div><span>Copy schreiben: Primärtext + Headline pro Creative (alle 3 Angles)</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Ad-Copies gegen Zeichenlimits prüfen (Headline max. 40 Zeichen, Beschreibung max. 30 Zeichen)</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Kampagne 1 (TOFU) aufbauen: 2 Ad Sets (Videos / Bilder), 40 €/Tag</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Kampagne 2 (Retargeting) aufbauen: 1 Ad Set, alle Creatives, 10 €/Tag</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Videos von Fabian abnehmen und in Kampagne einpflegen</span></li>
+          </ul>
+        </div>
+
+        <div class="todo-phase">
+          <div class="todo-phase-title">Phase 3 – Launch</div>
+          <ul class="todo-items">
+            <li class="todo-item"><div class="checkbox"></div><span>Attribution prüfen: Meta Events Manager – Lead-Events korrekt zugeordnet?</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>UTM-Parameter in alle Ads eingetragen?</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Go-Live: Kampagne 1 starten</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Erste 48 Stunden: CPM, CTR und erste Leads monitoren</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Kampagne 2 aktivieren sobald mehr als 500 Besucher ohne Konversion</span></li>
+          </ul>
+        </div>
+
+        <div class="todo-phase">
+          <div class="todo-phase-title">Phase 4 – Optimierung</div>
+          <ul class="todo-items">
+            <li class="todo-item"><div class="checkbox"></div><span>CPL auswerten: Welches Creative / welcher Angle gewinnt?</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Gewinner skalieren: Budget +20–30 % auf besten Ad Set</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Verlierer pausieren: Alles über 50 € CPL nach 7 Tagen ohne Konversion</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Lead-to-Call-Rate messen: Wie viele Opt-ins buchen danach das Gespräch?</span></li>
+            <li class="todo-item"><div class="checkbox"></div><span>Retargeting-Copy anpassen falls Click-through zum Gespräch zu niedrig</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ 8. OFFENE FRAGEN ═══════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>Offene Fragen – vor Kick-off zu klären</h2>
+    </div>
+    <div class="section-body">
+      <div class="questions-box">
+        <ol>
+          <li>Gibt es weitere SHK-Kunden, die als Testimonial auftreten würden – und kann Fabian diese selbst organisieren und einplanen?</li>
+          <li>Wer callt die Leads? Fabian oder Timon?</li>
+          <li>Ist eine Nurturing-Sequenz (E-Mail / SMS) nach dem Opt-in bereits eingerichtet, oder muss die noch gebaut werden?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+</body>
+</html>

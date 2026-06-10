@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "onepage": {
+      "type": "http",
+      "url": "https://mcp.onepage.io/"
+    }
+  }
+}

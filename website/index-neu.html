@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mehrwertfilm – B2B Videoproduktion für Industrie & Handwerk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F8F4ED;
+      --bg2:      #F0EBE1;
+      --bg3:      #EDE8DF;
+      --card:     rgba(255,255,255,0.92);
+      --border:   rgba(0,0,0,0.09);
+      --border2:  rgba(0,0,0,0.18);
+      --dark:     #1a1a1a;
+      --dark2:    #2d2d2d;
+      --accent:   #1a1a1a;
+      --highlight:#ED940F;
+      --green:    #22c55e;
+      --text:     #1a1a1a;
+      --muted:    #666666;
+      --dim:      #999999;
+      --sans:     'Inter', -apple-system, sans-serif;
+      --display:  'Instrument Serif', Georgia, serif;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow:    0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    /* Cremefarbene Alternativhintergründe */
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-bar { position:fixed;top:0;left:0;height:2px;background:var(--dark);z-index:9999;width:0%;transition:width 0.05s linear; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-img { height: 30px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--dark); color: #fff; font-size: 0.875rem; font-weight: 600; padding: 10px 20px; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--dark2); transform: translateY(-1px); }
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(237,148,15,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg3); border: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px;
+      color: var(--muted); padding: 6px 14px; border-radius: 999px;
+      margin-bottom: 28px; text-transform: uppercase;
+    }
+    .hero-eyebrow .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800; line-height: 1.08; letter-spacing: -1.5px;
+      color: var(--dark); max-width: 1060px; margin: 0 auto 24px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero h1 .hl { color: var(--highlight); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted); max-width: 540px;
+      margin: 0 auto 40px; line-height: 1.7;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-benefits {
+      display: flex; align-items: center; justify-content: center; gap: 24px;
+      flex-wrap: wrap; margin-bottom: 40px;
+      animation: fadeUp 0.7s 0.25s ease both;
+    }
+    .hero-benefit { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+    .hero-benefit .check { color: var(--green); font-weight: 800; }
+    .hero-actions {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 16px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--dark); color: #fff;
+      font-size: 1rem; font-weight: 700; padding: 15px 28px;
+      border-radius: 10px; text-decoration: none;
+      transition: all 0.2s; border: none; cursor: pointer; font-family: var(--sans);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .btn-primary:hover { background: var(--dark2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--muted);
+      font-size: 0.95rem; font-weight: 600; padding: 15px 24px;
+      border-radius: 10px; text-decoration: none;
+      border: 1px solid var(--border2); transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--dark); color: var(--text); }
+    .hero-micro { font-size: 0.78rem; color: var(--dim); animation: fadeUp 0.7s 0.4s ease both; }
+
+    /* HERO VIDEO */
+    .hero-video-wrap {
+      width: 100%; max-width: 860px; margin: 48px auto 0;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
+      cursor: pointer; animation: fadeUp 0.7s 0.35s ease both;
+    }
+    .video-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #111; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .video-thumb:hover img { transform: scale(1.02); }
+    .video-thumb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      transition: background 0.2s;
+    }
+    .video-thumb:hover .video-thumb-overlay { background: rgba(0,0,0,0.2); }
+    .play-btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .play-btn svg { color: var(--dark); margin-left: 4px; }
+    .video-thumb:hover .play-btn { transform: scale(1.1); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .play-label { font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+    .video-iframe-wrap { display: none; width: 100%; aspect-ratio: 16/9; }
+    .video-iframe-wrap iframe { width: 100%; height: 100%; border: none; }
+
+    /* STATS ROW */
+    .stats-strip {
+      background: rgba(255,255,255,0.55); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 32px 24px;
+    }
+    .stats-strip-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    }
+    .stat-item { text-align: center; padding: 8px 24px; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: var(--display); font-size: 2.2rem; font-weight: 800; color: var(--dark); letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+    .stat-num span { color: var(--highlight); }
+    .stat-lbl { font-size: 0.8rem; color: var(--muted); }
+    @media (max-width: 600px) {
+      .stats-strip-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-section { padding: 40px 0; border-bottom: 1px solid var(--border); background: var(--bg); overflow: hidden; }
+    .marquee-label { text-align: center; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-bottom: 28px; }
+    .marquee-overflow { overflow: hidden; position: relative; }
+    .marquee-track { display: flex; width: max-content; animation: marqueeScroll 45s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-logo {
+      display: flex; align-items: center; gap: 8px;
+      margin: 0 18px; padding: 10px 20px;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg); white-space: nowrap; flex-shrink: 0;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .marquee-logo:hover { border-color: var(--border2); box-shadow: var(--shadow-sm); }
+    .marquee-logo img { height: 24px; width: auto; max-width: 100px; object-fit: contain; opacity: 0.65; filter: grayscale(100%); transition: opacity 0.2s, filter 0.2s; }
+    .marquee-logo:hover img { opacity: 0.9; filter: grayscale(0%); }
+    .m-img-dark { background: #2B2A2B; border-radius: 4px; padding: 2px 6px; }
+    .m-name { font-size: 0.85rem; font-weight: 700; color: var(--dim); letter-spacing: 0.3px; }
+    .marquee-overflow::before, .marquee-overflow::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
+    .marquee-overflow::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .marquee-overflow::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+
+    /* ── SECTION BASE ── */
+    .section { padding: 96px 24px; }
+    .section-alt { background: var(--bg3); }
+    .container { max-width: 1060px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 14px; text-align: center; }
+    .section-title {
+      font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800; line-height: 1.1; letter-spacing: -1px;
+      color: var(--dark); text-align: center; margin-bottom: 16px;
+    }
+    .section-title .hl { color: var(--highlight); }
+    .section-body { font-size: 1rem; color: var(--muted); max-width: 520px; margin: 0 auto 56px; text-align: center; line-height: 1.7; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── FILMTYPEN ── */
+    .filmtypen-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .filmtyp-card {
+      border-radius: 16px; overflow: hidden; background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .filmtyp-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .filmtyp-img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+      background: var(--dark);
+    }
+    .filmtyp-img-placeholder {
+      width: 100%; aspect-ratio: 16/9; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .filmtyp-body { padding: 22px 20px 24px; }
+    .filmtyp-body h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+    .filmtyp-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+    .filmtyp-link { font-size: 0.82rem; font-weight: 700; color: var(--text); text-decoration: none; border-bottom: 1.5px solid var(--border2); padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; }
+    .filmtyp-link:hover { color: var(--highlight); border-color: var(--highlight); }
+    .filmtyp-card .filmtyp-img { transition: transform 0.4s ease; }
+    .filmtyp-card:hover .filmtyp-img { transform: scale(1.04); }
+    .filmtyp-card .filmtyp-overlay { transition: background 0.2s; }
+    .filmtyp-card:hover .filmtyp-overlay { background: rgba(0,0,0,0.1) !important; }
+    @media (max-width: 800px) { .filmtypen-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .filmtypen-grid { grid-template-columns: 1fr; } }
+
+    /* ── PROBLEM ── */
+    .problem-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .problem-text-col { padding-right: 24px; }
+    .problem-text-col .section-title { text-align: left; }
+    .problem-text-col .section-body { text-align: left; margin-left: 0; }
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .problem-list li { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .problem-list li:hover { box-shadow: var(--shadow); border-color: var(--border2); }
+    .p-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .p-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .p-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .problem-viz-col { position: relative; }
+    .problem-viz-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .viz-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-bottom: 20px; text-align: center; }
+    .viz-stage { display: flex; align-items: flex-start; justify-content: center; gap: 0; }
+    .viz-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 0 12px; }
+    .viz-tag { font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+    .viz-tag.bad  { background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.2); color: #dc2626; }
+    .viz-tag.good { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); color: #16a34a; }
+    .viz-person { width: 50px; display: flex; flex-direction: column; align-items: center; }
+    .viz-head { width: 20px; height: 20px; border-radius: 50%; margin-bottom: 3px; }
+    .viz-body { width: 32px; height: 26px; border-radius: 6px 6px 4px 4px; }
+    .viz-bad .viz-head { background: #f87171; } .viz-bad .viz-body { background: rgba(239,68,68,0.2); }
+    .viz-good .viz-head { background: #4ade80; } .viz-good .viz-body { background: rgba(34,197,94,0.15); }
+    .speech-loop { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+    .speech-bubble { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 8px 8px 8px 2px; padding: 7px 10px; font-size: 0.7rem; color: #dc2626; opacity: 0; }
+    .speech-bubble:nth-child(1){animation:bubbleLoop1 4s 0.2s ease infinite}
+    .speech-bubble:nth-child(2){animation:bubbleLoop2 4s 0.2s ease infinite}
+    .speech-bubble:nth-child(3){animation:bubbleLoop3 4s 0.2s ease infinite}
+    @keyframes bubbleLoop1{0%{opacity:0;transform:translateX(-6px)}8%{opacity:1;transform:translateX(0)}65%{opacity:1}75%{opacity:0;transform:translateX(4px)}100%{opacity:0}}
+    @keyframes bubbleLoop2{0%,14%{opacity:0}22%{opacity:1;transform:translateX(0)}65%{opacity:1}78%{opacity:0}100%{opacity:0}}
+    @keyframes bubbleLoop3{0%,28%{opacity:0}36%{opacity:1;transform:translateX(0)}65%{opacity:1}81%{opacity:0}100%{opacity:0}}
+    .repeat-tag { font-size: 0.65rem; color: #dc2626; background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 999px; padding: 3px 10px; animation: repeatPulse 2s ease infinite; }
+    @keyframes repeatPulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+    .film-mini { width: 100%; max-width: 160px; background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 10px; }
+    .film-screen-mini { width: 100%; aspect-ratio: 16/9; background: rgba(34,197,94,0.08); border-radius: 6px; position: relative; overflow: hidden; margin-bottom: 8px; }
+    .film-screen-mini::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg,transparent,rgba(34,197,94,0.3),transparent); animation: scanLine 2.5s ease-in-out infinite; }
+    @keyframes scanLine { 0%{left:-60%}100%{left:120%} }
+    .film-play-mini { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 22px; height: 22px; background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; animation: playPulse 2s infinite; }
+    @keyframes playPulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)} }
+    .film-mets { display: flex; gap: 4px; }
+    .film-met { flex: 1; background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.1); border-radius: 4px; padding: 4px 3px; text-align: center; font-size: 0.58rem; }
+    .film-met .fmv { color: #16a34a; font-weight: 800; font-size: 0.7rem; }
+    .film-met .fml { color: var(--dim); font-size: 0.55rem; }
+    .leads-dots { display: flex; gap: 4px; justify-content: center; margin-top: 8px; }
+    .lead-d { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; opacity: 0; animation: dotAppear 3s ease infinite; }
+    .lead-d:nth-child(1){animation-delay:0.2s}.lead-d:nth-child(2){animation-delay:0.6s}.lead-d:nth-child(3){animation-delay:1.0s}.lead-d:nth-child(4){animation-delay:1.4s}.lead-d:nth-child(5){animation-delay:1.8s}
+    @keyframes dotAppear{0%,15%{opacity:0;transform:scale(0)}25%,70%{opacity:1;transform:scale(1)}85%,100%{opacity:0}}
+    .viz-divider { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 4px; flex-shrink: 0; }
+    .viz-line { width: 1px; height: 50px; background: linear-gradient(180deg,transparent,var(--border),transparent); }
+    .viz-vs { font-size: 0.65rem; font-weight: 800; color: var(--dim); background: var(--bg3); border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 800px) { .problem-cols { grid-template-columns: 1fr; } .problem-text-col { padding-right: 0; } .problem-text-col .section-title, .problem-text-col .section-body { text-align: center; margin-left: auto; } }
+
+    /* ── VERGLEICH ── */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto 40px; }
+    .compare-card { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .compare-card:hover { box-shadow: var(--shadow); }
+    .compare-card.highlight { border-color: var(--dark); background: var(--bg); }
+    .compare-card.highlight .c-badge { background: var(--dark); color: #fff; }
+    .c-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: var(--bg3); color: var(--muted); margin-bottom: 14px; }
+    .compare-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+    .compare-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
+    .compare-note { max-width: 640px; margin: 0 auto; background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; }
+    .compare-note p { font-size: 0.9rem; color: var(--text); line-height: 1.75; }
+    @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+
+    /* ── TESTIMONIALS ── */
+    .testi-overflow { overflow: hidden; position: relative; margin: 0 -24px; }
+    .testi-track { display: flex; gap: 20px; padding: 8px 40px 16px; width: max-content; animation: testiScroll 50s linear infinite; }
+    .testi-track:hover { animation-play-state: paused; }
+    @keyframes testiScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .testi-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; width: 300px; flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .testi-card:hover { box-shadow: var(--shadow); border-color: var(--border2); }
+    .testi-stars { display: flex; gap: 2px; margin-bottom: 12px; }
+    .testi-stars span { font-size: 0.9rem; color: #F59E0B; }
+    .testi-quote { font-size: 0.88rem; color: var(--text); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .testi-person { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; color: var(--muted); flex-shrink: 0; overflow: hidden; }
+    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testi-name { font-size: 0.82rem; font-weight: 700; }
+    .testi-role { font-size: 0.75rem; color: var(--dim); }
+    .testi-overflow::before, .testi-overflow::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .testi-overflow::before { left: 0; background: linear-gradient(90deg, var(--bg3), transparent); }
+    .testi-overflow::after  { right: 0; background: linear-gradient(-90deg, var(--bg3), transparent); }
+
+    /* ── CASE STUDIES ── */
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    /* Case Study Block (trustreels-Stil) */
+    .case-study-block {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px;
+      align-items: start; margin-bottom: 48px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px; box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s;
+    }
+    .case-study-block:hover { box-shadow: var(--shadow); }
+    .case-study-block:last-child { margin-bottom: 0; }
+    .csb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+    .csb-stat {
+      background: var(--bg3); border-radius: 14px; padding: 20px 18px;
+      transition: background 0.2s;
+    }
+    .csb-stat:hover { background: var(--bg2); }
+    .csb-val {
+      font-family: var(--display); font-size: 2.4rem; font-weight: 400;
+      line-height: 1; letter-spacing: -1px; color: var(--dark); margin-bottom: 8px;
+    }
+    .csb-val--wide { font-size: 1.4rem; letter-spacing: -0.5px; }
+    .csb-lbl { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+    .csb-right { display: flex; flex-direction: column; gap: 16px; }
+    .csb-video {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      border-radius: 12px; overflow: hidden; cursor: pointer; background: var(--bg3);
+    }
+    .csb-video img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .csb-video:hover img { transform: scale(1.03); }
+    .csb-play {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.28);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .csb-video:hover .csb-play { background: rgba(0,0,0,0.12); }
+    .csb-play svg { width: 48px; height: 48px; background: rgba(255,255,255,0.9); border-radius: 50%; padding: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.25); transition: transform 0.2s; }
+    .csb-video:hover .csb-play svg { transform: scale(1.1); }
+    .csb-logo-box {
+      display: flex; align-items: center; justify-content: flex-start;
+      padding: 12px 0 4px;
+    }
+    .csb-logo-box img { height: 32px; width: auto; max-width: 160px; object-fit: contain; opacity: 0.8; filter: grayscale(20%); }
+    .csb-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.75; }
+    .csb-desc strong { color: var(--text); }
+    @media (max-width: 800px) {
+      .case-study-block { grid-template-columns: 1fr; }
+      .csb-stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .csb-stats { grid-template-columns: 1fr; }
+    }
+    .case-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; cursor: pointer;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .case-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border2); transform: translateY(-3px); }
+    .case-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--bg3); }
+    .case-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .case-card:hover .case-thumb-wrap img { transform: scale(1.04); }
+    .case-play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .case-card:hover .case-play-overlay { background: rgba(0,0,0,0.1); }
+    .case-play-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.25); transition: transform 0.2s; }
+    .case-card:hover .case-play-btn { transform: scale(1.1); }
+    .case-body { padding: 20px; }
+    .case-tag-line { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+    .case-name { font-size: 1rem; font-weight: 800; margin-bottom: 14px; }
+    .case-metrics { display: flex; gap: 0; border-top: 1px solid var(--border); padding-top: 14px; }
+    .case-metric { flex: 1; text-align: center; padding: 0 12px; border-right: 1px solid var(--border); }
+    .case-metric:last-child { border-right: none; }
+    .case-metric:first-child { padding-left: 0; }
+    .cm-val { font-family: var(--display); font-size: 1.4rem; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; line-height: 1; margin-bottom: 2px; }
+    .cm-lbl { font-size: 0.68rem; color: var(--dim); line-height: 1.3; }
+    @media (max-width: 800px) { .cases-grid { grid-template-columns: 1fr; } }
+
+    /* ── USP ── */
+    .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .usp-card { background: var(--bg); padding: 36px 28px; transition: background 0.2s; }
+    .usp-card:hover { background: var(--bg3); }
+    .usp-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; color: var(--highlight); margin-bottom: 16px; text-transform: uppercase; }
+    .usp-icon { width: 44px; height: 44px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; }
+    .usp-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+    .usp-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 800px) { .usp-grid { grid-template-columns: 1fr; } }
+
+    /* ── VIDEO GALERIE ── */
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .video-card { border-radius: 12px; overflow: hidden; cursor: pointer; background: var(--bg3); border: 1px solid var(--border); transition: box-shadow 0.2s, transform 0.2s; }
+    .video-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .video-card-thumb { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+    .video-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .video-card:hover .video-card-thumb img { transform: scale(1.05); }
+    .video-card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .video-card:hover .video-card-overlay { background: rgba(0,0,0,0.12); }
+    .video-card-play { width: 40px; height: 40px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.25); transition: transform 0.2s; }
+    .video-card:hover .video-card-play { transform: scale(1.1); }
+    .video-card-title { padding: 12px 14px; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+    .ihr-film-card { text-decoration: none; }
+    .ihr-film-card .video-card-thumb { background: linear-gradient(135deg, var(--bg3), var(--bg2, #eee)); border-bottom: none; }
+    .ihr-film-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+    .ihr-film-q { font-family: var(--display); font-size: 4.5rem; font-weight: 800; line-height: 1; color: var(--dark); opacity: 0.15; animation: qPulse 3s ease infinite; }
+    @keyframes qPulse { 0%,100%{opacity:0.15;transform:scale(1)} 50%{opacity:0.08;transform:scale(0.95)} }
+    .ihr-film-text { font-size: 0.88rem; font-weight: 700; color: var(--muted); }
+    .video-card-title.accent { color: var(--highlight); font-weight: 700; }
+    @media (max-width: 800px) { .video-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .video-grid { grid-template-columns: 1fr; } }
+
+    /* VIDEO MODAL */
+    .video-modal { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
+    .video-modal.open { display: flex; }
+    .video-modal-inner { width: 100%; max-width: 960px; position: relative; }
+    .video-modal-close { position: absolute; top: -44px; right: 0; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
+    .video-modal-close:hover { opacity: 1; }
+    .video-modal-frame { width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; }
+    .video-modal-frame iframe { width: 100%; height: 100%; border: none; }
+
+    /* ── PROZESS ── */
+    .process-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; }
+    .process-item { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.2s; cursor: default; }
+    .process-item:last-child { border-bottom: none; }
+    .process-item:hover { padding-left: 6px; }
+    .p-num { width: 44px; height: 44px; border: 1.5px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; color: var(--muted); flex-shrink: 0; transition: border-color 0.2s, color 0.2s; }
+    .process-item:hover .p-num { border-color: var(--dark); color: var(--dark); }
+    .p-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+    .p-body p { font-size: 0.875rem; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 680px; display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; font-size: 0.95rem; font-weight: 700; gap: 16px; transition: color 0.2s; }
+    .faq-q:hover { color: var(--highlight); }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--dim); transition: transform 0.3s, color 0.2s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--highlight); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.open .faq-a { max-height: 500px; }
+    .faq-a p { font-size: 0.875rem; color: var(--muted); line-height: 1.75; padding-bottom: 20px; }
+
+    /* ── CTA ── */
+    .cta-section { padding: 96px 48px; background: var(--dark); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(237,148,15,0.12), transparent 70%); pointer-events: none; }
+    .cta-box { max-width: 860px; margin: 0 auto; text-align: center; position: relative; }
+    .cta-box h2 { font-family: var(--display); font-size: clamp(2rem,4vw,3rem); font-weight: 800; letter-spacing: -1px; color: #fff; margin-bottom: 16px; }
+    .cta-box h2 .hl { color: var(--highlight); }
+    .cta-box > p { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-form-card { background: #fff; border-radius: 16px; padding: 48px 52px; box-shadow: 0 24px 60px rgba(0,0,0,0.3); text-align: left; }
+    form { display: flex; flex-direction: column; gap: 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--dim); }
+    .field input, .field select { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 0.9rem; color: var(--text); font-family: var(--sans); outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
+    .field input::placeholder { color: var(--dim); }
+    .field input:focus, .field select:focus { border-color: var(--dark); box-shadow: 0 0 0 3px rgba(43,42,43,0.08); }
+    .submit-btn { width: 100%; background: var(--dark); color: #fff; font-size: 1rem; font-weight: 700; padding: 15px; border-radius: 10px; border: none; cursor: pointer; margin-top: 8px; font-family: var(--sans); transition: all 0.2s; }
+    .submit-btn:hover { background: var(--dark2); transform: translateY(-1px); }
+    .form-micro { font-size: 0.75rem; color: var(--dim); margin-top: 12px; text-align: center; }
+    .trust-chips { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+    .trust-chip { display: flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--muted); }
+    .trust-chip .check { color: var(--green); }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } .cta-form-card { padding: 28px 20px; } }
+
+    /* ── FOOTER ── */
+    footer { background: var(--bg3); border-top: 1px solid var(--border); }
+    .footer-main { padding: 48px 24px 32px; max-width: 1060px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
+    .footer-brand p { font-size: 0.85rem; color: var(--muted); margin-top: 10px; max-width: 220px; line-height: 1.6; }
+    .footer-logo { height: 32px; width: auto; }
+    .footer-links-group { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links-group h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
+    .footer-links-group a { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links-group a:hover { color: var(--text); }
+    .footer-bottom { border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; font-size: 0.78rem; color: var(--dim); max-width: 1060px; margin: 0 auto; }
+    .footer-disclaimer { padding: 16px 24px; font-size: 0.7rem; color: var(--dim); line-height: 1.65; max-width: 860px; margin: 0 auto; text-align: center; border-top: 1px solid var(--border); }
+
+    /* ── STICKY MOBILE ── */
+    .sticky-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 300; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-top: 1px solid var(--border); padding: 12px 20px; }
+    .sticky-bar a { display: block; width: 100%; text-align: center; }
+
+    /* ── CONFETTI ── */
+    .confetti-piece { position: fixed; top: -20px; border-radius: 2px; animation: confettiFall linear forwards; pointer-events: none; z-index: 9999; }
+    @keyframes confettiFall { 0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0} }
+
+    @media (max-width: 600px) {
+      .section { padding: 64px 16px; }
+      .hero { padding: 120px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-img" viewBox="0 0 200 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 0,44 22,22" fill="#F4C968"/>
+      <polygon points="0,44 44,44 22,22" fill="#C73642"/>
+      <polygon points="44,44 44,0 22,22" fill="#4A6FA5"/>
+      <text x="54" y="17" font-family="-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="800" fill="#2B2A2B" letter-spacing="0.5">MEHRWERT</text>
+      <text x="54" y="34" font-family="-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="800" fill="#2B2A2B" letter-spacing="0.5">FILM</text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#referenzen">Referenzen</a>
+    <a href="#prozess">Ablauf</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#termin" class="nav-cta">Erstgespräch buchen</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    B2B Videoproduktion · Industrie & Handwerk · Seit 2016
+  </div>
+
+  <h1>Erklärfilm für eine <span class="hl">höhere</span><br><span class="hl">Abschlussquote</span> im Vertrieb.</h1>
+
+  <p class="hero-sub">
+    Produziert von einem Maschinenbauingenieur, der Ihre Produkte technisch versteht.
+    Kein Imagevideo. Ein Vertriebssystem, das 24/7 für Sie arbeitet.
+  </p>
+
+  <div class="hero-benefits">
+    <div class="hero-benefit"><span class="check">✓</span> Technisch präzise</div>
+    <div class="hero-benefit"><span class="check">✓</span> BAFA-förderfähig bis 80 %</div>
+    <div class="hero-benefit"><span class="check">✓</span> 300+ Produktionen</div>
+    <div class="hero-benefit"><span class="check">✓</span> 4,9 / 5 Google-Bewertung</div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#termin" class="btn-primary">Kostenloses Erstgespräch buchen →</a>
+    <a href="#referenzen" class="btn-secondary">Referenzen ansehen</a>
+  </div>
+  <p class="hero-micro">Kostenlos · 15 Minuten · Keine Verpflichtung</p>
+
+  <div class="hero-video-wrap" onclick="playHeroVideo(this)">
+    <div class="video-thumb">
+      <img src="https://onecdn.io/media/2a2c3cba-39c4-446e-8938-8d74803ce5c9/md2x" alt="Mehrwertfilm – Fabian Dalhoff">
+      <div class="video-thumb-overlay">
+        <div class="play-btn">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="play-label">Demo ansehen</span>
+      </div>
+    </div>
+    <div class="video-iframe-wrap">
+      <iframe src="" data-src="https://fast.wistia.net/embed/iframe/4q4965k88p?videoFoam=true&autoPlay=1&playerColor=2B2A2B"
+        title="Mehrwertfilm" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num"><span data-count="140" data-suffix="+">0+</span></div>
+      <div class="stat-lbl">zufriedene Kunden</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">4,9<span>/5</span></div>
+      <div class="stat-lbl">Google-Bewertung</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num"><span data-count="300" data-suffix="+">0+</span></div>
+      <div class="stat-lbl">Videos produziert</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num"><span data-count="8" data-suffix=" J.">0 J.</span></div>
+      <div class="stat-lbl">B2B-Erfahrung</div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-label">Vertrauen von Unternehmen aus Industrie & Handwerk</div>
+  <div class="marquee-overflow">
+    <div class="marquee-track">
+      <div class="marquee-logo"><img src="https://www.dresselhaus.de/typo3temp/assets/_processed_/d/9/csm_logo_12d86ba7c1.png" alt="Dresselhaus" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Dresselhaus</span></div>
+      <div class="marquee-logo"><img src="https://s7g10.scene7.com/is/content/melitta/logo-2?dpr=off" alt="Melitta" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Melitta</span></div>
+      <div class="marquee-logo"><img src="https://gesau-technology.de/elemente/gesau-technology.svg" alt="Gesau Technology" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Gesau Technology</span></div>
+      <div class="marquee-logo"><img src="https://www.anka-metall.de/wp-content/uploads/ANKA_Logo_400.png" alt="Anka Metall" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Anka Metall</span></div>
+      <div class="marquee-logo"><img class="m-img-dark" src="https://www.nico-menke.de/images/layout/branding.png" alt="Nico Menke" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Nico Menke</span></div>
+      <div class="marquee-logo"><img class="m-img-dark" src="https://serr-haustechnik.de/upload/logo/logo.png" alt="SERR Haustechnik" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">SERR Haustechnik</span></div>
+      <div class="marquee-logo"><img src="https://onecdn.io/media/0de72118-9f6e-4647-bb6b-2539915d691e/md2x" alt="LK Recruiting" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">LK Recruiting</span></div>
+      <div class="marquee-logo"><img src="https://onecdn.io/media/b1b8916d-4be9-45d1-b412-c3257d31d245/md2x" alt="Küpper" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Küpper</span></div>
+      <div class="marquee-logo"><img src="https://onecdn.io/media/003b5f13-b0d5-419c-9399-a456056470bb/md2x" alt="Hausmann Thaensgen" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Hausmann Thaensgen</span></div>
+      <div class="marquee-logo"><span class="m-name">HBT-Group</span></div>
+      <div class="marquee-logo"><span class="m-name">BASLER AG</span></div>
+      <!-- Set 2 -->
+      <div class="marquee-logo"><img src="https://www.dresselhaus.de/typo3temp/assets/_processed_/d/9/csm_logo_12d86ba7c1.png" alt="Dresselhaus" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Dresselhaus</span></div>
+      <div class="marquee-logo"><img src="https://s7g10.scene7.com/is/content/melitta/logo-2?dpr=off" alt="Melitta" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Melitta</span></div>
+      <div class="marquee-logo"><img src="https://gesau-technology.de/elemente/gesau-technology.svg" alt="Gesau Technology" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Gesau Technology</span></div>
+      <div class="marquee-logo"><img src="https://www.anka-metall.de/wp-content/uploads/ANKA_Logo_400.png" alt="Anka Metall" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Anka Metall</span></div>
+      <div class="marquee-logo"><img class="m-img-dark" src="https://www.nico-menke.de/images/layout/branding.png" alt="Nico Menke" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Nico Menke</span></div>
+      <div class="marquee-logo"><img class="m-img-dark" src="https://serr-haustechnik.de/upload/logo/logo.png" alt="SERR Haustechnik" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">SERR Haustechnik</span></div>
+      <div class="marquee-logo"><img src="https://onecdn.io/media/0de72118-9f6e-4647-bb6b-2539915d691e/md2x" alt="LK Recruiting" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">LK Recruiting</span></div>
+      <div class="marquee-logo"><img src="https://onecdn.io/media/b1b8916d-4be9-45d1-b412-c3257d31d245/md2x" alt="Küpper" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Küpper</span></div>
+      <div class="marquee-logo"><img src="https://onecdn.io/media/003b5f13-b0d5-419c-9399-a456056470bb/md2x" alt="Hausmann Thaensgen" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><span class="m-name" style="display:none">Hausmann Thaensgen</span></div>
+      <div class="marquee-logo"><span class="m-name">HBT-Group</span></div>
+      <div class="marquee-logo"><span class="m-name">BASLER AG</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section section-alt" style="overflow:hidden;">
+  <div class="container">
+    <span class="section-label reveal">Kundenstimmen</span>
+    <h2 class="section-title reveal">Das sagen unsere <span class="hl">Kunden.</span></h2>
+    <p class="section-body reveal" style="margin-bottom:40px;">Über 140 Unternehmen aus Industrie und Handwerk.</p>
+  </div>
+  <div class="testi-overflow">
+    <div class="testi-track">
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Der Film hat unsere Anfragen sofort erhöht. Potenzielle Kunden kommen schon vorbereitet zum Gespräch. Das spart uns enorm viel Zeit."</p>
+        <div class="testi-person"><div class="testi-avatar">NH</div><div><div class="testi-name">Norman Hofmann</div><div class="testi-role">Gesau Technology GmbH</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Fabian hat sofort verstanden, was wir technisch machen. Der Film erklärt in 2 Minuten, wofür wir früher eine Stunde gebraucht haben."</p>
+        <div class="testi-person"><div class="testi-avatar">AK</div><div><div class="testi-name">Andreas Kassen</div><div class="testi-role">Anka-Metall GmbH</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Auf der Messe war unser Filmscreen der einzige Ort, wo sich immer eine Traube Besucher gebildet hat. Absoluter Eyecatcher."</p>
+        <div class="testi-person"><div class="testi-avatar">SH</div><div><div class="testi-name">Sabine Hoffmann</div><div class="testi-role">Phoenix Industrial AG</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Wir setzen den Film jetzt auch in Bewerbungsgesprächen ein. Die Kandidaten wissen sofort, wer wir sind und was uns besonders macht."</p>
+        <div class="testi-person"><div class="testi-avatar">JL</div><div><div class="testi-name">Jan Liebing</div><div class="testi-role">LK Recruiting</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Professionell, pünktlich, und das Ergebnis hat unsere Erwartungen übertroffen. Die Zusammenarbeit war ein echtes Vergnügen."</p>
+        <div class="testi-person"><div class="testi-avatar">MK</div><div><div class="testi-name">Michael Kern</div><div class="testi-role">Kern Antriebstechnik</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Seit dem Film haben wir 3x mehr Bewerbungen bekommen. Die Qualität war genauso gut wie die Professionalität."</p>
+        <div class="testi-person"><div class="testi-avatar">AS</div><div><div class="testi-name">Andreas Stirnberg</div><div class="testi-role">as equipment</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Fabian hat den Dreh vor Ort perfekt organisiert, war absolut professionell und das Endergebnis spricht für sich. Klare Empfehlung."</p>
+        <div class="testi-person"><div class="testi-avatar">TB</div><div><div class="testi-name">Thomas Brinkmann</div><div class="testi-role">Brinkmann Maschinenbau</div></div></div>
+      </div>
+      <!-- Loop Set 2 -->
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Der Film hat unsere Anfragen sofort erhöht. Potenzielle Kunden kommen schon vorbereitet zum Gespräch. Das spart uns enorm viel Zeit."</p>
+        <div class="testi-person"><div class="testi-avatar">NH</div><div><div class="testi-name">Norman Hofmann</div><div class="testi-role">Gesau Technology GmbH</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Fabian hat sofort verstanden, was wir technisch machen. Der Film erklärt in 2 Minuten, wofür wir früher eine Stunde gebraucht haben."</p>
+        <div class="testi-person"><div class="testi-avatar">AK</div><div><div class="testi-name">Andreas Kassen</div><div class="testi-role">Anka-Metall GmbH</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Auf der Messe war unser Filmscreen der einzige Ort, wo sich immer eine Traube Besucher gebildet hat. Absoluter Eyecatcher."</p>
+        <div class="testi-person"><div class="testi-avatar">SH</div><div><div class="testi-name">Sabine Hoffmann</div><div class="testi-role">Phoenix Industrial AG</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Wir setzen den Film jetzt auch in Bewerbungsgesprächen ein. Die Kandidaten wissen sofort, wer wir sind und was uns besonders macht."</p>
+        <div class="testi-person"><div class="testi-avatar">JL</div><div><div class="testi-name">Jan Liebing</div><div class="testi-role">LK Recruiting</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Professionell, pünktlich, und das Ergebnis hat unsere Erwartungen übertroffen. Die Zusammenarbeit war ein echtes Vergnügen."</p>
+        <div class="testi-person"><div class="testi-avatar">MK</div><div><div class="testi-name">Michael Kern</div><div class="testi-role">Kern Antriebstechnik</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Seit dem Film haben wir 3x mehr Bewerbungen bekommen. Die Qualität war genauso gut wie die Professionalität."</p>
+        <div class="testi-person"><div class="testi-avatar">AS</div><div><div class="testi-name">Andreas Stirnberg</div><div class="testi-role">as equipment</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">„Fabian hat den Dreh vor Ort perfekt organisiert, war absolut professionell und das Endergebnis spricht für sich. Klare Empfehlung."</p>
+        <div class="testi-person"><div class="testi-avatar">TB</div><div><div class="testi-name">Thomas Brinkmann</div><div class="testi-role">Brinkmann Maschinenbau</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILMTYPEN -->
+<section class="section" id="leistungen">
+  <div class="container">
+    <span class="section-label reveal">Leistungen</span>
+    <h2 class="section-title reveal">Welche Art Film<br><span class="hl">benötigen Sie?</span></h2>
+    <p class="section-body reveal">Von Neukundengewinnung bis Mitarbeitergewinnung. Für jeden Vertriebskanal der richtige Film.</p>
+
+    <div class="filmtypen-grid">
+      <!-- Produkterklärfilm: Maschine/Industrie-Nahaufnahme -->
+      <div class="filmtyp-card reveal">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80&fit=crop" alt="Produkterklärfilm" class="filmtyp-img">
+        </div>
+        <div class="filmtyp-body">
+          <h3>Produkterklärfilm</h3>
+          <p>Komplexe Maschinen und Produkte in 2 Minuten verständlich erklärt. Technisch präzise, vom Maschinenbauingenieur produziert.</p>
+          <a href="#termin" class="filmtyp-link">Mehr erfahren</a>
+        </div>
+      </div>
+      <!-- Imagefilm: Unternehmen/Team/Büro -->
+      <div class="filmtyp-card reveal reveal-delay-1">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&fit=crop" alt="Imagefilm" class="filmtyp-img">
+        </div>
+        <div class="filmtyp-body">
+          <h3>Imagefilm</h3>
+          <p>Präsentieren Sie Ihr Unternehmen auf den ersten Blick als beste Wahl für Kunden und Bewerber gleichermaßen.</p>
+          <a href="#termin" class="filmtyp-link">Mehr erfahren</a>
+        </div>
+      </div>
+      <!-- Recruiting Video: Teamfoto/Bewerbung -->
+      <div class="filmtyp-card reveal reveal-delay-2">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop" alt="Recruiting Video" class="filmtyp-img">
+        </div>
+        <div class="filmtyp-body">
+          <h3>Recruiting Video</h3>
+          <p>Ziehen Sie Wunschkandidaten Ihrer Region an, auch in Zeiten von Fachkräftemangel. Authentisch, nicht gestellt.</p>
+          <a href="#termin" class="filmtyp-link">Mehr erfahren</a>
+        </div>
+      </div>
+      <!-- Social Media Reels: Smartphone/Creator -->
+      <div class="filmtyp-card reveal">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&fit=crop" alt="Social Media Reels" class="filmtyp-img">
+        </div>
+        <div class="filmtyp-body">
+          <h3>Social Media Reels</h3>
+          <p>6 Monate Content in nur 2 Drehtagen. Produziert von echten Creators für Meta, LinkedIn und YouTube.</p>
+          <a href="#termin" class="filmtyp-link">Mehr erfahren</a>
+        </div>
+      </div>
+      <!-- Performance Content: Ads/Marketing -->
+      <div class="filmtyp-card reveal reveal-delay-1">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop" alt="Performance Content" class="filmtyp-img">
+        </div>
+        <div class="filmtyp-body">
+          <h3>Performance Content</h3>
+          <p>Videocontent speziell für Paid Ads auf Meta, Google und LinkedIn. Optimiert für Klicks, Anfragen und Conversions.</p>
+          <a href="#termin" class="filmtyp-link">Mehr erfahren</a>
+        </div>
+      </div>
+      <!-- Individuelles Projekt: Kamera/Produktion -->
+      <div class="filmtyp-card reveal reveal-delay-2">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=800&q=80&fit=crop" alt="Individuelles Projekt" class="filmtyp-img">
+        </div>
+        <div class="filmtyp-body">
+          <h3>Individuelles Projekt</h3>
+          <p>Gemeinsam entwickeln wir das Filmprojekt, das genau auf Ihre Bedürfnisse und Ziele abgestimmt ist.</p>
+          <a href="#termin" class="filmtyp-link">Mehr erfahren</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section section-alt" id="problem">
+  <div class="container">
+    <div class="problem-cols">
+      <div class="problem-text-col">
+        <span class="section-label" style="text-align:left;">Das Problem</span>
+        <h2 class="section-title" style="text-align:left;margin-bottom:16px;">Was passiert, wenn Ihr<br>Vertrieb zu viel <span class="hl">erklärt.</span></h2>
+        <p class="section-body" style="text-align:left;margin-left:0;margin-bottom:32px;">Diese vier Probleme hören wir in jedem zweiten Erstgespräch.</p>
+        <ul class="problem-list reveal">
+          <li><span class="p-emoji">⏳</span><div class="p-text"><h4>Zu viel Erkläraufwand</h4><p>Jedes Gespräch beginnt von vorne. Ihr Vertrieb erklärt dieselben Produkte täglich.</p></div></li>
+          <li class="reveal reveal-delay-1"><span class="p-emoji">🎬</span><div class="p-text"><h4>Oberflächliche Videos</h4><p>Bestehende Videos zeigen Bilder und Musik, erklären aber nichts Technisches.</p></div></li>
+          <li class="reveal reveal-delay-2"><span class="p-emoji">💸</span><div class="p-text"><h4>Investition erscheint zu hoch</h4><p>Die meisten wissen nicht, dass der Staat bis zu 80 % der Kosten übernimmt.</p></div></li>
+          <li class="reveal reveal-delay-3"><span class="p-emoji">📉</span><div class="p-text"><h4>Kein Vertriebssystem</h4><p>Ein Imagevideo generiert keine Anfragen. Sie brauchen einen Film der verkauft.</p></div></li>
+        </ul>
+      </div>
+      <div class="problem-viz-col reveal">
+        <div class="problem-viz-card">
+          <div class="viz-label">Ohne Film vs. Mit Mehrwertfilm</div>
+          <div class="viz-stage">
+            <div class="viz-col">
+              <span class="viz-tag bad">Ohne Film</span>
+              <div class="viz-person viz-bad">
+                <div class="viz-head"></div>
+                <div class="viz-body"></div>
+              </div>
+              <div class="speech-loop">
+                <div class="speech-bubble">„Unser Produkt funktioniert so…"</div>
+                <div class="speech-bubble">„Das haben wir 100x erklärt…"</div>
+                <div class="speech-bubble">„Fangen wir nochmal von vorne an…"</div>
+              </div>
+              <span class="repeat-tag">↻ Täglich wiederholt</span>
+            </div>
+            <div class="viz-divider">
+              <div class="viz-line"></div>
+              <div class="viz-vs">VS</div>
+              <div class="viz-line"></div>
+            </div>
+            <div class="viz-col">
+              <span class="viz-tag good">Mit Mehrwertfilm</span>
+              <div class="film-mini">
+                <div class="film-screen-mini"><div class="film-play-mini">▶</div></div>
+                <div class="film-mets">
+                  <div class="film-met"><div class="fmv">24/7</div><div class="fml">Erklärt</div></div>
+                  <div class="film-met"><div class="fmv">Auto</div><div class="fml">Qualifiziert</div></div>
+                  <div class="film-met"><div class="fmv">∞</div><div class="fml">Skaliert</div></div>
+                </div>
+              </div>
+              <div class="leads-dots">
+                <div class="lead-d"></div><div class="lead-d"></div><div class="lead-d"></div><div class="lead-d"></div><div class="lead-d"></div>
+              </div>
+              <span style="font-size:0.65rem;color:#16a34a;text-align:center;">Qualifizierte Anfragen fließen rein</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAS IST EIN MEHRWERTFILM -->
+<section class="section">
+  <div class="container">
+    <span class="section-label reveal">Kein Imagevideo</span>
+    <h2 class="section-title reveal">Ein Verkäufer,<br>der <span class="hl">nie schläft.</span></h2>
+    <p class="section-body reveal">Ein Mehrwertfilm erklärt Ihr Produkt so überzeugend, dass Interessenten bereits kaufbereit sind, bevor Ihr Vertrieb das erste Mal spricht.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card reveal">
+        <span class="c-badge">Imagefilm</span>
+        <h3>Zeigt Ihr Unternehmen</h3>
+        <p>Baut Sympathie auf. Erklärt aber nicht, warum Ihr Produkt das Richtige ist. Kein direkter Einfluss auf die Abschlussquote.</p>
+      </div>
+      <div class="compare-card highlight reveal reveal-delay-1">
+        <span class="c-badge">Mehrwertfilm</span>
+        <h3>Erklärt und verkauft</h3>
+        <p>Technisch korrekt, warum Ihr Produkt das Problem Ihrer Kunden löst. Erhöht die Abschlussquote und führt zu schnelleren Kaufentscheidungen.</p>
+      </div>
+    </div>
+
+    <div class="compare-note reveal">
+      <p><strong>Die entscheidende Frage:</strong><br>
+      Wie viele Ihrer versendeten Angebote führen zu einem Abschluss? 20–50 %?<br>
+      Ein Mehrwertfilm kann diese Quote um 10 bis 15 Prozent verbessern. Mehr Abschlüsse, gleicher Aufwand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section" id="referenzen">
+  <div class="container">
+    <span class="section-label reveal">Erfolgsgeschichten</span>
+    <h2 class="section-title reveal">Echte Ergebnisse.<br><span class="hl">Echte Kunden.</span></h2>
+    <p class="section-body reveal">Was passiert, wenn Vertriebssystem und Film zusammenpassen.</p>
+
+    <div class="case-study-block reveal">
+      <div class="csb-stats">
+        <div class="csb-stat"><div class="csb-val">70</div><div class="csb-lbl">Neukundenanfragen in 4 Monaten</div></div>
+        <div class="csb-stat"><div class="csb-val">12</div><div class="csb-lbl">Monate Zusammenarbeit</div></div>
+        <div class="csb-stat" style="grid-column:1/-1;"><div class="csb-val csb-val--wide">Fräswerkzeuge · Neukundengewinnung</div><div class="csb-lbl">Branche &amp; Ziel</div></div>
+      </div>
+      <div class="csb-right">
+        <div class="csb-video" onclick="openVideoModal('zacn7mle1d')">
+          <img src="https://onecdn.io/media/6d2bc702-62fa-40fe-bb6d-56d0ef02ba13/md2x" alt="Gesau Technology">
+          <div class="csb-play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="csb-logo-box">
+          <img src="https://gesau-technology.de/elemente/gesau-technology.svg" alt="Gesau Technology" onerror="this.outerHTML='<span style=\'font-weight:800;font-size:0.95rem;\'>GESAU Technology GmbH</span>'">
+        </div>
+        <p class="csb-desc">In 12 Monaten Zusammenarbeit produzierten wir Produkterklärfilme für Präzisionsfräswerkzeuge. Ergebnis: <strong>70 qualifizierte Neukundenanfragen innerhalb von 4 Monaten.</strong></p>
+      </div>
+    </div>
+
+    <div class="case-study-block reveal">
+      <div class="csb-stats">
+        <div class="csb-stat"><div class="csb-val">40%</div><div class="csb-lbl">Öffnungsrate im Bestandskundenvertrieb</div></div>
+        <div class="csb-stat"><div class="csb-val">50–75%</div><div class="csb-lbl">Abschlussquote durch Videofunnel</div></div>
+        <div class="csb-stat" style="grid-column:1/-1;"><div class="csb-val csb-val--wide">5-stellige Aufträge · Antriebstechnik</div><div class="csb-lbl">Ergebnis &amp; Branche</div></div>
+      </div>
+      <div class="csb-right">
+        <div class="csb-video" onclick="openVideoModal('2hzjzw4aga')">
+          <img src="https://onecdn.io/media/3cabe3a5-6a30-45db-aad8-1342cb8e322f/md2x" alt="Melitta">
+          <div class="csb-play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="csb-logo-box">
+          <img src="https://s7g10.scene7.com/is/content/melitta/logo-2?dpr=off" alt="Melitta" style="filter:none;opacity:1;" onerror="this.outerHTML='<span style=\'font-weight:800;font-size:0.95rem;\'>Hausmann + Haensgen feat. Melitta</span>'">
+        </div>
+        <p class="csb-desc">Mit dem Videofunnel im Bestandskundenvertrieb: 40 % Öffnungsrate, 50–75 % Abschlussquote. <strong>10 Anwählen → 4 Anfragen → 3 Aufträge im 5-stelligen Bereich.</strong></p>
+      </div>
+    </div>
+
+    <div class="case-study-block reveal" style="grid-template-columns:1.1fr 1fr;">
+      <div class="csb-right">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <img src="https://serr-haustechnik.de/upload/logo/logo.png" alt="SERR Haustechnik" style="height:64px;width:auto;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-weight:800;font-size:1.2rem;\'>SERR Haustechnik</span>'">
+        </div>
+        <div class="csb-logo-box" style="padding-top:4px;">
+          <span style="font-size:0.78rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--dim);">SHK-Handwerk · Herford</span>
+        </div>
+        <p class="csb-desc">SERR Haustechnik fand kein SHK-Fachpersonal. Mit einem gezielten Recruiting-Film gelangen in 5 Wochen <strong>2 Einstellungen</strong>, bei einem Bewerberpool von über 25 qualifizierten Kandidaten in 2 Monaten.</p>
+      </div>
+      <div class="csb-stats">
+        <div class="csb-stat"><div class="csb-val">2</div><div class="csb-lbl">Einstellungen SHK-Fachpersonal in 5 Wochen</div></div>
+        <div class="csb-stat"><div class="csb-val">&gt;25</div><div class="csb-lbl">Bewerbungen in 2 Monaten</div></div>
+        <div class="csb-stat" style="grid-column:1/-1;"><div class="csb-val csb-val--wide">6 Monate · Mitarbeitergewinnung</div><div class="csb-lbl">Zusammenarbeit &amp; Ziel</div></div>
+      </div>
+    </div>
+
+    <div class="case-study-block reveal">
+      <div class="csb-stats">
+        <div class="csb-stat"><div class="csb-val">&gt;600</div><div class="csb-lbl">Patientenanfragen generiert</div></div>
+        <div class="csb-stat"><div class="csb-val">5-stellig</div><div class="csb-lbl">Monatlicher Zusatzumsatz</div></div>
+        <div class="csb-stat" style="grid-column:1/-1;"><div class="csb-val csb-val--wide">24 Monate · Medizin</div><div class="csb-lbl">Zusammenarbeit &amp; Branche</div></div>
+      </div>
+      <div class="csb-right">
+        <div style="aspect-ratio:16/9;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);">
+          <img src="https://beyondeye.de/wp-content/uploads/2026/03/Logo_BeyondEye_pt-web-1.svg" alt="BeyondEye" style="height:60px;width:auto;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-weight:800;font-size:1.2rem;\'>BeyondEye GmbH</span>'">
+        </div>
+        <div class="csb-logo-box">
+          <span style="font-size:0.78rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--dim);">Augenklinik · Grauer-Star-Operationen</span>
+        </div>
+        <p class="csb-desc">In 24 Monaten generierten wir <strong>über 600 qualifizierte Patientenanfragen</strong> und einen 5-stelligen monatlichen Zusatzumsatz durch mehr ambulante Grauer-Star-Operationen.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USP -->
+<section class="section">
+  <div class="container">
+    <span class="section-label reveal">Warum Mehrwertfilm</span>
+    <h2 class="section-title reveal">Drei Dinge, die kein anderer<br><span class="hl">Videoanbieter</span> bietet.</h2>
+    <p class="section-body reveal" style="margin-bottom:40px;">Technisch. Gefördert. Systematisch.</p>
+    <div class="usp-grid reveal">
+      <div class="usp-card">
+        <div class="usp-num">01 Expertise</div>
+        <div class="usp-icon">⚙️</div>
+        <h3>Maschinenbauingenieur als Produzent</h3>
+        <p>Fabian Dalhoff hat Maschinenbau studiert und arbeitet seit 8 Jahren für Industrie und Handwerk. Er versteht Ihre Maschinen, nicht nur wie sie aussehen.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-num">02 Förderung</div>
+        <div class="usp-icon">🏛️</div>
+        <h3>BAFA-gelisteter Berater</h3>
+        <p>Als BAFA-Berater können KMUs bis zu 80 % der förderfähigen Beratungskosten vom Staat erstattet bekommen. Direkt, ohne Umwege.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-num">03 System</div>
+        <div class="usp-icon">📈</div>
+        <h3>Kein Video. Ein Vertriebssystem.</h3>
+        <p>Ein Mehrwertfilm qualifiziert Interessenten vor dem ersten Anruf. Ihr Vertrieb spricht nur noch mit Kontakten, die bereits überzeugt sind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO GALERIE -->
+<section class="section section-alt">
+  <div class="container">
+    <span class="section-label reveal">Portfolio</span>
+    <h2 class="section-title reveal">300+ Produktionen.<br><span class="hl">Jeder Film verkauft.</span></h2>
+    <p class="section-body reveal">Für Maschinenbau, Anlagenbau, Handwerk und Industrie.</p>
+
+    <div class="video-grid">
+      <div class="video-card reveal" onclick="openVideoModal('zacn7mle1d')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/6d2bc702-62fa-40fe-bb6d-56d0ef02ba13/md2x" alt="Gesau Technology" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">Gesau Technology GmbH</div>
+      </div>
+      <div class="video-card reveal reveal-delay-1" onclick="openVideoModal('2hzjzw4aga')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/3cabe3a5-6a30-45db-aad8-1342cb8e322f/md2x" alt="Melitta" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">Melitta × Mehrwertfilm</div>
+      </div>
+      <div class="video-card reveal reveal-delay-2" onclick="openVideoModal('8l7b4blflz')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/video-thumbnail/ad6f2e56-812f-4da6-bd80-0cf3cdeba9f8_dddd14cb-9772-4688-99a6-e9f1edb5096f/md2x" alt="BASLER AG" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">asP2t × BASLER AG</div>
+      </div>
+      <div class="video-card reveal" onclick="openVideoModal('csobehdvei')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/a51385dc-b925-41dd-9651-55c9a27b5239/md2x" alt="Anka-Metall" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">Anka-Metall</div>
+      </div>
+      <div class="video-card reveal reveal-delay-1" onclick="openVideoModal('adzj589yqw')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/e6287a17-243f-4780-bdb7-1c19835a58c5/md2x" alt="HBT-Group" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">HBT-Group</div>
+      </div>
+      <div class="video-card reveal reveal-delay-2" onclick="openVideoModal('hrdgulqaxd')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/9449df57-5753-4b21-8a8d-ee3cbed4ce11/md2x" alt="Dresselhaus × Schraubtec" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">Dresselhaus × Schraubtec</div>
+      </div>
+      <div class="video-card reveal" onclick="openVideoModal('5v05hhmz2c')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/b703dfe1-b335-4830-9352-924b967694e6/md2x" alt="NORTEC 24" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">NORTEC 24</div>
+      </div>
+      <div class="video-card reveal reveal-delay-1" onclick="openVideoModal('qghru4vqf2')">
+        <div class="video-card-thumb"><img src="https://onecdn.io/media/82ae4368-afb0-42d7-b835-7f3b58079944/md2x" alt="Exquisa" onerror="this.style.display='none'"><div class="video-card-overlay"><div class="video-card-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2B2A2B"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+        <div class="video-card-title">Exquisa (Karwendel GmbH)</div>
+      </div>
+      <a href="#termin" class="video-card ihr-film-card reveal reveal-delay-2">
+        <div class="video-card-thumb"><div class="ihr-film-inner"><div class="ihr-film-q">?</div><div class="ihr-film-text">Ihr Mehrwertfilm</div></div></div>
+        <div class="video-card-title accent">Jetzt Erstgespräch buchen →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="video-modal" onclick="closeVideoModal(event)">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+    <div class="video-modal-frame">
+      <iframe id="modal-iframe" src="" allow="autoplay; fullscreen" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- PROZESS -->
+<section id="prozess" style="background:#111111;padding:96px 24px;">
+  <div class="container">
+    <h2 class="section-title reveal" style="color:#fff;margin-bottom:12px;">In 5 Schritten zu neuen Kunden</h2>
+    <p class="section-body reveal" style="color:rgba(255,255,255,0.5);margin-bottom:56px;">Die Zusammenarbeit im Überblick</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px;" class="prozess-grid">
+
+      <div class="reveal">
+        <div style="border-radius:12px;overflow:hidden;margin-bottom:20px;aspect-ratio:4/3;">
+          <img src="https://onecdn.io/media/c7b5d1b1-c016-4595-984e-e41bb8ada19f/md2x" alt="Erstgespräch" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <h3 style="color:#ED940F;font-size:1rem;font-weight:700;margin-bottom:10px;">Schritt 1: Erstgespräch</h3>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;line-height:1.7;">Wir finden heraus ob wir Ihnen in Ihrer Situation helfen können. Tragen Sie sich im Kalender ein, um zeitnah ein kostenloses Erstgespräch zu reservieren. <span style="color:rgba(255,255,255,0.35);">(Ihr Zeitaufwand 15')</span></p>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div style="border-radius:12px;overflow:hidden;margin-bottom:20px;aspect-ratio:4/3;">
+          <img src="https://onecdn.io/media/d0e259b4-3d65-4b7f-9e54-3546ab0a54a3/md2x" alt="Strategiegespräch" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <h3 style="color:#ED940F;font-size:1rem;font-weight:700;margin-bottom:10px;">Schritt 2: Der Mehrwert Ihres Angebotes, auf den Punkt gebracht</h3>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;line-height:1.7;">In einem Strategiegespräch analysieren wir gemeinsam Ihr Angebot und erstellen eine individuelle Filmstrategie. Wir nehmen Sie dabei an die Hand und führen Sie durch den gesamten Prozess. <span style="color:rgba(255,255,255,0.35);">(Ihr Zeitaufwand 60')</span></p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div style="border-radius:12px;overflow:hidden;margin-bottom:20px;aspect-ratio:4/3;">
+          <img src="https://onecdn.io/media/5aa34c9c-2deb-426d-a026-5bc9bc36cccf/md2x" alt="Produktion" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <h3 style="color:#ED940F;font-size:1rem;font-weight:700;margin-bottom:10px;">Schritt 3: Mehrwertfilm-Produktion</h3>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;line-height:1.7;">Wir setzen Ihr Mehrwertfilm-Konzept um. Die Produktion ist nach der Freigabe durch Sie innerhalb von 10 Tagen fertig gestellt. <span style="color:rgba(255,255,255,0.35);">(Ihr Zeitaufwand 1 Tag)</span></p>
+      </div>
+
+      <div class="reveal" style="grid-column:1/2;">
+        <div style="border-radius:12px;overflow:hidden;margin-bottom:20px;aspect-ratio:4/3;">
+          <img src="https://onecdn.io/media/90b2fd11-3164-420c-82b4-18e3765d4ce6/md2x" alt="Marketing" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <h3 style="color:#ED940F;font-size:1rem;font-weight:700;margin-bottom:10px;">Schritt 4: Marketing und Sichtbarkeit</h3>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;line-height:1.7;">Mit Ihrem neuen Mehrwertfilm liefern wir den Mehrwert Ihrer Lösung in den sozialen Medien direkt an die Kunden. Kaufinteressierte Interessenten werden durch unser System vorqualifiziert und landen ohne zusätzlichen Aufwand in Echtzeit bei Ihrem Vertriebsteam.</p>
+      </div>
+
+      <div class="reveal reveal-delay-1" style="grid-column:2/3;">
+        <div style="border-radius:12px;overflow:hidden;margin-bottom:20px;aspect-ratio:4/3;">
+          <img src="https://onecdn.io/media/0d91f573-ba2e-4b0f-a68b-b89150bb91bd/md2x" alt="Mehr Umsatz" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <h3 style="color:#ED940F;font-size:1rem;font-weight:700;margin-bottom:10px;">Schritt 5: Mehr Umsatz</h3>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;line-height:1.7;">Absofort investieren Ihre Vertriebler nur noch Zeit in Interessenten mit akutem Bedarf. Dieses System verhindert das Ihr Personal wertvolle Zeit verschwendet und maximiert den Umsatz pro Vertriebsmitarbeiter.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="container">
+    <h2 class="section-title reveal">Lernen Sie unser Team kennen</h2>
+    <p class="section-body reveal" style="margin-bottom:56px;">Mit mehr als 140 zufriedenen Kunden und beeindruckenden Ergebnissen beweist Mehrwertfilm, wie wirkungsstark Videomarketing sein kann.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+
+      <div class="reveal">
+        <div style="border-radius:16px;overflow:hidden;margin-bottom:20px;aspect-ratio:3/4;background:#d4e8f5;">
+          <img src="https://onecdn.io/media/af032879-d521-4ec2-a5f7-f7ef15c912af/md2x" alt="Fabian Dalhoff"
+            style="width:100%;height:100%;object-fit:cover;display:block;object-position:top;">
+        </div>
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:4px;">Fabian Dalhoff</h3>
+        <p style="font-size:0.8rem;color:var(--dim);margin-bottom:12px;">Strategie &amp; Marketing</p>
+        <p style="font-size:0.875rem;color:var(--muted);line-height:1.7;">Fabian Dalhoff verbindet fundierte Technikexpertise (B. Sc. Maschinenbau) mit über 7 Jahren internationaler Erfahrung in der Videoproduktion.</p>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div style="border-radius:16px;overflow:hidden;margin-bottom:20px;aspect-ratio:3/4;background:#d4e8f5;">
+          <img src="https://onecdn.io/media/64f526d9-e8d9-4d36-8ed6-3349070e50c1/md2x" alt="Dietrich"
+            style="width:100%;height:100%;object-fit:cover;display:block;object-position:top;">
+        </div>
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:4px;">Dietrich</h3>
+        <p style="font-size:0.8rem;color:var(--dim);margin-bottom:12px;">Kamera / Edit</p>
+        <p style="font-size:0.875rem;color:var(--muted);line-height:1.7;">Mit mehr als 8 Jahren Erfahrung hinter der Kamera stellt Dietrich sicher, dass jedes aufgenommene Bild Ihr Unternehmen perfekt ins Szene setzt.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div style="border-radius:16px;overflow:hidden;margin-bottom:20px;aspect-ratio:3/4;background:#d4e8f5;">
+          <img src="https://onecdn.io/media/ed3f97d0-1c0d-4915-827e-0e1e2af56c35/md2x" alt="Timon"
+            style="width:100%;height:100%;object-fit:cover;display:block;object-position:top;">
+        </div>
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:4px;">Timon</h3>
+        <p style="font-size:0.8rem;color:var(--dim);margin-bottom:12px;">Back-Office / Vertriebsinnendienst</p>
+        <p style="font-size:0.875rem;color:var(--muted);line-height:1.7;">Ohne Timon ist alles nichts. Er unterstützt sämtliche Prozesse im Unternehmen und stellt sicher, dass für Ihren Erfolg alles reibungslos abläuft.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <span class="section-label reveal">FAQ</span>
+    <h2 class="section-title reveal">Häufige Fragen.</h2>
+    <div class="faq-list" style="margin:0 auto;">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Warum Mehrwertfilm statt einer klassischen Videoproduktion?<span class="faq-icon">+</span></div><div class="faq-a"><p>Klassische Agenturen produzieren schöne Videos. Mehrwertfilm produziert Videos, die verkaufen. Der Unterschied: Fabian Dalhoff kommt aus dem Maschinenbau, kennt Ihre Branche technisch und baut den Film als Vertriebswerkzeug, nicht als Showreel.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Was kostet ein Mehrwertfilm?<span class="faq-icon">+</span></div><div class="faq-a"><p>Eine professionelle Produktion liegt je nach Umfang zwischen 3.000 und 8.000 Euro. Durch BAFA-Förderung können Sie als KMU bis zu 80 % erstattet bekommen. Im Erstgespräch klären wir Ihren genauen Fördersatz.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Wie lange dauert die Produktion?<span class="faq-icon">+</span></div><div class="faq-a"><p>Von Konzept bis Fertigstellung dauert es typischerweise 3–6 Wochen. Drehtag vor Ort: 1 Tag. Schnitt und Postproduktion: 2–3 Wochen. Sie werden in jeden Schritt eingebunden.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Was ist BAFA-Förderung und bin ich berechtigt?<span class="faq-icon">+</span></div><div class="faq-a"><p>Das BAFA-Programm unterstützt KMUs bis 250 Mitarbeiter mit Zuschüssen auf Unternehmensberatung. Fabian Dalhoff ist BAFA-gelisteter Berater, förderfähige Beratungsleistungen werden bezuschusst. Im Erstgespräch prüfen wir Ihre individuelle Berechtigung.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Wo kann ich den Film einsetzen?<span class="faq-icon">+</span></div><div class="faq-a"><p>Überall: Website, Messe, LinkedIn, Google Ads, Meta Ads, in Verkaufsgesprächen, als Angebots-Begleitung oder im Onboarding. Ein Mehrwertfilm arbeitet an jedem Touchpoint Ihrer Customer Journey.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="cta-section" id="termin">
+  <div class="cta-box reveal">
+    <h2>Jetzt kostenloses<br><span class="hl">Erstgespräch buchen.</span></h2>
+    <p>15 Minuten. Wir klären Ihre BAFA-Förderfähigkeit und ob ein Mehrwertfilm zu Ihrem Vertrieb passt.</p>
+    <div class="cta-form-card">
+      <div id="form-wrap">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="field"><label>Name</label><input id="f-name" type="text" placeholder="Max Mustermann" required></div>
+            <div class="field"><label>Unternehmen</label><input id="f-firma" type="text" placeholder="Mustermann GmbH" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>E-Mail</label><input id="f-email" type="email" placeholder="max@firma.de" required></div>
+            <div class="field"><label>Telefon</label><input id="f-tel" type="tel" placeholder="+49 000 000000"></div>
+          </div>
+          <div class="form-row" style="grid-template-columns:1fr;">
+            <div class="field"><label>Branche</label>
+              <select id="f-branche" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option>Maschinenbau</option><option>Anlagenbau</option><option>Handwerk</option><option>Industrie (Sonstiges)</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">Kostenloses Erstgespräch buchen →</button>
+        </form>
+        <p class="form-micro">Kein Risiko. Keine Verpflichtung. Ihre Daten werden nicht weitergegeben.</p>
+        <div class="trust-chips">
+          <div class="trust-chip"><span class="check">✓</span> BAFA-gelisteter Berater</div>
+          <div class="trust-chip"><span class="check">✓</span> Kostenlos</div>
+          <div class="trust-chip"><span class="check">✓</span> 15 Minuten</div>
+          <div class="trust-chip"><span class="check">✓</span> Keine Verpflichtung</div>
+        </div>
+      </div>
+      <div id="calendly-wrap" style="display:none;">
+        <h3 style="margin-bottom:8px;font-size:1.2rem;">Fast geschafft!</h3>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:24px;">Wählen Sie Ihren Wunschtermin für das kostenlose Erstgespräch.</p>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/fabian-dalhoff/kostenloses-erstgesprach" style="min-width:280px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <svg class="footer-logo" viewBox="0 0 200 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 0,44 22,22" fill="#F4C968"/>
+        <polygon points="0,44 44,44 22,22" fill="#C73642"/>
+        <polygon points="44,44 44,0 22,22" fill="#4A6FA5"/>
+        <text x="54" y="17" font-family="-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="800" fill="#2B2A2B" letter-spacing="0.5">MEHRWERT</text>
+        <text x="54" y="34" font-family="-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="800" fill="#2B2A2B" letter-spacing="0.5">FILM</text>
+      </svg>
+      <p>B2B Videoproduktion für Industrie & Handwerk. Seit 2016.</p>
+    </div>
+    <div class="footer-links-group">
+      <h4>Leistungen</h4>
+      <a href="#">Produkterklärvideos</a>
+      <a href="#">Imagefilme</a>
+      <a href="#">Performance Content</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Unternehmen</h4>
+      <a href="https://www.mehrwertfilm.de/" target="_blank">Website</a>
+      <a href="#referenzen">Referenzen</a>
+      <a href="#termin">Kontakt</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Rechtliches</h4>
+      <a href="https://www.mehrwertfilm.de/datenschutz" target="_blank">Datenschutz</a>
+      <a href="https://www.mehrwertfilm.de/impressum" target="_blank">Impressum</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© by Fabian Dalhoff · Mehrwertfilm</div>
+  <div class="footer-disclaimer">Diese Website ist nicht Teil der Facebook-Website oder von Facebook Inc. Darüber hinaus wird diese Website in keiner Weise von Facebook unterstützt. Facebook ist eine Marke von Facebook, Inc. Wir verwenden auf dieser Website Remarketing-Pixel/Cookies von Google, um erneut mit den Besuchern unserer Website zu kommunizieren.</div>
+</footer>
+
+<div class="sticky-bar">
+  <a href="#termin" class="btn-primary" style="justify-content:center;">Erstgespräch buchen →</a>
+</div>
+
+<script>
+/* ── SCROLL PROGRESS ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('scroll-bar').style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+}, {passive:true});
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animateNum(el) {
+  const target = parseInt(el.dataset.count || '0');
+  const suffix = el.dataset.suffix || '';
+  if (!target) return;
+  const duration = 1400, start = performance.now();
+  (function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1-p, 3))) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  })(performance.now());
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateNum(e.target); counterObs.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+/* ── HERO VIDEO ── */
+function playHeroVideo(wrap) {
+  const thumb = wrap.querySelector('.video-thumb');
+  const iw = wrap.querySelector('.video-iframe-wrap');
+  const iframe = iw.querySelector('iframe');
+  iframe.src = iframe.dataset.src;
+  thumb.style.display = 'none';
+  iw.style.display = 'block';
+}
+
+/* ── VIDEO MODAL ── */
+function openVideoModal(id) {
+  document.getElementById('modal-iframe').src = `https://fast.wistia.net/embed/iframe/${id}?autoPlay=1&playerColor=2B2A2B`;
+  document.getElementById('video-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoModal(e) {
+  if (e && e.target !== document.getElementById('video-modal') && !e.target.classList.contains('video-modal-close')) return;
+  document.getElementById('modal-iframe').src = '';
+  document.getElementById('video-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal({ target: document.getElementById('video-modal') }); });
+
+/* ── FAQ ── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+/* ── CONFETTI ── */
+function fireConfetti() {
+  const colors = ['#3b82f6','#22c55e','#f59e0b','#a78bfa','#f472b6'];
+  for (let i = 0; i < 80; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `left:${Math.random()*100}vw;width:${4+Math.random()*7}px;height:${8+Math.random()*12}px;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*0.5}s;border-radius:${Math.random()>0.5?'50%':'2px'};`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 4000);
+  }
+}
+
+/* ── FORM SUBMIT ── */
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.submit-btn');
+  btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+  try {
+    await fetch('https://hooks.zapier.com/hooks/catch/26713449/4b4fqhy/', {
+      method: 'POST',
+      body: new URLSearchParams({
+        name: document.getElementById('f-name').value,
+        firma: document.getElementById('f-firma').value,
+        email: document.getElementById('f-email').value,
+        telefon: document.getElementById('f-tel').value,
+        branche: document.getElementById('f-branche').value,
+        quelle: 'Mehrwertfilm Homepage',
+        datum: new Date().toLocaleString('de-DE'),
+      }),
+    });
+  } catch(err) { console.error(err); }
+  fireConfetti();
+  if (typeof fbq === 'function') fbq('track', 'Lead');
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('calendly-wrap').style.display = 'block';
+  document.getElementById('termin').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
