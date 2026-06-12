@@ -176,6 +176,25 @@
     }
     .vid-play svg { margin-left: 5px; }
 
+    /* Bekannt von */
+    .known-from {
+      margin-top: 18px;
+      text-align: center;
+    }
+    .known-from-label {
+      font-family: var(--head);
+      font-size: 0.95rem; font-weight: 600;
+      color: #fff; margin-bottom: 14px;
+    }
+    .known-from img {
+      width: 100%; max-width: 420px;
+      height: auto; display: block;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .known-from img { max-width: 320px; }
+    }
+
     /* Google Rating */
     .g-rating {
       display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -836,6 +855,11 @@
           <script src="https://fast.wistia.com/embed/medias/4q4965k88p.jsonp" async></script>
           <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
           <div class="wistia_embed wistia_async_4q4965k88p videoFoam=true stillUrl=https://onecdn.io/media/070a8843-023d-4b15-86a8-cf96f4324c19/md2x" style="width:100%;height:100%;border-radius:14px;overflow:hidden;"></div>
+        </div>
+        <!-- Bekannt von -->
+        <div class="known-from">
+          <div class="known-from-label">Bekannt von:</div>
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Schraub-Nortec_zusammen.png" alt="Schraubtec und NORTEC Fachmesse für Produktion">
         </div>
         <!-- Google Bewertungen -->
         <div class="g-rating">
