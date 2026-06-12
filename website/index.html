@@ -151,6 +151,20 @@
       .hero-grid > .ticker-wrap { grid-column: 1 / -1; }
       .hero-right { display: flex; flex-direction: column; align-items: flex-start; }
       .hero-right .hero-cta { margin-top: auto; }
+      /* Hero passt sich der Bildschirmhöhe an: bei flachen Screens wird der
+         Inhalt schmaler (= kleineres Video), damit der Ticker immer sichtbar ist */
+      .hero-wrap {
+        padding: 92px 24px 28px;
+        max-width: min(1160px, max(820px, calc((100vh - 680px) * 3.55 + 48px)));
+      }
+      .hero-h1 {
+        font-size: min(clamp(2rem, 4.8vw, 3.5rem), 5.2vh);
+        margin-bottom: min(36px, 3.2vh);
+      }
+      .hero-label { margin-bottom: min(16px, 1.6vh); }
+      .known-from { margin-top: min(18px, 1.8vh); }
+      .known-from img { max-width: min(420px, 38vh); }
+      .g-rating { margin-top: min(14px, 1.4vh); }
     }
 
     .vid-box {
