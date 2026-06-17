@@ -49,7 +49,7 @@
       .prob-stats, .res-grid, .about-dark-team, .vproc, .founder-grid {
         max-width: 100%; min-width: 0;
       }
-      .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; }
+      .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; display: inline-flex; }
     }
     .vs-list li, .cs-bullets li, .hero-bullets li, .vs-card h3 { overflow-wrap: anywhere; }
 
@@ -359,7 +359,7 @@
     /* TRUST BAR */
     @media (max-width: 860px) { .trust-bar { display: none; } }
     @media (max-width: 860px) { section { padding: 40px 0; } }
-    @media (max-width: 860px) { .btn { display: block; text-align: center; width: fit-content; margin-left: auto; margin-right: auto; } }
+    @media (max-width: 860px) { .btn { display: inline-flex; text-align: center; max-width: 100%; box-sizing: border-box; } }
     .trust-bar { padding: 26px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .trust-inner { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; justify-content: center; }
     @media (min-width: 861px) { .trust-inner { flex-wrap: nowrap; gap: 28px; } }
