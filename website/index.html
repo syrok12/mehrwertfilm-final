@@ -56,6 +56,10 @@
       .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; display: inline-flex; }
     }
     .vs-list li, .cs-bullets li, .hero-bullets li, .vs-card h3 { overflow-wrap: anywhere; }
+    /* Flex/Grid-Items schrumpfen lassen (verhindert Overflow durch min-width:auto) */
+    .hero-grid > *, .sol-grid > *, .cs-item > *, .vs-grid > *, .founder-grid > *,
+    .about-dark-team > *, .vproc > *, .vid-box, .cs-vid { min-width: 0; }
+    .vid-box, .cs-vid, .vgal-thumb { max-width: 100%; }
 
     /* BUTTONS */
     .btn {
@@ -772,7 +776,8 @@
     .standort-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 0; }
     .standort-txt h2 { margin-bottom: 18px; }
     .standort-txt p { color: var(--muted); font-size: 0.97rem; line-height: 1.8; }
-    .standort-city-img { display: none; }
+    .standort-city-img { display: block; width: 100%; margin: 8px 0 24px; border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; }
+    .standort-city-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (min-width: 861px) {
       .standort-sec { padding: 100px 0; }
       .standort-grid { display: block; }
