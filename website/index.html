@@ -75,6 +75,7 @@
     .nav.sc .nav-logo { color: var(--dark); }
     /* Weisses Logo im transparenten Hero, dunkles nach dem Scrollen */
     .nav-logo { display: inline-flex; align-items: center; }
+    .nav-logo-white { display: block; }
     .nav-logo-dark { display: none; }
     .nav.sc .nav-logo-white { display: none; }
     .nav.sc .nav-logo-dark { display: block; }
@@ -349,26 +350,27 @@
     .tdiv { width: 1px; height: 26px; background: var(--border); flex-shrink: 0; }
     @media (max-width: 600px) { .tdiv { display: none; } .trust-inner { gap: 16px; } }
 
-    /* PROBLEM 2-SPALTEN */
-    .prob-layout { display: block; }
-    .prob-stats { display: none; }
+    /* PROBLEM: zentrierte Headline + 3 Kacheln */
+    .prob-head { max-width: 820px; margin: 0 auto 44px; text-align: center; }
+    .prob-head .slabel { justify-content: center; }
+    .prob-stats { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .prob-stat-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px 26px;
+      border-left: 3px solid var(--accent);
+      text-align: center;
+    }
+    .prob-stat-num {
+      font-family: var(--head); font-size: 2rem; font-weight: 700;
+      color: var(--dark); line-height: 1; margin-bottom: 8px;
+    }
+    .prob-stat-num span { font-size: 1.1rem; color: var(--accent-d); }
+    .prob-stat-label { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
     @media (min-width: 861px) {
-      .prob-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: stretch; align-content: stretch; }
-      .prob-text { max-width: none; }
-      .prob-stats { display: flex; flex-direction: column; justify-content: center; gap: 70px; align-self: stretch; }
-      .prob-stat-card:first-child { margin-top: 100px; }
-      .prob-stat-card:last-child { margin-bottom: 100px; }
-      .prob-stat-card {
-        background: var(--bg2); border: 1px solid var(--border);
-        border-radius: 14px; padding: 22px 24px;
-        border-left: 3px solid var(--accent);
-      }
-      .prob-stat-num {
-        font-family: var(--head); font-size: 2rem; font-weight: 700;
-        color: var(--dark); line-height: 1; margin-bottom: 8px;
-      }
-      .prob-stat-num span { font-size: 1.1rem; color: var(--accent); }
-      .prob-stat-label { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
+      .prob-head { margin-bottom: 56px; }
+      .prob-head h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); }
+      .prob-stats { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .prob-stat-num { font-size: 2.4rem; }
     }
 
     /* SECTION LABEL */
@@ -874,8 +876,8 @@
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img class="nav-logo-white" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:32px;width:auto;display:block;">
-      <img class="nav-logo-dark" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;display:block;">
+      <img class="nav-logo-white" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:32px;width:auto;">
+      <img class="nav-logo-dark" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;">
     </a>
     <div class="nav-links">
       <a href="#problem">Herausforderung</a>
@@ -1071,28 +1073,22 @@
 <!-- PROBLEM -->
 <section id="problem">
   <div class="container">
-    <div class="prob-layout">
-      <div class="prob-text r">
-        <div class="slabel">Ihre Herausforderung</div>
-        <h2 style="margin-bottom:28px;">Sie schicken das Angebot raus. Und dann... Stille. Hier ist, warum das aufhört.</h2>
-        <p style="margin-bottom:20px;">Qualität, Zuverlässigkeit, Ingenieurskunst. Der technische Mittelstand ist das Rückgrat der deutschen Wirtschaft. Betriebe, die seit Generationen liefern, international wettbewerbsfähig sind und Dinge bauen, die weltweit gefragt werden.</p>
-        <p style="margin-bottom:20px;">Doch gerade diese Unternehmen stehen heute vor zwei strukturellen Herausforderungen. Zum einen hat sich das Kaufverhalten von Entscheidern grundlegend verändert: Einkäufer und Geschäftsführer recherchieren online, vergleichen Referenzen und treffen Vorentscheidungen, bevor sie überhaupt anfragen. Wer dort nicht sichtbar ist, kommt gar nicht erst in die engere Auswahl.</p>
-        <p style="margin-bottom:28px;">Zum anderen macht es der Fachkräftemangel immer schwerer, die richtigen Mitarbeiter zu finden. Klassische Stellenanzeigen erreichen die Zielgruppe kaum noch. Wer nicht zeigt, wie es bei ihm im Betrieb wirklich aussieht, verliert den Kampf um Talente gegen größere Namen mit mehr Marketingbudget.</p>
-        <p>Für beide Herausforderungen bieten wir systematische Lösungen, entwickelt aus über 400 Gesprächen mit Geschäftsführern und mehr als 40 realisierten Projekten in Industrie, Fertigung und technischer Dienstleistung.</p>
+    <div class="prob-head r">
+      <div class="slabel">Ihre Herausforderung</div>
+      <h2>Sie schicken das Angebot raus. Und dann... Stille. Hier ist, warum das aufhört.</h2>
+    </div>
+    <div class="prob-stats r" style="transition-delay:0.1s;">
+      <div class="prob-stat-card">
+        <div class="prob-stat-num">67<span>%</span></div>
+        <div class="prob-stat-label">der B2B-Entscheider treffen eine Vorentscheidung online, bevor sie überhaupt Kontakt aufnehmen.</div>
       </div>
-      <div class="prob-stats r" style="transition-delay:0.1s;">
-        <div class="prob-stat-card">
-          <div class="prob-stat-num">67<span>%</span></div>
-          <div class="prob-stat-label">der B2B-Entscheider treffen eine Vorentscheidung online, bevor sie überhaupt Kontakt aufnehmen.</div>
-        </div>
-        <div class="prob-stat-card">
-          <div class="prob-stat-num">3–10<span>x</span></div>
-          <div class="prob-stat-label">höherer ROI mit strategisch eingesetztem Industriefilm gegenüber klassischer Printwerbung.</div>
-        </div>
-        <div class="prob-stat-card">
-          <div class="prob-stat-num">40<span>+</span></div>
-          <div class="prob-stat-label">realisierte Industrieprojekte im DACH-Raum. Kein Agentur-Ansatz, sondern Erfahrung aus der Praxis.</div>
-        </div>
+      <div class="prob-stat-card">
+        <div class="prob-stat-num">3–10<span>x</span></div>
+        <div class="prob-stat-label">höherer ROI mit strategisch eingesetztem Industriefilm gegenüber klassischer Printwerbung.</div>
+      </div>
+      <div class="prob-stat-card">
+        <div class="prob-stat-num">40<span>+</span></div>
+        <div class="prob-stat-label">realisierte Industrieprojekte im DACH-Raum. Kein Agentur-Ansatz, sondern Erfahrung aus der Praxis.</div>
       </div>
     </div>
   </div>
