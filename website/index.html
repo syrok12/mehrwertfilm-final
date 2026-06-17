@@ -639,28 +639,40 @@
     .step p { font-size: 0.88rem; }
     @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } .steps::before { display: none; } }
 
-    /* VERTICAL PROCESS */
-    .vproc { max-width: 520px; display: flex; flex-direction: column; }
-    .vp-item { padding-bottom: 8px; }
-    .vp-num { font-family: var(--head); font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; margin-bottom: 14px; }
-    .vp-img {
-      width: 100%; aspect-ratio: 16/9; border-radius: 14px;
-      background-size: cover; background-position: center;
+    /* VERTICAL PROCESS (Karten) */
+    .vproc { max-width: 520px; display: flex; flex-direction: column; gap: 24px; }
+    .vp-item {
+      position: relative;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 22px 22px 26px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .vp-item:hover { border-color: rgba(255,216,135,0.45); transform: translateY(-4px); }
+    .vp-num {
+      font-family: var(--head); font-size: 1rem; font-weight: 800;
+      color: var(--dark); background: var(--accent);
+      width: 44px; height: 44px; border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
       margin-bottom: 18px;
     }
-    .vp-title { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
-    .vp-txt { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.75; margin: 0; }
-    .vp-line { width: 1px; height: 48px; background: rgba(255,255,255,0.15); margin: 28px 0; }
+    .vp-img {
+      width: 100%; aspect-ratio: 16/9; border-radius: 12px;
+      background-size: cover; background-position: center;
+      margin-bottom: 20px;
+    }
+    .vp-title { color: #fff; font-size: 1.25rem; margin-bottom: 12px; }
+    .vp-txt { color: rgba(255,255,255,0.7); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+    .vp-line { display: none; }
     @media (min-width: 861px) {
-      .prozess-head { max-width: 100%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 56px; }
-      .vproc { max-width: 100%; flex-direction: row; gap: 32px; align-items: flex-start; }
-      .vp-item { flex: 1; padding-bottom: 0; }
-      .vp-line { display: none; }
+      .prozess-head { max-width: 720px; text-align: center; margin: 0 auto 64px; }
+      .vproc { max-width: 100%; flex-direction: row; gap: 28px; align-items: stretch; }
+      .vp-item { flex: 1; padding: 28px 26px 32px; display: flex; flex-direction: column; }
       .vp-img { aspect-ratio: 4/3; }
       .prozess-cta { text-align: center; }
-      .vp-num { font-size: 1rem; }
-      .vp-title { font-size: 1.3rem; }
-      .vp-txt { font-size: 1.05rem; }
+      .vp-num { font-size: 1.15rem; width: 52px; height: 52px; }
+      .vp-title { font-size: 1.45rem; }
+      .vp-txt { font-size: 1.08rem; }
     }
 
     /* VIDEO GALLERY */
@@ -705,9 +717,11 @@
     .about-dark p { color: #fff; }
     .about-dark-team { display: flex; flex-direction: column; gap: 24px; }
     .team-person {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px; padding: 32px 26px; text-align: center;
+      background: rgba(20,24,32,0.82);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px; padding: 34px 28px; text-align: center;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
     }
     .team-person img {
       width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
