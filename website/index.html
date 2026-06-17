@@ -188,25 +188,25 @@
       /* Hero exakt bildschirmhoch: Breite bleibt voll (1160px), nur die
          vertikalen Abstaende und Groessen stauchen sich bei flachen Screens,
          damit der Logo-Ticker unten immer sichtbar ist */
-      .hero { min-height: 100svh; height: auto; align-items: flex-start; }
+      .hero { min-height: auto; height: auto; align-items: flex-start; }
       .hero-wrap {
         max-width: 1160px;
-        min-height: 100svh;
-        display: flex; flex-direction: column; justify-content: center;
-        padding: 96px 24px 40px;
+        display: flex; flex-direction: column;
+        padding: 130px 24px 72px;
       }
       .hero-h1 {
-        font-size: min(clamp(2rem, 4.8vw, 3.5rem), 5.2vh);
-        margin-bottom: min(36px, 3.2vh);
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        max-width: 900px;
+        margin: 0 auto 36px;
       }
-      .hero-label { margin-bottom: min(16px, 1.6vh); }
-      .vid-box { max-height: 38vh; max-width: calc(38vh * 16 / 9); margin: 0 auto; }
-      .known-from { margin-top: min(18px, 1.8vh); }
-      .known-from img { max-height: 9vh; width: auto; max-width: 420px; }
-      .known-from-label { margin-bottom: min(14px, 1.3vh); }
-      .g-rating { margin-top: min(14px, 1.4vh); padding-top: min(10px, 1vh); padding-bottom: min(10px, 1vh); }
-      .ticker-wrap { margin-top: min(16px, 1.6vh); }
-      .ticker-track img { height: min(34px, 3.4vh); }
+      .hero-label { margin-bottom: 16px; }
+      .vid-box { margin: 0 auto; }
+      .known-from { margin-top: 18px; }
+      .known-from img { max-width: 420px; }
+      .known-from-label { margin-bottom: 14px; }
+      .g-rating { margin-top: 14px; }
+      .ticker-wrap { margin-top: 16px; }
+      .ticker-track img { height: 34px; }
       .ticker-track img[alt="3axis Group"] { height: min(44px, 4.4vh); }
     }
 
