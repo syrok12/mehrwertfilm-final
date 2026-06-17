@@ -188,12 +188,12 @@
       /* Hero exakt bildschirmhoch: Breite bleibt voll (1160px), nur die
          vertikalen Abstaende und Groessen stauchen sich bei flachen Screens,
          damit der Logo-Ticker unten immer sichtbar ist */
-      .hero { height: 100svh; min-height: 0; }
+      .hero { min-height: 100svh; height: auto; align-items: flex-start; }
       .hero-wrap {
         max-width: 1160px;
-        height: 100%;
+        min-height: 100svh;
         display: flex; flex-direction: column; justify-content: center;
-        padding: 84px 24px min(28px, 2.5vh);
+        padding: 96px 24px 40px;
       }
       .hero-h1 {
         font-size: min(clamp(2rem, 4.8vw, 3.5rem), 5.2vh);
