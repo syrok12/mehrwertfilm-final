@@ -73,6 +73,10 @@
     .nav-logo { font-family: var(--head); font-weight: 700; font-size: 1.2rem; color: #fff; transition: color 0.3s; }
     .nav-logo span { color: var(--accent); }
     .nav.sc .nav-logo { color: var(--dark); }
+    /* Weisses Logo im transparenten Hero, dunkles nach dem Scrollen */
+    .nav-logo-dark { display: none; }
+    .nav.sc .nav-logo-white { display: none; }
+    .nav.sc .nav-logo-dark { display: block; }
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
@@ -865,7 +869,10 @@
 <!-- NAV -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;display:block;"></a>
+    <a href="#" class="nav-logo">
+      <img class="nav-logo-white" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:32px;width:auto;display:block;">
+      <img class="nav-logo-dark" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;display:block;">
+    </a>
     <div class="nav-links">
       <a href="#problem">Herausforderung</a>
       <a href="#loesung">Lösung</a>
