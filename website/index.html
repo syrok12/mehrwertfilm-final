@@ -40,15 +40,19 @@
     section { padding: 80px 0; }
     .bg2 { background: var(--bg2); }
     /* Globaler Schutz gegen horizontalen Overflow auf Mobile */
-    html, body { overflow-x: hidden; max-width: 100%; }
+    html { overflow-x: hidden; }
+    body { overflow-x: hidden; max-width: 100vw; position: relative; }
     img, iframe { max-width: 100%; }
-    section, footer, .feat-block { overflow-x: clip; }
+    section, footer, .feat-block, .founder-sec { overflow-x: clip; max-width: 100vw; }
+    .wistia_embed, .wistia_responsive_padding, .wistia_responsive_wrapper { max-width: 100% !important; }
     /* Auf Mobile darf kein Block breiter als der Viewport werden */
     @media (max-width: 860px) {
       .container, .hero-wrap, .vs-grid, .vs-card, .cs-item, .cs-txt,
-      .prob-stats, .res-grid, .about-dark-team, .vproc, .founder-grid {
+      .prob-stats, .res-grid, .about-dark-team, .vproc, .founder-grid,
+      .prob-head, .feat-intro, .slider-track-wrap {
         max-width: 100%; min-width: 0;
       }
+      .slider-track-wrap { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
       .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; display: inline-flex; }
     }
     .vs-list li, .cs-bullets li, .hero-bullets li, .vs-card h3 { overflow-wrap: anywhere; }
