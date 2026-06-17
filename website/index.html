@@ -41,11 +41,17 @@
     .bg2 { background: var(--bg2); }
     /* Globaler Schutz gegen horizontalen Overflow auf Mobile */
     html, body { overflow-x: hidden; max-width: 100%; }
-    img { max-width: 100%; }
-    .feat-block, .vgal-sec, .cta-sec, #problem, #loesung, #ergebnisse, .about-dark, .founder-sec, #prozess { overflow-x: clip; }
-    /* Buttons und Karten dürfen nie breiter als ihr Container werden */
-    .btn { max-width: 100%; white-space: normal; }
-    .vs-list li, .cs-bullets li, .hero-bullets li { overflow-wrap: anywhere; }
+    img, iframe { max-width: 100%; }
+    section, footer, .feat-block { overflow-x: clip; }
+    /* Auf Mobile darf kein Block breiter als der Viewport werden */
+    @media (max-width: 860px) {
+      .container, .hero-wrap, .vs-grid, .vs-card, .cs-item, .cs-txt,
+      .prob-stats, .res-grid, .about-dark-team, .vproc, .founder-grid {
+        max-width: 100%; min-width: 0;
+      }
+      .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; }
+    }
+    .vs-list li, .cs-bullets li, .hero-bullets li, .vs-card h3 { overflow-wrap: anywhere; }
 
     /* BUTTONS */
     .btn {
@@ -58,7 +64,9 @@
     .btn-primary { background: var(--accent); color: #010306; border: 2px solid var(--accent); }
     .btn-primary:hover { background: var(--accent-d); border-color: var(--accent-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,216,135,0.4); }
     .btn-lg { padding: 18px 36px; font-size: 1.05rem; }
-    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn { justify-content: center; gap: 10px; line-height: 1.3; }
+    .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .btn-lg svg { width: 22px; height: 22px; }
 
     /* NAV */
     .nav {
@@ -186,6 +194,9 @@
       .g-rating { margin-top: min(14px, 1.4vh); padding-top: min(10px, 1vh); padding-bottom: min(10px, 1vh); }
       .ticker-wrap { margin-top: min(16px, 1.6vh); }
       .ticker-track img { height: min(34px, 3.4vh); }
+      .ticker-track img[alt="Gesau Technology"],
+      .ticker-track img[alt="Krüger"],
+      .ticker-track img[alt="3axis Group"] { height: min(54px, 5.4vh); }
     }
 
     .vid-box {
@@ -270,6 +281,10 @@
       flex-shrink: 0; padding: 0 28px;
       opacity: 0.8; transition: opacity 0.2s;
     }
+    /* Logos mit viel Weissraum / breitem Format groesser darstellen */
+    .ticker-track img[alt="Gesau Technology"],
+    .ticker-track img[alt="Krüger"],
+    .ticker-track img[alt="3axis Group"] { height: 54px; }
     .ticker-track img:hover { opacity: 1; }
     @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
