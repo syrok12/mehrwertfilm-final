@@ -45,6 +45,11 @@
     img, iframe { max-width: 100%; }
     section, footer, .feat-block, .founder-sec { overflow-x: clip; max-width: 100vw; }
     .wistia_embed, .wistia_responsive_padding, .wistia_responsive_wrapper { max-width: 100% !important; }
+    /* Wistia-Player rendert intern überbreite canvas/UI -> hart begrenzen */
+    .vid-box, .cs-vid, .vgal-thumb { overflow: hidden !important; }
+    .vid-box *, .cs-vid *, .vgal-thumb * { max-width: 100% !important; }
+    .w-css-reset, .w-bottom-bar, [class*="w-bottom-bar"], [class*="w-vulcan"] { max-width: 100% !important; }
+    [class*="w-bottom-bar-right-inner-anchor"] { overflow: hidden !important; }
     /* Auf Mobile darf kein Block breiter als der Viewport werden */
     @media (max-width: 860px) {
       .container, .hero-wrap, .vs-grid, .vs-card, .cs-item, .cs-txt,
