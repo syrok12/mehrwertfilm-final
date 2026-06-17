@@ -39,6 +39,10 @@
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     section { padding: 80px 0; }
     .bg2 { background: var(--bg2); }
+    /* Globaler Schutz gegen horizontalen Overflow auf Mobile */
+    html, body { overflow-x: clip; }
+    img { max-width: 100%; }
+    .feat-block, .vgal-sec, .cta-sec, #problem, #loesung, #ergebnisse, .about-dark, .founder-sec { overflow-x: clip; }
 
     /* BUTTONS */
     .btn {
@@ -460,6 +464,20 @@
     @media (max-width: 900px) { .tgrid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 540px) { .tgrid { grid-template-columns: 1fr; } }
 
+    /* VS-VERGLEICH (Mehrwertfilm vs. Agentur) */
+    .vs-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 920px; margin: 0 auto; }
+    @media (min-width: 861px) { .vs-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+    .vs-card { border-radius: 16px; padding: 32px 28px; }
+    .vs-mwf { background: #000; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 0 60px rgba(255,216,135,0.12); }
+    .vs-agency { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
+    .vs-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 22px; }
+    .vs-list { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+    .vs-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; color: rgba(255,255,255,0.85); font-weight: 600; }
+    .vs-ico { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; margin-top: 1px; }
+    .vs-yes .vs-ico { background: #16a34a; color: #fff; }
+    .vs-no .vs-ico  { background: #dc2626; color: #fff; }
+    .vs-agency .vs-list li { color: rgba(255,255,255,0.6); }
+
     /* ICON FEATURES */
     .feat-block { background: var(--dark); padding: 80px 0; }
     .feat-intro { max-width: 620px; margin: 0 auto 56px; text-align: center; }
@@ -507,8 +525,10 @@
     /* CASE STUDIES */
     .cs-list { display: flex; flex-direction: column; gap: 56px; margin-top: 56px; }
     .cs-item { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .cs-item:nth-child(even) { direction: rtl; }
-    .cs-item:nth-child(even) > * { direction: ltr; }
+    @media (min-width: 861px) {
+      .cs-item:nth-child(even) { direction: rtl; }
+      .cs-item:nth-child(even) > * { direction: ltr; }
+    }
     .cs-vid {
       width: 100%; aspect-ratio: 16/9; border-radius: 14px;
       background: #0a0e18; position: relative; cursor: pointer;
@@ -521,8 +541,14 @@
     .cs-logo-ph { height: 36px; width: 120px; background: var(--border); border-radius: 6px; margin-bottom: 20px; }
     .cs-txt { display: flex; flex-direction: column; gap: 0; }
     .cs-block { margin-bottom: 18px; }
-    .cs-block-label { font-family: var(--head); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 4px; }
+    .cs-block-label { font-family: var(--head); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 6px; }
     .cs-block p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin: 0; }
+    .cs-bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .cs-bullets li { font-size: 0.9rem; color: var(--muted); line-height: 1.5; padding-left: 18px; position: relative; }
+    .cs-bullets li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 2px; background: var(--accent-d); }
+    .cs-bullets li strong { color: var(--text); font-weight: 700; }
+    .cs-meta { font-size: 0.78rem; color: var(--dim); margin-top: 12px; }
+    @media (min-width: 861px) { .cs-block-label { font-size: 0.75rem; } .cs-bullets li { font-size: 0.98rem; } }
     .cs-result { font-family: var(--head); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 4px; }
     .cs-result-sub { font-size: 0.82rem; color: var(--muted); }
     @media (max-width: 860px) {
@@ -531,6 +557,22 @@
     }
 
     /* SLIDER SECTION */
+    /* ÜBER DEN GRÜNDER */
+    .founder-sec { padding: 80px 0; background: var(--bg); }
+    .founder-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+    .founder-img img { width: 100%; height: auto; border-radius: 16px; display: block; }
+    .founder-txt h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 6px; }
+    .founder-sub { font-family: var(--head); font-weight: 700; font-size: 1.15rem; color: var(--text); margin-bottom: 22px; }
+    .founder-txt p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+    .founder-txt p strong { color: var(--text); }
+    @media (min-width: 861px) {
+      .founder-sec { padding: 100px 0; }
+      .founder-grid { grid-template-columns: 0.85fr 1.15fr; gap: 64px; }
+      .founder-img img { max-width: 460px; }
+      .founder-txt p { font-size: 1.08rem; }
+      .founder-sub { font-size: 1.3rem; }
+    }
+
     .slider-sec { padding: 80px 0; background: var(--bg); overflow: hidden; }
     .slider-head { max-width: 560px; margin-bottom: 40px; }
     .slider-head .slabel { color: var(--accent); }
@@ -625,7 +667,7 @@
     .vgal-sec { background: #010306; padding: 80px 0; }
     .vgal-sec h2 { color: #fff; text-align: center; margin-bottom: 10px; }
     .vgal-sec h2 span { text-decoration: underline; text-underline-offset: 4px; }
-    .vgal-sub { text-align: center; font-style: italic; color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 44px; }
+    .vgal-sub { text-align: center; font-style: italic; color: rgba(255,255,255,0.6); font-size: 1.02rem; margin-bottom: 44px; }
     .vgal-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -639,7 +681,8 @@
       overflow: hidden; position: relative; background: #0a0e18;
     }
     .vgal-thumb .wistia_embed { width: 100%; height: 100%; }
-    .vgal-label { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 600; margin-top: 10px; text-align: center; }
+    .vgal-label { color: #fff; font-size: 1.05rem; font-weight: 600; margin-top: 12px; text-align: center; }
+    @media (min-width: 861px) { .vgal-sec h2 { font-size: clamp(2rem, 3.5vw, 3rem); } .vgal-sub { font-size: 1.12rem; } .vgal-label { font-size: 1.15rem; } }
     .vgal-cta { text-align: center; margin-top: 44px; padding: 0 24px; }
     .vgal-cta .btn { white-space: normal; max-width: 100%; }
 
@@ -650,35 +693,41 @@
     }
     .about-dark-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1400&q=80');
+      background-image: url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/about-bg.jpg');
       background-size: cover; background-position: center;
-      opacity: 0.18;
+      opacity: 0.16;
     }
-    .about-dark-inner { position: relative; z-index: 1; max-width: 680px; }
+    .about-dark::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1,3,6,0.65) 0%, rgba(1,3,6,0.85) 100%); z-index: 0; }
+    .about-dark-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
     .about-dark-inner h2 { color: #fff; margin-bottom: 20px; }
     .about-dark-inner > p { color: #fff; font-size: 0.97rem; line-height: 1.8; margin-bottom: 44px; }
-    .about-dark-intro { margin-bottom: 40px; }
+    .about-dark-intro { margin-bottom: 48px; text-align: center; }
     .about-dark p { color: #fff; }
-    .team-person p { color: #fff !important; }
-    .team-person { margin-bottom: 36px; }
-    .team-person h3 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
-    .team-role { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 12px; }
-    .team-person p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.75; }
-    .team-divider { width: 40px; height: 2px; background: rgba(255,255,255,0.12); margin: 32px 0; }
+    .about-dark-team { display: flex; flex-direction: column; gap: 24px; }
+    .team-person {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 32px 26px; text-align: center;
+    }
+    .team-person img {
+      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--accent); margin: 0 auto 20px; display: block;
+    }
+    .team-person h3 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
+    .team-role { font-size: 0.85rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px; }
+    .team-person p { color: rgba(255,255,255,0.8) !important; font-size: 0.95rem; line-height: 1.75; }
     @media (min-width: 861px) {
       .about-dark { padding: 100px 0; }
-      .about-dark-bg { opacity: 0.12; }
-      .about-dark-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+      .about-dark-inner { max-width: 1100px; text-align: center; }
       .about-dark-intro { margin-bottom: 64px; }
       .about-dark-intro h2 { font-size: clamp(2rem, 3vw, 2.8rem); color: #fff; }
       .about-dark-intro > p { font-size: 1.12rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
-      .about-dark-team { display: flex; flex-direction: row; gap: 60px; justify-content: center; align-items: flex-start; }
-      .team-person { flex: 1; max-width: 340px; }
-      .team-person img { width: 130px !important; height: 130px !important; margin: 0 auto 20px !important; }
-      .team-person h3 { font-size: 1.3rem; color: #fff; }
-      .team-role { font-size: 0.95rem; }
-      .team-person p { font-size: 1.05rem; color: rgba(255,255,255,0.85); }
-      .team-divider { display: none; }
+      .about-dark-team { flex-direction: row; gap: 28px; justify-content: center; align-items: stretch; }
+      .team-person { flex: 1; max-width: 350px; padding: 38px 30px; }
+      .team-person img { width: 140px; height: 140px; }
+      .team-person h3 { font-size: 1.4rem; }
+      .team-role { font-size: 0.98rem; }
+      .team-person p { font-size: 1.02rem; }
     }
 
     /* STANDORT */
@@ -753,7 +802,9 @@
     }
     .cta-sec h2 { color: #fff; margin-bottom: 18px; position: relative; }
     .cta-sec p { color: rgba(255,255,255,0.6); max-width: 540px; margin: 0 auto 36px; font-size: 1.02rem; position: relative; }
-    .cta-sub { margin-top: 18px; font-size: 0.8rem; color: rgba(255,255,255,0.35); position: relative; }
+    .cta-sec .btn-lg { font-size: 1.2rem; padding: 22px 44px; }
+    .cta-sub { margin-top: 40px; font-size: 0.95rem; color: rgba(255,255,255,0.6); position: relative; }
+    @media (min-width: 861px) { .cta-sec .btn-lg { font-size: 1.3rem; padding: 24px 52px; } .cta-sub { font-size: 1.02rem; margin-top: 48px; } }
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -1176,16 +1227,13 @@
         <div class="cs-txt">
           <img src="https://www.marschall-pw.de/inhalte/themes/marschall/gfx/logo.png" alt="Marschall" class="cs-logo">
           <div class="cs-block">
-            <div class="cs-block-label">Problem</div>
-            <p>Bisherige Kundenakquise bei der Fa. Marschall erfolgte ausschließlich über Messen und Außendienst.</p>
-          </div>
-          <div class="cs-block">
-            <div class="cs-block-label">Lösung</div>
-            <p>Mit einer Mehrwertfilmkampagne und einer gezielten Botschaft haben wir einen zusätzlichen Akquisekanal für Fa. Marschall installiert, um Anfragen zu generieren.</p>
-          </div>
-          <div>
-            <div class="cs-result">+150</div>
-            <div class="cs-result-sub">Anfragen in 2 Monaten</div>
+            <div class="cs-block-label">Ergebnisse</div>
+            <ul class="cs-bullets">
+              <li><strong>&gt;150 Anfragen</strong> in nur 5 Wochen durch Mehrwertfilm-Content</li>
+              <li>Qualifizierter Leadpreis <strong>&lt;10&nbsp;€</strong></li>
+              <li>Neuer Akquisekanal neben Messen &amp; Außendienst</li>
+            </ul>
+            <div class="cs-meta">Branche: Verpackung &amp; Etikettierung · 4 Monate Zusammenarbeit</div>
           </div>
           <div style="margin-top:24px;">
             <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
@@ -1203,16 +1251,13 @@
         <div class="cs-txt">
           <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology" class="cs-logo">
           <div class="cs-block">
-            <div class="cs-block-label">Problem</div>
-            <p>Gesau Technology wollte den Vertrieb über digitale Kanäle ausbauen und mit erklärungsbedürftigen technischen Produkten planbar neue B2B-Kunden erreichen.</p>
-          </div>
-          <div class="cs-block">
-            <div class="cs-block-label">Lösung</div>
-            <p>Mit einem verkaufspsychologisch aufgebauten Mehrwertfilm und einer gezielten Kampagne haben wir einen zusätzlichen, messbaren Anfragekanal aufgebaut.</p>
-          </div>
-          <div>
-            <div class="cs-result">70+</div>
-            <div class="cs-result-sub">qualifizierte B2B-Anfragen in 4 Monaten</div>
+            <div class="cs-block-label">Ergebnisse</div>
+            <ul class="cs-bullets">
+              <li><strong>70 Neukundenanfragen</strong> innerhalb von 4 Monaten</li>
+              <li>Planbarer Anfragekanal für erklärungsbedürftige Produkte</li>
+              <li>Laufende Partnerschaft seit <strong>12 Monaten</strong></li>
+            </ul>
+            <div class="cs-meta">Branche: Fräswerkzeuge</div>
           </div>
           <div style="margin-top:24px;">
             <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
@@ -1230,16 +1275,13 @@
         <div class="cs-txt">
           <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="Serr Haustechnik" class="cs-logo">
           <div class="cs-block">
-            <div class="cs-block-label">Problem</div>
-            <p>Serr Haustechnik suchte trotz Fachkräftemangel qualifizierte Mitarbeiter. Klassische Stellenanzeigen brachten kaum passende Bewerbungen.</p>
-          </div>
-          <div class="cs-block">
-            <div class="cs-block-label">Lösung</div>
-            <p>Mit einem authentischen Recruiting-Film, der den Betrieb und das Team ehrlich zeigt, haben wir die richtigen Kandidaten direkt erreicht.</p>
-          </div>
-          <div>
-            <div class="cs-result">2</div>
-            <div class="cs-result-sub">Einstellungen in nur 5 Wochen</div>
+            <div class="cs-block-label">Ergebnisse</div>
+            <ul class="cs-bullets">
+              <li><strong>2 Einstellungen</strong> SHK-Fachpersonal in nur 5 Wochen</li>
+              <li>Bewerberpool von <strong>&gt;25 Bewerbungen</strong> in 2 Monaten</li>
+              <li>Recruiting trotz Fachkräftemangel</li>
+            </ul>
+            <div class="cs-meta">Branche: Haustechnik (SHK) · 6 Monate Zusammenarbeit</div>
           </div>
           <div style="margin-top:24px;">
             <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
@@ -1257,16 +1299,13 @@
         <div class="cs-txt">
           <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/neu-akt%20kuepper%20farbig%20eng%20rgb_ohne%20Hintergrund.png" alt="Artur Küpper" class="cs-logo">
           <div class="cs-block">
-            <div class="cs-block-label">Problem</div>
-            <p>Die Leistungsfähigkeit und Fertigungstiefe der Artur Küpper GmbH war für Kunden und Bewerber von außen kaum sichtbar.</p>
-          </div>
-          <div class="cs-block">
-            <div class="cs-block-label">Lösung</div>
-            <p>Ein professioneller Industriefilm zeigt Produktion, Qualität und Team und wird im Vertrieb, auf der Website und in Kampagnen eingesetzt.</p>
-          </div>
-          <div>
-            <div class="cs-result">✓</div>
-            <div class="cs-result-sub">Klare Weiterempfehlung durch die Geschäftsführung</div>
+            <div class="cs-block-label">Ergebnisse</div>
+            <ul class="cs-bullets">
+              <li>Stärkung des <strong>Employer-Brandings</strong> &amp; Wertschätzung fürs Team</li>
+              <li>Modernisierter Onlineauftritt auf <strong>FB, IG, YT &amp; LinkedIn</strong></li>
+              <li>Sichtbare Fertigungstiefe für Kunden &amp; Bewerber</li>
+            </ul>
+            <div class="cs-meta">Branche: Industrie / Fertigung · 4 Monate Zusammenarbeit</div>
           </div>
           <div style="margin-top:24px;">
             <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
@@ -1284,16 +1323,13 @@
         <div class="cs-txt">
           <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/pgdigial-logo.png" alt="PG Digital" class="cs-logo">
           <div class="cs-block">
-            <div class="cs-block-label">Problem</div>
-            <p>PG Digital brauchte für Kundenprojekte einen zuverlässigen Produktionspartner, der selbstständig und termingerecht hochwertige Filme liefert.</p>
-          </div>
-          <div class="cs-block">
-            <div class="cs-block-label">Lösung</div>
-            <p>Mehrwertfilm übernimmt Konzeption und Produktion für gemeinsame Kundenprojekte deutschlandweit, mit minimalem Abstimmungsaufwand.</p>
-          </div>
-          <div>
-            <div class="cs-result">✓</div>
-            <div class="cs-result-sub">Fester Produktionspartner für Kundenprojekte</div>
+            <div class="cs-block-label">Ergebnisse</div>
+            <ul class="cs-bullets">
+              <li><strong>2 Einstellungen</strong> über den YouTube-Kanal durch Mehrwertfilm</li>
+              <li><strong>&gt;110 ausgelieferte Videos</strong></li>
+              <li>Verlässlicher Produktionspartner deutschlandweit</li>
+            </ul>
+            <div class="cs-meta">Branche: Agentur / Produktion · &gt;30 Monate Zusammenarbeit</div>
           </div>
           <div style="margin-top:24px;">
             <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
@@ -1407,160 +1443,44 @@
   <div style="position:relative;z-index:1;">
   <div class="container">
     <div class="feat-intro r">
-      <h2>Warum Mehrwertfilm?</h2>
-      <p>Weltmarktführer, Branchenleader und Hidden Champions eint eines: Sie wissen, dass eine klassische Werbeagentur aus der Region nicht das gleiche liefert wie ein spezialisierter Partner. Entscheidend sind messbare Ergebnisse, nachvollziehbar in Zahlen, Daten und Fakten.</p>
+      <h2>Wir machen kein Marketing, wir produzieren Anfragen.</h2>
+      <p>Die Filmproduktion vom Maschinenbauer für den Maschinenbauer.</p>
     </div>
-    <div class="feat-list">
-
-      <div class="feat-item feat-left r">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-        </div>
-        <div class="feat-item-txt">
-          <h3>Spezialisierung</h3>
-          <p>Wir kennen den technischen Mittelstand aus der Praxis. Wir wissen, wie man die traditionelle, technische Welt mit der digitalen verbindet, ohne das Wesentliche zu verlieren.</p>
-        </div>
+    <div class="vs-grid">
+      <div class="vs-card vs-mwf r">
+        <h3>Mehrwertfilm</h3>
+        <ul class="vs-list">
+          <li class="vs-yes"><span class="vs-ico">✓</span> Präzise Fachkenntnis (B.&nbsp;Sc. Maschinenbau)</li>
+          <li class="vs-yes"><span class="vs-ico">✓</span> Das Mehrwertfilm-Portfolio ist für den Vertrieb vielseitig einsetzbar</li>
+          <li class="vs-yes"><span class="vs-ico">✓</span> Funktionierendes Gesamtsystem, um online Kundenanfragen zu generieren</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-primary" style="margin-top:8px;">Jetzt kostenfreies Erstgespräch anfragen</a>
       </div>
-
-      <div class="feat-arrow feat-arrow-right">
-        <svg width="120" height="48" viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M10 4 C40 4, 80 44, 110 44" stroke-dasharray="none"/>
-          <path d="M98 36 L110 44 L102 56" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <div class="vs-card vs-agency r" style="transition-delay:0.1s;">
+        <h3>Reguläre Marketingagenturen</h3>
+        <ul class="vs-list">
+          <li class="vs-no"><span class="vs-ico">✕</span> Oftmals allgemeine Dienstleistung ohne Fokus auf Vertrieb</li>
+          <li class="vs-no"><span class="vs-ico">✕</span> Videomarketing durch Subdienstleister</li>
+          <li class="vs-no"><span class="vs-ico">✕</span> Kein System, das planbar Anfragen generiert</li>
+        </ul>
       </div>
-
-      <div class="feat-item feat-right r">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-        </div>
-        <div class="feat-item-txt">
-          <h3>Messbare Ergebnisse</h3>
-          <p>Kein Imagefilm fürs Regal. Jeder Mehrwertfilm wird strategisch eingesetzt und an echten Kennzahlen gemessen: Anfragen, Bewerbungen, Abschlussquote.</p>
-        </div>
-      </div>
-
-      <div class="feat-arrow feat-arrow-left">
-        <svg width="120" height="48" viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M110 4 C80 4, 40 44, 10 44"/>
-          <path d="M22 36 L10 44 L18 56" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-
-      <div class="feat-item feat-left r">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
-        </div>
-        <div class="feat-item-txt">
-          <h3>Alles aus einer Hand</h3>
-          <p>Strategie, Produktion, Schnitt, Kampagne. Sie liefern den Zugang zu Ihrem Betrieb, wir liefern den Rest. Minimaler Aufwand für Sie, maximale Wirkung für Ihren Vertrieb.</p>
-        </div>
-      </div>
-
-      <div class="feat-arrow feat-arrow-right">
-        <svg width="120" height="48" viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M10 4 C40 4, 80 44, 110 44"/>
-          <path d="M98 36 L110 44 L102 56" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-
-      <div class="feat-item feat-right r">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
-        </div>
-        <div class="feat-item-txt">
-          <h3>BAFA-förderfähig</h3>
-          <p>Als BAFA-gelisteter Berater sind Teile unserer Leistung staatlich förderbar. Das senkt Ihre Nettoinvestition erheblich und macht den Einstieg deutlich leichter.</p>
-        </div>
-      </div>
-
-    </div>
-    <div class="feat-cta r">
-      <a href="#kontakt" class="btn btn-primary btn-lg">Jetzt kostenfreies Erstgespräch anfragen</a>
     </div>
   </div>
   </div>
 </div>
 
-<!-- SLIDER -->
-<section class="slider-sec">
+<!-- ÜBER DEN GRÜNDER -->
+<section class="founder-sec">
   <div class="container">
-    <div class="slider-head r">
-      <div class="slabel">So arbeiten wir</div>
-      <h2>Strukturiert, persönlich, messbar.</h2>
-      <p>Unsere Kunden schätzen nicht nur die messbaren Ergebnisse, sondern auch die Art und Weise, wie wir zusammenarbeiten: strukturiert, transparent und auf Augenhöhe.</p>
-    </div>
-  </div>
-  <div class="slider-track-wrap" id="sliderWrap">
-    <div class="slider-track" id="sliderTrack">
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/PRE-Final_DSC02937.jpg');"></div>
-        <div class="slide-card-txt">
-          <h3>Praxiserprobte Ergebnisse</h3>
-          <p>Unsere Systematik basiert auf Daten aus über 40 Industrieprojekten und mehr als 400 Geschäftsführer-Gesprächen. Wir wissen, was funktioniert und was nicht.</p>
-        </div>
+    <div class="founder-grid">
+      <div class="founder-img r">
+        <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%283%29.jpg" alt="Fabian Dalhoff, Gründer von Mehrwertfilm">
       </div>
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80');"></div>
-        <div class="slide-card-txt">
-          <h3>Detaillierte Analyse</h3>
-          <p>Vor dem Start analysieren wir Ihren Betrieb, Ihren Markt und Ihre Zielgruppe. Keine Copy-Paste-Kampagnen, sondern eine Strategie, die exakt zu Ihrer Branche passt.</p>
-        </div>
-      </div>
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80');"></div>
-        <div class="slide-card-txt">
-          <h3>Strukturierte Prozesse</h3>
-          <p>Klare Roadmap vom ersten Tag: Sie wissen genau, was kommt und was wir von Ihnen brauchen. Ihr Aufwand bleibt minimal, der Fokus auf Ihrem Tagesgeschäft.</p>
-        </div>
-      </div>
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%282%29.jpg');"></div>
-        <div class="slide-card-txt">
-          <h3>Persönlicher Ansprechpartner</h3>
-          <p>Ein fester Ansprechpartner für die gesamte Zusammenarbeit. Keine wechselnden Projektverantwortlichen, keine Eskalationsstufen, kein Zeitverlust.</p>
-        </div>
-      </div>
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80');"></div>
-        <div class="slide-card-txt">
-          <h3>Regelmäßige Updates</h3>
-          <p>Alle 1 bis 2 Wochen ein kurzes Update zum aktuellen Stand. Plus direkter Support, wenn zwischendurch etwas geklärt werden muss.</p>
-        </div>
-      </div>
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=600&q=80');"></div>
-        <div class="slide-card-txt">
-          <h3>Digitale Arbeitsweise</h3>
-          <p>Vollständig digital: Termine flexibel per Video-Call, Dokumente in geteilten Workspaces, schnelle Reaktionszeiten. Keine Anfahrten, keine Wartezeiten.</p>
-        </div>
-      </div>
-
-      <div class="slide-card">
-        <div class="slide-card-bg" style="background-image:url('https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=80');"></div>
-        <div class="slide-card-txt">
-          <h3>Geringer Zeitaufwand</h3>
-          <p>Vom Konzept bis zur Umsetzung übernehmen wir die komplette operative Arbeit. Ihr Aufwand: 1 bis 2 Stunden pro Woche für Abstimmungen und Freigaben.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="container">
-    <div class="slider-footer">
-      <div class="slider-dots" id="sliderDots"></div>
-      <div class="slider-nav">
-        <button class="slider-btn" id="sliderPrev" aria-label="Zurück">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button class="slider-btn" id="sliderNext" aria-label="Weiter">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
+      <div class="founder-txt r" style="transition-delay:0.1s;">
+        <h2>Über den Gründer</h2>
+        <div class="founder-sub">Wer ist Fabian Dalhoff?</div>
+        <p>Fabian Dalhoff verbindet fundierte <strong>Technikexpertise (B.&nbsp;Sc. Maschinenbau)</strong> mit über 5 Jahren internationaler Erfahrung in der Videoproduktion. Mit mehr als 40 zufriedenen Kunden und beeindruckenden Ergebnissen, darunter mehrfach 6-stellige Neukundenumsätze, beweist er, wie wirkungsstark Videomarketing sein kann.</p>
+        <p>Seine Begeisterung für Technik und Maschinen macht ihn zum idealen Partner für Unternehmen, die komplexe Produkte klar und überzeugend präsentieren wollen. Fabian Dalhoffs Mission: Firmen dabei zu helfen, online zur #1 in ihrem Markt zu werden, indem sie den Mehrwert ihrer Produkte präzise und eindrucksvoll kommunizieren. Denn: Mehrwertkommunikation im Vertrieb ist der Schlüssel zum Erfolg!</p>
       </div>
     </div>
   </div>
@@ -1622,6 +1542,13 @@
     <h2 class="r">So könnte <span>IHR</span> Mehrwertfilm aussehen:</h2>
     <p class="vgal-sub r">Erfolgreiche Unternehmen liefern Mehrwert an ihre Kunden. Wir haben den passenden Film dazu.</p>
     <div class="vgal-grid">
+
+      <div class="vgal-card r">
+        <div class="vgal-thumb">
+          <iframe src="https://www.youtube-nocookie.com/embed/iQJ70RQ4Ohk" title="DMG MORI Maschinenreport" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border-radius:12px;display:block;"></iframe>
+        </div>
+        <div class="vgal-label">DMG MORI</div>
+      </div>
 
       <div class="vgal-card r">
         <div class="vgal-thumb">
@@ -1712,20 +1639,25 @@
       </div>
 
       <div class="about-dark-team">
-        <div class="team-person">
-          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%283%29.jpg" alt="Fabian Dalhoff" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,216,135,0.3);margin-bottom:16px;margin-top:32px;display:block;">
+        <div class="team-person r">
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%283%29.jpg" alt="Fabian Dalhoff">
           <h3>Fabian Dalhoff</h3>
           <div class="team-role">Gründer &amp; Geschäftsführer</div>
           <p>Fabian hat über 400 Gespräche mit Geschäftsführern aus Industrie, Fertigung und technischer Dienstleistung geführt. Aus diesen Gesprächen ist das Mehrwertfilm-System entstanden: verkaufspsychologisch aufgebaute Filme, die nicht schön sind fürs Regal, sondern wirkungsvoll für den Vertrieb.</p>
         </div>
 
-        <div class="team-divider"></div>
+        <div class="team-person r" style="transition-delay:0.1s;">
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%284%29.jpg" alt="Richard Dietrich">
+          <h3>Richard Dietrich</h3>
+          <div class="team-role">Regie, Kamera &amp; Schnitt</div>
+          <p>Gelernter Zerspanungsmechaniker und heute Filmprofi. Richard kennt die Fertigung von der Werkbank und weiß, worauf es im technischen Mittelstand ankommt, vor und hinter der Kamera.</p>
+        </div>
 
-        <div class="team-person">
-          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%284%29.jpg" alt="Das Produktionsteam" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,216,135,0.3);margin-bottom:16px;margin-top:32px;display:block;">
-          <h3>Das Produktionsteam</h3>
-          <div class="team-role">Regie, Kamera, Schnitt &amp; Kampagne</div>
-          <p>Spezialisierte Fachleute für jeden Bereich der Produktion. Kein Freelancer-Netzwerk ohne Qualitätskontrolle, sondern ein eingespieltes Team mit Erfahrung aus über 40 Industrieprojekten im DACH-Raum.</p>
+        <div class="team-person r" style="transition-delay:0.2s;">
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/team-timon.jpg" alt="Timon">
+          <h3>Timon</h3>
+          <div class="team-role">Produktion &amp; Kampagne</div>
+          <p>Sorgt dafür, dass aus jedem Dreh ein wirkungsvolles Vertriebswerkzeug wird. Von der Postproduktion bis zur Kampagne, damit Ihr Film genau die richtigen Entscheider erreicht.</p>
         </div>
       </div>
     </div>
@@ -1780,7 +1712,7 @@
       <div class="slabel" style="color:rgba(255,255,255,0.4);">Jetzt starten</div>
       <h2>Bereit, Ihren Vertrieb mit Video zu transformieren?</h2>
       <p>Vereinbaren Sie jetzt ein kostenloses Strategiegespräch. Wir analysieren Ihren Vertrieb und zeigen Ihnen konkret, welches Film-System für Ihr Unternehmen funktioniert.</p>
-      <a href="#kontakt" class="btn btn-primary btn-lg" style="white-space:normal;max-width:280px;text-align:center;">
+      <a href="#kontakt" class="btn btn-primary btn-lg" style="white-space:normal;text-align:center;">
         Jetzt kostenfreies Erstgespräch anfragen
       </a>
       <p class="cta-sub">Kein Verkaufsdruck. 100% kostenlos. Konkrete Ideen für Ihren Betrieb.</p>
