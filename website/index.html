@@ -485,7 +485,8 @@
     /* VS-VERGLEICH (Mehrwertfilm vs. Agentur) */
     .vs-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 920px; margin: 0 auto; }
     @media (min-width: 861px) { .vs-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
-    .vs-card { border-radius: 16px; padding: 32px 28px; }
+    .vs-card { border-radius: 16px; padding: 32px 28px; min-width: 0; }
+    .vs-card .btn { display: flex; width: 100%; box-sizing: border-box; white-space: normal; }
     .vs-mwf { background: #000; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 0 60px rgba(255,216,135,0.12); }
     .vs-agency { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
     .vs-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 22px; }
@@ -498,6 +499,10 @@
 
     /* ICON FEATURES */
     .feat-block { background: var(--dark); padding: 80px 0; }
+    /* Deko-SVG-Hintergrund im feat-block auf Mobile ausblenden (Overflow-Schutz) */
+    @media (max-width: 860px) {
+      .feat-bg-svg { display: none !important; }
+    }
     .feat-intro { max-width: 620px; margin: 0 auto 56px; text-align: center; }
     .feat-intro h2 { color: #fff; margin-bottom: 18px; }
     .feat-intro p { color: rgba(255,255,255,0.6); font-size: 0.97rem; line-height: 1.75; }
@@ -1376,7 +1381,7 @@
 <!-- ICON FEATURES -->
 <div class="feat-block" style="position:relative;overflow:hidden;">
   <!-- Technische Zeichnung Hintergrund -->
-  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.11;z-index:0;" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <svg class="feat-bg-svg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.11;z-index:0;" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g stroke="#7ecfdf" stroke-width="1" fill="none">
       <!-- Hauptflansch Mitte -->
       <rect x="440" y="270" width="320" height="360" rx="2"/>
