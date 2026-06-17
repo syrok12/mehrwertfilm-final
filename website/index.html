@@ -40,9 +40,12 @@
     section { padding: 80px 0; }
     .bg2 { background: var(--bg2); }
     /* Globaler Schutz gegen horizontalen Overflow auf Mobile */
-    html, body { overflow-x: clip; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     img { max-width: 100%; }
-    .feat-block, .vgal-sec, .cta-sec, #problem, #loesung, #ergebnisse, .about-dark, .founder-sec { overflow-x: clip; }
+    .feat-block, .vgal-sec, .cta-sec, #problem, #loesung, #ergebnisse, .about-dark, .founder-sec, #prozess { overflow-x: clip; }
+    /* Buttons und Karten dürfen nie breiter als ihr Container werden */
+    .btn { max-width: 100%; white-space: normal; }
+    .vs-list li, .cs-bullets li, .hero-bullets li { overflow-wrap: anywhere; }
 
     /* BUTTONS */
     .btn {
