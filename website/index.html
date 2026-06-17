@@ -74,6 +74,7 @@
     .nav-logo span { color: var(--accent); }
     .nav.sc .nav-logo { color: var(--dark); }
     /* Weisses Logo im transparenten Hero, dunkles nach dem Scrollen */
+    .nav-logo { display: inline-flex; align-items: center; }
     .nav-logo-dark { display: none; }
     .nav.sc .nav-logo-white { display: none; }
     .nav.sc .nav-logo-dark { display: block; }
@@ -373,11 +374,14 @@
     /* SECTION LABEL */
     .slabel {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.72rem; font-weight: 700; color: var(--accent);
+      font-size: 0.78rem; font-weight: 800; color: #b8860b;
       text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px;
     }
-    @media (min-width: 861px) { .slabel { font-size: 0.92rem; } }
-    .slabel::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+    @media (min-width: 861px) { .slabel { font-size: 0.95rem; } }
+    .slabel::before { content: ''; width: 24px; height: 3px; background: var(--accent-d); border-radius: 2px; }
+    /* Auf dunklem Hintergrund bleibt das Label hell */
+    .feat-block .slabel, .vgal-sec .slabel, .about-dark .slabel, .cta-sec .slabel { color: var(--accent); }
+    .feat-block .slabel::before, .vgal-sec .slabel::before, .about-dark .slabel::before, .cta-sec .slabel::before { background: var(--accent); }
 
     /* PROBLEM */
     .prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 44px; }
@@ -1075,7 +1079,6 @@
         <p style="margin-bottom:20px;">Doch gerade diese Unternehmen stehen heute vor zwei strukturellen Herausforderungen. Zum einen hat sich das Kaufverhalten von Entscheidern grundlegend verändert: Einkäufer und Geschäftsführer recherchieren online, vergleichen Referenzen und treffen Vorentscheidungen, bevor sie überhaupt anfragen. Wer dort nicht sichtbar ist, kommt gar nicht erst in die engere Auswahl.</p>
         <p style="margin-bottom:28px;">Zum anderen macht es der Fachkräftemangel immer schwerer, die richtigen Mitarbeiter zu finden. Klassische Stellenanzeigen erreichen die Zielgruppe kaum noch. Wer nicht zeigt, wie es bei ihm im Betrieb wirklich aussieht, verliert den Kampf um Talente gegen größere Namen mit mehr Marketingbudget.</p>
         <p>Für beide Herausforderungen bieten wir systematische Lösungen, entwickelt aus über 400 Gesprächen mit Geschäftsführern und mehr als 40 realisierten Projekten in Industrie, Fertigung und technischer Dienstleistung.</p>
-        <div class="iq r" style="margin-top:36px;">"Uns sterben die alten Kunden weg. Ich denke wir können sie nur noch auf dem neuen Weg mit Video erreichen."<cite>Daniel Krüger, Geschäftsführer</cite></div>
       </div>
       <div class="prob-stats r" style="transition-delay:0.1s;">
         <div class="prob-stat-card">
