@@ -194,9 +194,7 @@
       .g-rating { margin-top: min(14px, 1.4vh); padding-top: min(10px, 1vh); padding-bottom: min(10px, 1vh); }
       .ticker-wrap { margin-top: min(16px, 1.6vh); }
       .ticker-track img { height: min(34px, 3.4vh); }
-      .ticker-track img[alt="Gesau Technology"],
-      .ticker-track img[alt="Krüger"],
-      .ticker-track img[alt="3axis Group"] { height: min(54px, 5.4vh); }
+      .ticker-track img[alt="3axis Group"] { height: min(44px, 4.4vh); }
     }
 
     .vid-box {
@@ -281,10 +279,8 @@
       flex-shrink: 0; padding: 0 28px;
       opacity: 0.8; transition: opacity 0.2s;
     }
-    /* Logos mit viel Weissraum / breitem Format groesser darstellen */
-    .ticker-track img[alt="Gesau Technology"],
-    .ticker-track img[alt="Krüger"],
-    .ticker-track img[alt="3axis Group"] { height: 54px; }
+    /* 3-Axis ist quadratisch -> etwas groesser fuer gleiche optische Wirkung */
+    .ticker-track img[alt="3axis Group"] { height: 44px; }
     .ticker-track img:hover { opacity: 1; }
     @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
