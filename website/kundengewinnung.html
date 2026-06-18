@@ -54,7 +54,8 @@
       .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; }
     }
     /* Lange Wörter umbrechen statt überlaufen */
-    .csx-points li span, .tcard .ttxt, h1, h2, h3, .hero-h1 { overflow-wrap: anywhere; }
+    .csx-points li span, .tcard .ttxt { overflow-wrap: anywhere; }
+    h1, h2, h3, h4, .hero-h1 { overflow-wrap: break-word; word-break: normal; hyphens: none; }
     /* Flex/Grid-Items schrumpfen lassen (verhindert Overflow durch min-width:auto) */
     .hero-grid > *, .csx-grid > *, .tgrid > *, .lever-grid > *, .about-dark-team > *,
     .vproc > *, .calc-grid > *, .standort-grid > *, .contact-grid > *, .vid-box, .cs-vid { min-width: 0; }
@@ -1085,7 +1086,7 @@
   .mwf-ico { width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 16px; background: rgba(255,216,135,0.15); border: 1px solid rgba(255,216,135,0.3); display: flex; align-items: center; justify-content: center; }
   .mwf-ico svg { width: 30px; height: 30px; color: var(--accent); }
   .mwf-num { font-family: var(--head); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
-  .mwf-step h3 { color: #fff; font-size: 1.2rem; margin-bottom: 8px; }
+  .mwf-step h3 { color: #fff; font-size: clamp(1.05rem, 2.3vw, 1.2rem); margin-bottom: 8px; }
   .mwf-step p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin: 0; }
   .mwf-arrow { display: flex; align-items: center; justify-content: center; color: rgba(255,216,135,0.5); padding: 6px 14px; }
   .mwf-arrow svg { width: 26px; height: 26px; }
