@@ -164,7 +164,7 @@
     }
     .hero-h1 {
       font-family: var(--head);
-      font-size: clamp(1.25rem, 5vw, 2.5rem);
+      font-size: clamp(1.5rem, 3.1vw, 2.5rem);
       font-weight: 700; line-height: 1.18; color: #fff;
       margin-bottom: 36px;
       max-width: 1100px; margin-left: auto; margin-right: auto;
@@ -339,7 +339,7 @@
       .hero { overflow: hidden; align-items: flex-start; min-height: unset; padding-top: 0 !important; }
       .hero-svg { display: none; }
       .hero-grid { grid-template-columns: 1fr; gap: 24px; }
-      .hero-h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); margin-bottom: 20px; text-align: center; }
+      .hero-h1 { font-size: clamp(1.15rem, 5.2vw, 2.4rem); line-height: 1.22; margin-bottom: 20px; text-align: center; }
       .hero-wrap { padding: 76px 20px 0 !important; text-align: center; }
       .hero-label { font-size: 0.68rem; margin-bottom: 12px; }
       .hero-right { text-align: left; }
@@ -1060,6 +1060,38 @@
   .fsocial a:hover { border-color: var(--accent); color: var(--accent); }
   .fsocial svg { width: 14px; height: 14px; }
 
+  /* ── WAS IST EIN MEHRWERTFILM ── */
+  .mwf-sec { position: relative; overflow: hidden; background: var(--dark); padding: 84px 0; }
+  .mwf-sec::before {
+    content: ''; position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,216,135,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .mwf-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; text-align: center; }
+  .mwf-sec .slabel { color: var(--accent); justify-content: center; }
+  .mwf-sec .slabel::before { background: var(--accent); }
+  .mwf-lead { color: #fff; font-family: var(--head); font-weight: 700; line-height: 1.3; font-size: clamp(1.3rem, 3vw, 2rem); margin: 14px auto 0; max-width: 820px; }
+  .mwf-lead span { color: var(--accent); }
+  .mwf-sub { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 18px auto 0; }
+  .mwf-flow { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 48px; align-items: stretch; }
+  @media (min-width: 760px) { .mwf-flow { grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; } }
+  .mwf-step {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px; padding: 30px 24px; text-align: center;
+    transition: transform 0.35s ease, border-color 0.35s ease;
+  }
+  .mwf-step:hover { transform: translateY(-5px); border-color: rgba(255,216,135,0.4); }
+  .mwf-ico { width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 16px; background: rgba(255,216,135,0.15); border: 1px solid rgba(255,216,135,0.3); display: flex; align-items: center; justify-content: center; }
+  .mwf-ico svg { width: 30px; height: 30px; color: var(--accent); }
+  .mwf-num { font-family: var(--head); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
+  .mwf-step h3 { color: #fff; font-size: 1.2rem; margin-bottom: 8px; }
+  .mwf-step p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+  .mwf-arrow { display: flex; align-items: center; justify-content: center; color: rgba(255,216,135,0.5); padding: 6px 14px; }
+  .mwf-arrow svg { width: 26px; height: 26px; }
+  @media (max-width: 759px) { .mwf-arrow { transform: rotate(90deg); padding: 0; } }
+  .mwf-cta { margin-top: 44px; }
+
   /* ── FUNNEL MODAL ── */
   .fnl-overlay {
     position: fixed; inset: 0; z-index: 300;
@@ -1233,6 +1265,48 @@
       <div class="ti">
         <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
         Messbarer ROI im Vertrieb
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 1.5 WAS IST EIN MEHRWERTFILM ═══ -->
+<section class="mwf-sec" id="mehrwertfilm">
+  <div class="container">
+    <div class="mwf-inner">
+      <div class="slabel r">Was ist ein Mehrwertfilm?</div>
+      <h2 class="mwf-lead r">Kein Imagefilm fürs Regal. Ein Film, der <span>verkauft</span>, weil er den Entscheider an der richtigen Stelle abholt.</h2>
+      <p class="mwf-sub r">Industrielle Kaufentscheidungen sind kein Bauchgefühl, sondern ein psychologischer Prozess. Ein Mehrwertfilm führt Ihren Wunschkunden Schritt für Schritt durch genau diesen Prozess.</p>
+
+      <div class="mwf-flow">
+        <div class="mwf-step r">
+          <div class="mwf-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.46 12C3.73 7.94 7.52 5 12 5s8.27 2.94 9.54 7c-1.27 4.06-5.06 7-9.54 7S3.73 16.06 2.46 12z"/></svg></div>
+          <div class="mwf-num">SCHRITT 01</div>
+          <h3>Aufmerksamkeit</h3>
+          <p>Der Film stoppt den Scroll und macht in Sekunden klar: Hier geht es um Ihr Problem.</p>
+        </div>
+
+        <div class="mwf-arrow r"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+
+        <div class="mwf-step r" style="transition-delay:0.1s;">
+          <div class="mwf-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="mwf-num">SCHRITT 02</div>
+          <h3>Vertrauen</h3>
+          <p>Expertise, Beweise und Gesichter bauen Glaubwürdigkeit auf, lange vor dem ersten Gespräch.</p>
+        </div>
+
+        <div class="mwf-arrow r" style="transition-delay:0.1s;"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+
+        <div class="mwf-step r" style="transition-delay:0.2s;">
+          <div class="mwf-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div class="mwf-num">SCHRITT 03</div>
+          <h3>Kaufentscheidung</h3>
+          <p>Der Entscheider kommt vorqualifiziert auf Sie zu, nicht als kalter Lead, sondern als echte Anfrage.</p>
+        </div>
+      </div>
+
+      <div class="mwf-cta r">
+        <a href="#kontakt" class="btn btn-primary btn-lg">Jetzt kostenfreies Erstgespräch anfragen</a>
       </div>
     </div>
   </div>
@@ -1531,13 +1605,6 @@
             <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Mehr qualifizierte Anfragen</strong> aus dem Zielmarkt</span></li>
             <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Vom Kunden <strong>offiziell veröffentlicht</strong></span></li>
           </ul>
-          <div class="csx-quote">
-            <div class="stars-row">★★★★★</div>
-            <p>"Ein Maschinenreport, der den Wert unserer Technologie auf den Punkt bringt und beim Kunden ankommt."</p>
-            <div class="csx-person">
-              <div><strong>DMG MORI</strong><span>Maschinenbau | International</span></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1559,26 +1626,26 @@
     <div class="tgrid">
       <div class="tcard r">
         <div class="stars-row">★★★★★</div>
-        <p class="ttxt">"Über den Mehrwertfilm haben wir einen komplett neuen Akquisekanal aufgebaut. Über 150 Anfragen in nur 2 Monaten."</p>
+        <p class="ttxt">"Mehrwertfilm ist der stärkste Videopartner, den ich in den letzten Jahren gesehen habe."</p>
         <div class="tau">
-          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/marschall-logo-etikett-1.png" alt="Marschall PW">
-          <div><strong>Fa. Marschall</strong><span>Marschall PW | Verpackung &amp; Etikettierung</span></div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/360%20Grad%20Praxismarketing.jpg" alt="360 Grad Praxismarketing">
+          <div><strong>360 Grad Praxismarketing</strong><span>Marketing &amp; Beratung</span></div>
         </div>
       </div>
       <div class="tcard r" style="transition-delay:0.12s;">
         <div class="stars-row">★★★★★</div>
-        <p class="ttxt">"In nur 4 Monaten über 70 qualifizierte Anfragen. Ein planbarer digitaler Kanal, den wir vorher nicht hatten."</p>
+        <p class="ttxt">"Über den Videofunnel im Bestandskundenvertrieb erreichen wir 40% Öffnungsrate und Abschlussquoten von 50 bis 75 Prozent."</p>
         <div class="tau">
-          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology">
-          <div><strong>Norman Hofmann</strong><span>Gesau Technology GmbH | Fräswerkzeuge</span></div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Hausmann-und-Haensgen-Logo-300x138.png" alt="Hausmann + Haensgen">
+          <div><strong>Hausmann + Haensgen</strong><span>feat. Melitta | Antriebstechnik</span></div>
         </div>
       </div>
       <div class="tcard r" style="transition-delay:0.18s;">
         <div class="stars-row">★★★★★</div>
-        <p class="ttxt">"Fabian arbeitet sich in die Prozesse und Produkte seiner Kunden ein und überzeugt durch seine Expertise."</p>
+        <p class="ttxt">"Über 600 Patientenanfragen und ein fünfstelliger monatlicher Zusatzumsatz. Der Mehrwertfilm trägt sich seit zwei Jahren selbst."</p>
         <div class="tau">
-          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall">
-          <div><strong>Andreas Kassen</strong><span>Anka-Metall | Metallbearbeitung</span></div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/BeyondEye_Wortmarke.png" alt="BeyondEye">
+          <div><strong>BeyondEye GmbH</strong><span>Medizin &amp; Augenheilkunde</span></div>
         </div>
       </div>
       <div class="tcard r" style="transition-delay:0.24s;">
