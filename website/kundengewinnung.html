@@ -879,13 +879,14 @@
   .client-map { aspect-ratio: 4/3; }
 
   /* Case Studies (Schwaben-Format) */
-  .csx { background: var(--card); border: 1px solid var(--border); border-radius: var(--rl); padding: clamp(24px, 4vw, 44px); margin-top: 32px; }
-  .csx-logo { height: 40px; width: auto; max-width: 180px; object-fit: contain; margin-bottom: 16px; display: block; }
-  .csx-head { font-family: var(--head); font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 700; margin-bottom: 6px; }
-  .csx-result { font-family: var(--head); font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 700; color: var(--accent-d); line-height: 1.15; margin-bottom: 14px; }
-  .csx-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .csx { background: var(--card); border: 1px solid var(--border); border-radius: var(--rl); padding: clamp(28px, 4vw, 48px); margin-top: 28px; }
+  .csx-header { text-align: center; max-width: 720px; margin: 0 auto 32px; display: flex; flex-direction: column; align-items: center; }
+  .csx-logo { height: 44px; width: auto; max-width: 190px; object-fit: contain; margin-bottom: 18px; display: block; }
+  .csx-head { font-family: var(--head); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+  .csx-result { font-family: var(--head); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--accent-d); line-height: 1.12; margin-bottom: 16px; }
+  .csx-meta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 0; }
   .csx-meta span { font-size: 0.75rem; font-weight: 600; color: var(--muted); background: var(--bg2); border: 1px solid var(--border); border-radius: 100px; padding: 5px 13px; }
-  .csx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .csx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
   @media (max-width: 860px) { .csx-grid { grid-template-columns: 1fr; gap: 24px; } }
   .csx-quote { background: var(--bg2); border-left: 4px solid var(--accent); border-radius: 0 var(--r) var(--r) 0; padding: 20px 22px; margin-top: 20px; }
   .csx-quote p { font-style: italic; font-size: 0.92rem; color: var(--text); margin: 0 0 14px; }
@@ -1201,12 +1202,14 @@
 
     <!-- Case Study 1: Marschall -->
     <div class="csx r">
-      <img class="csx-logo" src="https://www.marschall-pw.de/inhalte/themes/marschall/gfx/logo.png" alt="Marschall">
+      <div class="csx-header">
+        <img class="csx-logo" src="https://www.marschall-pw.de/inhalte/themes/marschall/gfx/logo.png" alt="Marschall">
       <div class="csx-head">Mittelständler mit klassischem Vertrieb über Messen und Außendienst</div>
       <div class="csx-result">150+ B2B-Anfragen in nur 2 Monaten</div>
       <div class="csx-meta">
         <span>Branche: Verpackung &amp; Etikettierung</span>
         <span>DACH-Raum</span>
+      </div>
       </div>
       <div class="csx-grid">
         <div>
@@ -1236,12 +1239,14 @@
 
     <!-- Case Study 2: Gesau -->
     <div class="csx r">
-      <img class="csx-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology">
+      <div class="csx-header">
+        <img class="csx-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology">
       <div class="csx-head">Technologieunternehmen ohne planbaren digitalen Akquisekanal</div>
       <div class="csx-result">70+ qualifizierte B2B-Anfragen in 4 Monaten</div>
       <div class="csx-meta">
         <span>Branche: Fräswerkzeuge</span>
         <span>DACH-Raum</span>
+      </div>
       </div>
       <div class="csx-grid">
         <div>
@@ -1271,12 +1276,14 @@
 
     <!-- Case Study 3: Platzhalter -->
     <div class="csx r">
-      <img class="csx-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall">
+      <div class="csx-header">
+        <img class="csx-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall">
       <div class="csx-head">Metallverarbeiter mit Bedarf an mehr Sichtbarkeit im Markt</div>
       <div class="csx-result">Professioneller Industriefilm für Vertrieb &amp; Außenwirkung</div>
       <div class="csx-meta">
         <span>Branche: Metallbearbeitung</span>
         <span>DACH-Raum</span>
+      </div>
       </div>
       <div class="csx-grid">
         <div>
@@ -1306,11 +1313,13 @@
 
     <!-- Case Study 4: Exquisa / Karwendel -->
     <div class="csx r">
-      <div class="csx-head">Marken-Produktfilm für einen bekannten Lebensmittelhersteller</div>
+      <div class="csx-header">
+        <div class="csx-head">Marken-Produktfilm für einen bekannten Lebensmittelhersteller</div>
       <div class="csx-result">Professioneller Produktfilm für Marke &amp; Vertrieb</div>
       <div class="csx-meta">
         <span>Branche: Lebensmittel</span>
         <span>DACH-Raum</span>
+      </div>
       </div>
       <div class="csx-grid">
         <div>
