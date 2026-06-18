@@ -715,7 +715,8 @@
     .standort-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 0; }
     .standort-txt h2 { margin-bottom: 18px; }
     .standort-txt p { color: var(--muted); font-size: 0.97rem; line-height: 1.8; }
-    .standort-city-img { display: none; }
+    .standort-city-img { display: block; width: 100%; margin: 8px 0 24px; border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; }
+    .standort-city-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (min-width: 861px) {
       .standort-sec { padding: 100px 0; }
       .standort-grid { display: block; }
@@ -1884,7 +1885,7 @@
         <div class="slabel">Unser Standort</div>
         <h2>Herford</h2>
         <div class="standort-city-img">
-          <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1400&q=80" alt="Herford">
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/herford-city.png" alt="Herford">
         </div>
         <p>Ostwestfalen-Lippe, mitten im Herzen des deutschen Mittelstands. Von hier aus betreuen wir Unternehmen aus Industrie, Fertigung und technischer Dienstleistung im gesamten DACH-Raum. Eine Region, die für Qualität, Handwerk und produzierendes Gewerbe steht.</p>
         <p style="margin-top:16px;">Ob persönlich vor Ort oder vollständig digital: Wir kommen zu Ihnen, wo immer Sie in Deutschland, Österreich oder der Schweiz ansässig sind.</p>
