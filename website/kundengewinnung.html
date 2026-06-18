@@ -442,6 +442,26 @@
     .tau span { font-size: 0.77rem; color: var(--dim); }
     .tcard .stars-row { margin-bottom: 12px; }
     .tdivider { border: 0; border-top: 1px solid var(--border); margin: 18px 0; }
+    .tcard-cta {
+      background: var(--dark); border-color: var(--dark);
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .tcard-cta::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,216,135,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tcard-cta .tcc-badge {
+      font-family: var(--head); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.12em; color: #010306; background: var(--accent);
+      border-radius: 100px; padding: 6px 14px; align-self: center; margin-bottom: 16px;
+      position: relative;
+    }
+    .tcard-cta h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; position: relative; }
+    .tcard-cta p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.65; margin: 0 0 20px; position: relative; }
+    .tcard-cta .btn { position: relative; align-self: center; }
     @media (max-width: 900px) { .tgrid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 540px) { .tgrid { grid-template-columns: 1fr; } }
 
@@ -1461,6 +1481,12 @@
           <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="SERR Haustechnik">
           <div><strong>SERR Haustechnik</strong><span>Haustechnik (SHK)</span></div>
         </div>
+      </div>
+      <div class="tcard tcard-cta r" style="transition-delay:0.36s;">
+        <div class="tcc-badge">Sie als Nächstes?</div>
+        <h3>Ihre Erfolgsgeschichte fehlt noch</h3>
+        <p>Lassen Sie uns im kostenfreien Erstgespräch klären, mit welchem Anfragen- und Umsatzpotenzial Sie in Ihrer Branche realistisch rechnen können.</p>
+        <a href="#kontakt" class="btn btn-primary">Jetzt Erstgespräch anfragen</a>
       </div>
     </div>
     <div class="tc r" style="margin-top:44px;">
