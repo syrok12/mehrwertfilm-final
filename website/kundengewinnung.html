@@ -945,14 +945,32 @@
   .csx-person span { font-size: 0.78rem; color: var(--dim); }
 
   /* 4 Hebel Zeilen */
-  .lever { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 48px; }
-  .lever:nth-child(even) { direction: rtl; }
-  .lever:nth-child(even) > * { direction: ltr; }
-  @media (max-width: 860px) { .lever, .lever:nth-child(even) { grid-template-columns: 1fr; direction: ltr; gap: 20px; } }
-  .lever-num { font-family: var(--head); font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 10px; }
-  .lever h3 { color: #fff; font-size: 1.25rem; margin-bottom: 12px; }
-  .lever p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin: 0; }
-  .lever-img { width: 100%; aspect-ratio: 16/10; border-radius: 14px; background-size: cover; background-position: center; }
+  .lever-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 48px; }
+  @media (min-width: 700px) { .lever-grid { grid-template-columns: 1fr 1fr; gap: 22px; } }
+  .lever-card {
+    position: relative; overflow: hidden;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px; padding: 30px 28px;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .lever-card:hover { transform: translateY(-6px); border-color: rgba(255,216,135,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+  .lever-card::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(255,216,135,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lever-top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; position: relative; }
+  .lever-ico {
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    background: rgba(255,216,135,0.15); border: 1px solid rgba(255,216,135,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lever-ico svg { width: 26px; height: 26px; color: var(--accent); }
+  .lever-stat { font-family: var(--head); font-size: 1.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .lever-stat span { display: block; font-family: var(--body); font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 5px; }
+  .lever-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 9px; position: relative; }
+  .lever-card p { color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.65; margin: 0; position: relative; }
 
   /* Rechner Teaser */
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -1504,40 +1522,42 @@
       <p>Die Unternehmen, die heute planbar wachsen, haben eine strukturelle Entscheidung getroffen: Sie bauen Sichtbarkeit bei den relevanten Entscheidern auf, bevor diese überhaupt in einen aktiven Kaufprozess eintreten. Vier Hebel machen den Unterschied.</p>
     </div>
 
-    <div class="lever r">
-      <div>
-        <div class="lever-num">HEBEL 01</div>
+    <div class="lever-grid">
+      <div class="lever-card r">
+        <div class="lever-top">
+          <div class="lever-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div class="lever-stat">1.000+<span>Entscheider / Tag</span></div>
+        </div>
         <h3>Hohe Schlagzahl</h3>
-        <p>Der größte Teil des Vertriebsaufwands entfällt auf die Anfragen-Generierung. Ihr Außendienst schafft drei Termine am Tag. Ihr Film erreicht parallel mehrere hundert bis tausend Entscheider in Ihrer Zielgruppe, jeden Tag, ohne zusätzliches Personal.</p>
+        <p>Ihr Außendienst schafft drei Termine am Tag. Ihr Film erreicht parallel täglich hunderte bis tausende Entscheider, ohne zusätzliches Personal.</p>
       </div>
-      <div class="lever-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_1%20-%20SMT.jpg');"></div>
-    </div>
 
-    <div class="lever r">
-      <div>
-        <div class="lever-num">HEBEL 02</div>
+      <div class="lever-card r" style="transition-delay:0.08s;">
+        <div class="lever-top">
+          <div class="lever-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="lever-stat">0%<span>Streuverlust</span></div>
+        </div>
         <h3>Punktgenaue Präzision</h3>
-        <p>Digitale Kampagnen filtern nach Jobtitel, Branche, Unternehmensgröße und Region. Sie sprechen Entscheider in Geschäftsführung, Produktion, Konstruktion, Instandhaltung und Einkauf exakt dort an, wo sie täglich unterwegs sind. Ohne Streuverlust.</p>
+        <p>Gefiltert nach Jobtitel, Branche, Größe und Region. Sie erreichen Geschäftsführung, Produktion, Einkauf und Konstruktion genau dort, wo sie täglich unterwegs sind.</p>
       </div>
-      <div class="lever-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_5-_00A8010.jpg');"></div>
-    </div>
 
-    <div class="lever r">
-      <div>
-        <div class="lever-num">HEBEL 03</div>
+      <div class="lever-card r" style="transition-delay:0.16s;">
+        <div class="lever-top">
+          <div class="lever-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div>
+          <div class="lever-stat">7-14×<span>Kontaktpunkte</span></div>
+        </div>
         <h3>Digitale Omnipräsenz</h3>
-        <p>Ein industrieller Entscheider braucht durchschnittlich 7 bis 14 Kontaktpunkte, bevor er aktiv Kontakt aufnimmt. Ihr Film sorgt für konstante Präsenz im Feed und in Kampagnen, bis Ihr Unternehmen zur Selbstverständlichkeit wird. Wenn der Bedarf entsteht, sind Sie der erste Anruf.</p>
+        <p>Industrielle Entscheider brauchen 7 bis 14 Kontaktpunkte. Ihr Film bleibt konstant präsent, bis Sie der erste Anruf sind, wenn der Bedarf entsteht.</p>
       </div>
-      <div class="lever-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02974.JPG');"></div>
-    </div>
 
-    <div class="lever r">
-      <div>
-        <div class="lever-num">HEBEL 04</div>
+      <div class="lever-card r" style="transition-delay:0.24s;">
+        <div class="lever-top">
+          <div class="lever-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+          <div class="lever-stat">€ je Anfrage<span>messbar</span></div>
+        </div>
         <h3>Glasklare Transparenz</h3>
-        <p>Jeder Euro Werbebudget ist exakt zuordenbar. Sie sehen auf Tagesebene, wie viele Entscheider aus Ihrer Zielgruppe erreicht wurden, wie viele reagiert haben und was eine qualifizierte Anfrage kostet. Marketing wird vom Kostenfaktor zur kalkulierbaren Investition.</p>
+        <p>Jeder Euro ist zuordenbar. Sie sehen auf Tagesebene, wie viele Entscheider erreicht wurden und was eine Anfrage kostet. Vom Kostenfaktor zur Investition.</p>
       </div>
-      <div class="lever-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_9%20-%20Sascha%20smile.png');"></div>
     </div>
 
     <div class="feat-cta r">
