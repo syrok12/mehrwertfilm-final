@@ -56,9 +56,9 @@
     /* NAV */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: transparent;
+      background: #010306;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      transition: background 0.3s, border-color 0.3s;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
     .nav.sc {
       background: rgba(255,255,255,0.97);
@@ -73,6 +73,11 @@
     .nav-logo { font-family: var(--head); font-weight: 700; font-size: 1.2rem; color: #fff; transition: color 0.3s; }
     .nav-logo span { color: var(--accent); }
     .nav.sc .nav-logo { color: var(--dark); }
+    .nav-logo { display: inline-flex; align-items: center; }
+    .nav-logo-white { display: block; }
+    .nav-logo-dark { display: none; }
+    .nav.sc .nav-logo-white { display: none; }
+    .nav.sc .nav-logo-dark { display: block; }
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
@@ -103,9 +108,9 @@
     /* ═══ HERO ═══ */
     .hero {
       background: #010306;
-      min-height: 100vh;
+      min-height: auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       position: relative;
       overflow: hidden;
     }
@@ -121,7 +126,7 @@
       position: relative; z-index: 2;
       width: 100%; max-width: 1160px;
       margin: 0 auto;
-      padding: 55px 24px 72px;
+      padding: 110px 24px 72px;
       box-sizing: border-box;
     }
     .hero-label {
@@ -322,11 +327,14 @@
     /* SECTION LABEL */
     .slabel {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.72rem; font-weight: 700; color: var(--accent);
+      font-size: 0.78rem; font-weight: 800; color: #b8860b;
       text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px;
     }
-    @media (min-width: 861px) { .slabel { font-size: 0.92rem; } }
-    .slabel::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+    @media (min-width: 861px) { .slabel { font-size: 0.95rem; } }
+    .slabel::before { content: ''; width: 24px; height: 3px; background: var(--accent-d); border-radius: 2px; }
+    /* Auf dunklem Hintergrund bleibt das Label hell */
+    .feat-block .slabel, .vgal-sec .slabel, .about-dark .slabel, .cta-sec .slabel { color: var(--accent); }
+    .feat-block .slabel::before, .vgal-sec .slabel::before, .about-dark .slabel::before, .cta-sec .slabel::before { background: var(--accent); }
 
     /* PROBLEM */
     .prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 44px; }
@@ -379,7 +387,7 @@
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--r); padding: 28px 24px; text-align: center;
     }
-    .res-card .num { font-family: var(--head); font-size: 2.8rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .res-card .num { font-family: var(--head); font-size: 2.8rem; font-weight: 800; color: #b8860b; line-height: 1; margin-bottom: 8px; }
     .res-card .lbl { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
     .res-card .sub { font-size: 0.78rem; color: var(--dim); }
     @media (max-width: 700px) { .res-grid { grid-template-columns: 1fr; } }
@@ -465,7 +473,7 @@
     .cs-block { margin-bottom: 18px; }
     .cs-block-label { font-family: var(--head); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 4px; }
     .cs-block p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin: 0; }
-    .cs-result { font-family: var(--head); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+    .cs-result { font-family: var(--head); font-size: 2rem; font-weight: 800; color: #b8860b; line-height: 1; margin-bottom: 4px; }
     .cs-result-sub { font-size: 0.82rem; color: var(--muted); }
     @media (max-width: 860px) {
       .cs-item { grid-template-columns: 1fr; gap: 24px; direction: ltr; }
@@ -767,7 +775,10 @@
 <!-- NAV -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;display:block;"></a>
+    <a href="#" class="nav-logo">
+      <img class="nav-logo-white" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:32px;width:auto;">
+      <img class="nav-logo-dark" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;">
+    </a>
     <div class="nav-links">
       <a href="#problem">Herausforderung</a>
       <a href="#loesung">Lösung</a>
@@ -931,7 +942,7 @@
   <div class="hero-glow"></div>
 
   <div class="hero-wrap">
-    <div class="hero-label">Entwickelt aus der Praxis. 50-fach erprobt im technischen Mittelstand.</div>
+    <div class="hero-label">Entwickelt aus der Praxis. 40-fach erprobt im technischen Mittelstand.</div>
     <h1 class="hero-h1">Wie Hersteller, Lohnfertiger und Industrie-Dienstleister mit Film <span>planbar neue Aufträge</span> gewinnen. Ohne Messen. Ohne Kaltakquise.</h1>
 
     <div class="hero-grid">
@@ -996,7 +1007,7 @@
 
       <!-- Rechts: Text + Bullets + CTA + Presse -->
       <div class="hero-right">
-        <p>Verkaufspsychologisch aufgebaute Industriefilme, entwickelt aus über <strong>400 Geschäftsführer-Gesprächen</strong> und mehr als <strong>50 Industrieprojekten</strong> im DACH-Raum.</p>
+        <p>Verkaufspsychologisch aufgebaute Industriefilme, entwickelt aus über <strong>400 Geschäftsführer-Gesprächen</strong> und mehr als <strong>40 Industrieprojekten</strong> im DACH-Raum.</p>
         <ul class="hero-bullets">
           <li><strong>Sichtbar beim Entscheider:</strong> Erreichen Sie Geschäftsführung, Einkauf und Fachabteilungen, bevor die Ausschreibung überhaupt startet.</li>
           <li><strong>Messbarer ROI:</strong> Dokumentierter ROI von <em>3- bis 10-fach</em> in Industriekampagnen. Jeder Euro ist zuordenbar.</li>
@@ -1072,16 +1083,16 @@
   <div class="container">
     <div class="tc r">
       <div class="slabel" style="justify-content:center;">Unsere Kunden</div>
-      <h2>50+ Industrieprojekte. DACH-weit. Vom Hidden Champion bis zum Konzern.</h2>
+      <h2>40+ Industrieprojekte. DACH-weit. Vom Hidden Champion bis zum Konzern.</h2>
     </div>
     <div class="client-grid">
       <div class="r">
         <h3 style="margin-bottom:14px;">Unser System, seit Jahren erprobt im technischen Mittelstand</h3>
-        <p style="margin-bottom:16px;">Mehrwertfilm produziert verkaufspsychologisch aufgebaute Industriefilme für Unternehmen aus Industrie, Fertigung und technischer Dienstleistung. Entstanden aus über 400 Gesprächen mit Geschäftsführern und mehr als 50 realisierten Projekten im DACH-Raum.</p>
+        <p style="margin-bottom:16px;">Mehrwertfilm produziert verkaufspsychologisch aufgebaute Industriefilme für Unternehmen aus Industrie, Fertigung und technischer Dienstleistung. Entstanden aus über 400 Gesprächen mit Geschäftsführern und mehr als 40 realisierten Projekten im DACH-Raum.</p>
         <p style="margin-bottom:16px;">Vom Lohnfertiger über den Sondermaschinenbauer bis zu Marken wie Melitta, DMG Mori oder Dresselhaus: Die Systematik bleibt gleich. Die richtige Botschaft, der richtige Film und die Kampagne, die ihn bei den richtigen Entscheidern platziert.</p>
         <p>Als BAFA-gelisteter Berater sind Teile der Leistung staatlich förderfähig.</p>
         <div style="margin-top:28px;">
-          <a href="#kontakt" class="btn btn-primary">Jetzt kostenloses Erstgespräch vereinbaren</a>
+          <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
         </div>
       </div>
       <div class="r" style="transition-delay:0.1s;">
@@ -1144,7 +1155,7 @@
   <div class="container">
     <div class="tc r">
       <div class="slabel" style="justify-content:center;">Ergebnisse</div>
-      <h2>Ergebnisse aus über 50 Projekten im technischen Mittelstand</h2>
+      <h2>Ergebnisse aus über 40 Projekten im technischen Mittelstand</h2>
     </div>
 
     <!-- Case Study 1: Marschall -->
@@ -1297,7 +1308,7 @@
     </div>
 
     <div class="tc r" style="margin-top:44px;">
-      <a href="#kontakt" class="btn btn-primary btn-lg">Ähnliche Ergebnisse erzielen</a>
+      <a href="#kontakt" class="btn btn-primary btn-lg">Jetzt kostenfreies Erstgespräch anfragen</a>
     </div>
   </div>
 </section>
@@ -1462,7 +1473,7 @@
       <div class="r">
         <div class="slabel">Umsatzpotenzial</div>
         <h2 style="margin-bottom:18px;">Ihr Umsatzpotenzial in 60 Sekunden</h2>
-        <p style="margin-bottom:24px;">Branche, Unternehmensgröße, Zielmarkt. Drei Angaben, dann zeigt Ihnen unser Rechner auf Basis der Daten aus über 50 Industrieprojekten, mit welchem Anfragen- und Umsatzpotenzial Sie realistisch rechnen können.</p>
+        <p style="margin-bottom:24px;">Branche, Unternehmensgröße, Zielmarkt. Drei Angaben, dann zeigt Ihnen unser Rechner auf Basis der Daten aus über 40 Industrieprojekten, mit welchem Anfragen- und Umsatzpotenzial Sie realistisch rechnen können.</p>
         <a href="#kontakt" class="btn btn-primary">Potenzial im Erstgespräch berechnen lassen</a>
       </div>
       <div class="r" style="transition-delay:0.1s;">
@@ -1610,7 +1621,7 @@
 
     </div>
     <div class="vgal-cta r">
-      <a href="#kontakt" class="btn btn-primary btn-lg" style="white-space:normal;text-align:center;max-width:320px;">Kostenloses Erstgespräch buchen</a>
+      <a href="#kontakt" class="btn btn-primary btn-lg" style="white-space:normal;text-align:center;max-width:320px;">Jetzt kostenfreies Erstgespräch anfragen</a>
     </div>
   </div>
 </section>
@@ -1648,7 +1659,7 @@
           <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%284%29.jpg" alt="Das Produktionsteam">
           <h3>Das Produktionsteam</h3>
           <div class="frole">Regie, Kamera, Schnitt &amp; Kampagne</div>
-          <p>Spezialisierte Fachleute für jeden Bereich der Produktion. Kein Freelancer-Netzwerk ohne Qualitätskontrolle, sondern ein eingespieltes Team mit Erfahrung aus über 50 Industrieprojekten im DACH-Raum.</p>
+          <p>Spezialisierte Fachleute für jeden Bereich der Produktion. Kein Freelancer-Netzwerk ohne Qualitätskontrolle, sondern ein eingespieltes Team mit Erfahrung aus über 40 Industrieprojekten im DACH-Raum.</p>
         </div>
       </div>
 
@@ -1715,7 +1726,7 @@
         <p style="margin-bottom:16px;">Als BAFA-gelisteter Berater sind Teile unserer Leistung staatlich förderbar. Das senkt Ihre Nettoinvestition erheblich und macht den Einstieg deutlich leichter.</p>
         <p style="margin-bottom:24px;">Welche Förderquote für Ihr Unternehmen realistisch ist, hängt von Unternehmensgröße und Region ab. Wir prüfen das gemeinsam im Erstgespräch und begleiten Sie durch den Antragsprozess.</p>
         <div style="margin-bottom:24px;"><span class="bafa">Bis zu 80% förderfähig über BAFA</span></div>
-        <a href="#kontakt" class="btn btn-primary">Jetzt Förderung prüfen lassen</a>
+        <a href="#kontakt" class="btn btn-primary">Jetzt kostenfreies Erstgespräch anfragen</a>
       </div>
     </div>
   </div>
