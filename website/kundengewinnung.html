@@ -153,8 +153,9 @@
     }
     @media (min-width: 861px) {
       .hero-grid { align-items: stretch; }
-      .hero-grid > *:first-child { display: flex; flex-direction: column; justify-content: space-between; }
-      .hero-grid > .ticker-wrap { grid-column: 1 / -1; }
+      .hero-grid > *:first-child { display: flex; flex-direction: column; justify-content: space-between; order: 1; }
+      .hero-grid > .hero-right { order: 2; }
+      .hero-grid > .ticker-wrap { grid-column: 1 / -1; order: 3; }
     }
     @media (max-width: 860px) {
       .hero-grid > .ticker-wrap { order: 5; }
