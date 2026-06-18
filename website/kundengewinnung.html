@@ -671,35 +671,43 @@
     }
     .about-dark-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1400&q=80');
+      background-image: url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/about-bg.jpg');
       background-size: cover; background-position: center;
-      opacity: 0.18;
+      opacity: 0.16;
     }
-    .about-dark-inner { position: relative; z-index: 1; max-width: 680px; }
+    .about-dark::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1,3,6,0.65) 0%, rgba(1,3,6,0.85) 100%); z-index: 0; }
+    .about-dark-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
     .about-dark-inner h2 { color: #fff; margin-bottom: 20px; }
     .about-dark-inner > p { color: #fff; font-size: 0.97rem; line-height: 1.8; margin-bottom: 44px; }
-    .about-dark-intro { margin-bottom: 40px; }
+    .about-dark-intro { margin-bottom: 48px; text-align: center; }
     .about-dark p { color: #fff; }
-    .team-person p { color: #fff !important; }
-    .team-person { margin-bottom: 36px; }
-    .team-person h3 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
-    .team-role { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 12px; }
-    .team-person p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.75; }
-    .team-divider { width: 40px; height: 2px; background: rgba(255,255,255,0.12); margin: 32px 0; }
+    .about-dark-team { display: flex; flex-direction: column; gap: 24px; }
+    .team-person {
+      background: rgba(20,24,32,0.82);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px; padding: 34px 28px; text-align: center;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .team-person img {
+      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--accent); margin: 0 auto 20px; display: block;
+    }
+    .team-person h3 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
+    .team-role { font-size: 0.85rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px; }
+    .team-person p { color: rgba(255,255,255,0.8) !important; font-size: 0.95rem; line-height: 1.75; }
     @media (min-width: 861px) {
       .about-dark { padding: 100px 0; }
-      .about-dark-bg { opacity: 0.12; }
-      .about-dark-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+      .about-dark-inner { max-width: 1100px; text-align: center; }
       .about-dark-intro { margin-bottom: 64px; }
       .about-dark-intro h2 { font-size: clamp(2rem, 3vw, 2.8rem); color: #fff; }
       .about-dark-intro > p { font-size: 1.12rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
-      .about-dark-team { display: flex; flex-direction: row; gap: 60px; justify-content: center; align-items: flex-start; }
-      .team-person { flex: 1; max-width: 340px; }
-      .team-person img { width: 130px !important; height: 130px !important; margin: 0 auto 20px !important; }
-      .team-person h3 { font-size: 1.3rem; color: #fff; }
-      .team-role { font-size: 0.95rem; }
-      .team-person p { font-size: 1.05rem; color: rgba(255,255,255,0.85); }
-      .team-divider { display: none; }
+      .about-dark-team { flex-direction: row; gap: 28px; justify-content: center; align-items: stretch; }
+      .team-person { flex: 1; max-width: 350px; padding: 38px 30px; }
+      .team-person img { width: 140px; height: 140px; }
+      .team-person h3 { font-size: 1.4rem; }
+      .team-role { font-size: 0.98rem; }
+      .team-person p { font-size: 1.02rem; }
     }
 
     /* STANDORT */
@@ -1783,26 +1791,26 @@
         <p>Mehrwertfilm wurde nicht von Kreativen gegründet, die Industrie von außen betrachten. Fabian Dalhoff und sein Team kennen das Geschäft ihrer Kunden aus eigener Berufspraxis in der technischen und produzierenden Wirtschaft. Konzerne, Zuliefererbeziehungen, Fertigung, technische Angebote, Buying Center und Personalentscheidungen aus erster Hand.</p>
       </div>
 
-      <div class="founder-grid">
-        <div class="founder">
+      <div class="about-dark-team">
+        <div class="team-person r">
           <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%283%29.jpg" alt="Fabian Dalhoff">
           <h3>Fabian Dalhoff</h3>
-          <div class="frole">Gründer &amp; Geschäftsführer</div>
+          <div class="team-role">Gründer &amp; Geschäftsführer</div>
           <p>Fabian hat über 400 Gespräche mit Geschäftsführern aus Industrie, Fertigung und technischer Dienstleistung geführt. Aus diesen Gesprächen ist das Mehrwertfilm-System entstanden: verkaufspsychologisch aufgebaute Filme, die nicht schön sind fürs Regal, sondern wirkungsvoll für den Vertrieb.</p>
         </div>
 
-        <div class="founder">
-          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%284%29.jpg" alt="Das Produktionsteam">
-          <h3>Das Produktionsteam</h3>
-          <div class="frole">Regie, Kamera, Schnitt &amp; Kampagne</div>
-          <p>Spezialisierte Fachleute für jeden Bereich der Produktion. Kein Freelancer-Netzwerk ohne Qualitätskontrolle, sondern ein eingespieltes Team mit Erfahrung aus über 40 Industrieprojekten im DACH-Raum.</p>
+        <div class="team-person r" style="transition-delay:0.1s;">
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%284%29.jpg" alt="Richard Dietrich">
+          <h3>Richard Dietrich</h3>
+          <div class="team-role">Regie, Kamera &amp; Schnitt</div>
+          <p>Gelernter Zerspanungsmechaniker und heute Filmprofi. Richard kennt die Fertigung von der Werkbank und weiß, worauf es im technischen Mittelstand ankommt, vor und hinter der Kamera.</p>
         </div>
-      </div>
 
-      <div class="r" style="margin-top:48px;">
-        <div class="ph-box" style="aspect-ratio:16/6;max-width:760px;margin:0 auto;">
-          <span class="ph-tag" style="margin-bottom:0;">Platzhalter</span>
-          Teamfoto (gesamtes Team)
+        <div class="team-person r" style="transition-delay:0.2s;">
+          <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/team-timon.jpg" alt="Timon">
+          <h3>Timon</h3>
+          <div class="team-role">Produktion &amp; Kampagne</div>
+          <p>Sorgt dafür, dass aus jedem Dreh ein wirkungsvolles Vertriebswerkzeug wird. Von der Postproduktion bis zur Kampagne, damit Ihr Film genau die richtigen Entscheider erreicht.</p>
         </div>
       </div>
     </div>
