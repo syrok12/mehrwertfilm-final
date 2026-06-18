@@ -433,8 +433,15 @@
       display: flex; align-items: center; justify-content: center;
       font-family: var(--head); font-weight: 700; font-size: 0.78rem; color: var(--accent);
     }
+    .tlogo {
+      height: 40px; width: auto; max-width: 120px; flex-shrink: 0;
+      background: #fff; border: 1px solid var(--border); border-radius: 8px;
+      padding: 6px 10px; object-fit: contain; box-sizing: border-box;
+    }
     .tau strong { display: block; font-size: 0.85rem; color: var(--text); }
     .tau span { font-size: 0.77rem; color: var(--dim); }
+    .tcard .stars-row { margin-bottom: 12px; }
+    .tdivider { border: 0; border-top: 1px solid var(--border); margin: 18px 0; }
     @media (max-width: 900px) { .tgrid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 540px) { .tgrid { grid-template-columns: 1fr; } }
 
@@ -575,32 +582,44 @@
       font-family: var(--head); font-weight: 700; font-size: 1.3rem; color: var(--accent);
       position: relative; z-index: 1;
     }
-    .step h3 { margin-bottom: 10px; }
-    .step p { font-size: 0.88rem; }
+    .step h3 { margin-bottom: 12px; font-size: 1.3rem; }
+    .step p { font-size: 1.02rem; line-height: 1.7; max-width: 340px; margin-left: auto; margin-right: auto; }
     @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } .steps::before { display: none; } }
 
     /* VERTICAL PROCESS */
-    .vproc { max-width: 520px; display: flex; flex-direction: column; }
-    .vp-item { padding-bottom: 8px; }
-    .vp-num { font-family: var(--head); font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; margin-bottom: 14px; }
-    .vp-img {
-      width: 100%; aspect-ratio: 16/9; border-radius: 14px;
-      background-size: cover; background-position: center;
-      margin-bottom: 18px;
+    .vproc { max-width: 520px; display: flex; flex-direction: column; gap: 24px; }
+    .vp-item {
+      position: relative; border-radius: 18px; overflow: hidden;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
-    .vp-title { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+    .vp-item:hover { transform: translateY(-6px); border-color: rgba(255,216,135,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+    .vp-imgwrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+    .vp-img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.6s ease;
+    }
+    .vp-item:hover .vp-img { transform: scale(1.06); }
+    .vp-imgwrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,3,6,0.95) 0%, rgba(1,3,6,0.25) 55%, rgba(1,3,6,0) 100%); }
+    .vp-num {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      font-family: var(--head); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.12em; color: #010306;
+      background: var(--accent); border-radius: 100px; padding: 7px 14px;
+    }
+    .vp-body { padding: 22px 24px 26px; }
+    .vp-title { color: #fff; font-size: 1.15rem; margin-bottom: 10px; }
     .vp-txt { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.75; margin: 0; }
-    .vp-line { width: 1px; height: 48px; background: rgba(255,255,255,0.15); margin: 28px 0; }
     @media (min-width: 861px) {
       .prozess-head { max-width: 100%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 56px; }
-      .vproc { max-width: 100%; flex-direction: row; gap: 32px; align-items: flex-start; }
-      .vp-item { flex: 1; padding-bottom: 0; }
-      .vp-line { display: none; }
-      .vp-img { aspect-ratio: 4/3; }
+      .vproc { max-width: 100%; flex-direction: row; gap: 28px; align-items: stretch; }
+      .vp-item { flex: 1; display: flex; flex-direction: column; }
+      .vp-body { flex: 1; padding: 26px 28px 30px; }
       .prozess-cta { text-align: center; }
-      .vp-num { font-size: 1rem; }
-      .vp-title { font-size: 1.3rem; }
-      .vp-txt { font-size: 1.05rem; }
+      .vp-num { font-size: 0.78rem; }
+      .vp-title { font-size: 1.4rem; }
+      .vp-txt { font-size: 1.02rem; }
     }
 
     /* VIDEO GALLERY */
@@ -734,8 +753,18 @@
       pointer-events: none;
     }
     .cta-sec h2 { color: #fff; margin-bottom: 18px; position: relative; }
-    .cta-sec p { color: rgba(255,255,255,0.6); max-width: 540px; margin: 0 auto 36px; font-size: 1.02rem; position: relative; }
-    .cta-sub { margin-top: 18px; font-size: 0.8rem; color: rgba(255,255,255,0.35); position: relative; }
+    .cta-sec .cta-lead { color: rgba(255,255,255,0.62); max-width: 560px; margin: 0 auto 32px; font-size: 1.05rem; line-height: 1.7; position: relative; }
+    .cta-sec .btn-lg { position: relative; white-space: normal; text-align: center; max-width: 100%; }
+    .cta-trust { position: relative; display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; margin: 22px auto 0; }
+    .cta-trust span { display: inline-flex; align-items: center; gap: 7px; font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+    .cta-trust svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; }
+    .cta-ps {
+      position: relative; max-width: 600px; margin: 40px auto 0;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 20px 26px;
+      font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7); text-align: left;
+    }
+    .cta-ps strong { color: var(--accent); }
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -1229,7 +1258,6 @@
             <div class="stars-row">★★★★★</div>
             <p>"Über den Mehrwertfilm haben wir in kürzester Zeit einen komplett neuen Akquisekanal aufgebaut, der echte Anfragen bringt."</p>
             <div class="csx-person">
-              <div class="tav">M</div>
               <div><strong>Fa. Marschall</strong><span>Marschall PW</span></div>
             </div>
           </div>
@@ -1266,7 +1294,6 @@
             <div class="stars-row">★★★★★</div>
             <p>"In nur 4 Monaten haben wir über 70 qualifizierte Anfragen generiert. Ein planbarer, digitaler Kanal, den wir vorher nicht hatten."</p>
             <div class="csx-person">
-              <div class="tav">G</div>
               <div><strong>Norman Hofmann</strong><span>Geschäftsführer, Gesau Technology GmbH</span></div>
             </div>
           </div>
@@ -1303,7 +1330,6 @@
             <div class="stars-row">★★★★★</div>
             <p>"Fabian Dalhoff ist mit vollem Einsatz und Herzblut bei der Sache. Er arbeitet sich in die Prozesse und Produkte seiner Kunden ein und überzeugt durch seine Expertise."</p>
             <div class="csx-person">
-              <div class="tav">AK</div>
               <div><strong>Andreas Kassen</strong><span>Geschäftsführer, Anka-Metall</span></div>
             </div>
           </div>
@@ -1339,8 +1365,42 @@
             <div class="stars-row">★★★★★</div>
             <p>"Gut angeleitet, hatten alle Beteiligten eine Menge Spaß an der Produktion. Eine klare Empfehlung."</p>
             <div class="csx-person">
-              <div class="tav">EX</div>
               <div><strong>Exquisa</strong><span>Karwendel GmbH | Lebensmittel</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study 5: DMG MORI -->
+    <div class="csx r">
+      <div class="csx-header">
+        <img class="csx-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Logo_DMG_MORI_black_png_(1).png" alt="DMG MORI">
+        <div class="csx-head">Brand-Film &amp; Maschinenreport für einen Weltmarktführer im Maschinenbau</div>
+        <div class="csx-result">Höhere Marge &amp; mehr Anfragen durch einen Mehrwertfilm</div>
+        <div class="csx-meta">
+          <span>Branche: Maschinenbau</span>
+          <span>International</span>
+        </div>
+      </div>
+      <div class="csx-grid">
+        <div>
+          <div class="cs-vid">
+            <iframe src="https://www.youtube-nocookie.com/embed/iQJ70RQ4Ohk" title="DMG MORI Maschinenreport" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border-radius:14px;display:block;"></iframe>
+          </div>
+        </div>
+        <div>
+          <ul class="csx-points">
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Komplexe Maschine als <strong>greifbarer Mehrwert</strong> erzählt</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Höhere Marge</strong> durch klare Wert-Argumentation</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Mehr qualifizierte Anfragen</strong> aus dem Zielmarkt</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Vom Kunden <strong>offiziell veröffentlicht</strong></span></li>
+          </ul>
+          <div class="csx-quote">
+            <div class="stars-row">★★★★★</div>
+            <p>"Ein Maschinenreport, der den Wert unserer Technologie auf den Punkt bringt und beim Kunden ankommt."</p>
+            <div class="csx-person">
+              <div><strong>DMG MORI</strong><span>Maschinenbau | International</span></div>
             </div>
           </div>
         </div>
@@ -1366,7 +1426,7 @@
         <div class="stars-row">★★★★★</div>
         <p class="ttxt">"Über den Mehrwertfilm haben wir einen komplett neuen Akquisekanal aufgebaut. Über 150 Anfragen in nur 2 Monaten."</p>
         <div class="tau">
-          <div class="tav">M</div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/marschall-logo-etikett-1.png" alt="Marschall PW">
           <div><strong>Fa. Marschall</strong><span>Marschall PW | Verpackung &amp; Etikettierung</span></div>
         </div>
       </div>
@@ -1374,7 +1434,7 @@
         <div class="stars-row">★★★★★</div>
         <p class="ttxt">"In nur 4 Monaten über 70 qualifizierte Anfragen. Ein planbarer digitaler Kanal, den wir vorher nicht hatten."</p>
         <div class="tau">
-          <div class="tav">NH</div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology">
           <div><strong>Norman Hofmann</strong><span>Gesau Technology GmbH | Fräswerkzeuge</span></div>
         </div>
       </div>
@@ -1382,7 +1442,7 @@
         <div class="stars-row">★★★★★</div>
         <p class="ttxt">"Fabian arbeitet sich in die Prozesse und Produkte seiner Kunden ein und überzeugt durch seine Expertise."</p>
         <div class="tau">
-          <div class="tav">AK</div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall">
           <div><strong>Andreas Kassen</strong><span>Anka-Metall | Metallbearbeitung</span></div>
         </div>
       </div>
@@ -1390,7 +1450,7 @@
         <div class="stars-row">★★★★★</div>
         <p class="ttxt">"Sehr selbstständig in der Abwicklung, termingerecht und zügig. Es lohnt sich, in gute Videoleistungen zu investieren."</p>
         <div class="tau">
-          <div class="tav">JL</div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/LK-Logo.png" alt="LK-Recruiting">
           <div><strong>Jan Liebing</strong><span>LK-Recruiting GmbH | Dienstleistung</span></div>
         </div>
       </div>
@@ -1398,7 +1458,7 @@
         <div class="stars-row">★★★★★</div>
         <p class="ttxt">"Über den Recruiting-Film haben wir innerhalb von 5 Wochen zwei SHK-Fachkräfte eingestellt. Genau die richtigen Bewerber."</p>
         <div class="tau">
-          <div class="tav">S</div>
+          <img class="tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="SERR Haustechnik">
           <div><strong>SERR Haustechnik</strong><span>Haustechnik (SHK)</span></div>
         </div>
       </div>
@@ -1504,10 +1564,7 @@
         <a href="#kontakt" class="btn btn-primary">Potenzial im Erstgespräch berechnen lassen</a>
       </div>
       <div class="r" style="transition-delay:0.1s;">
-        <div class="ph-box" style="aspect-ratio:4/3;">
-          <span class="ph-tag" style="margin-bottom:0;">Platzhalter</span>
-          Rechner-Mockup / interaktiver Kalkulator<br>(Kalkulator existiert bereits auf der B2B-LP und kann hier eingebunden werden)
-        </div>
+        <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/mehrwert-flow.png" alt="Vertriebsleitfaden plus PDF-Angebot plus Mehrwertfilm: Mehr Anfragen, schnellere Kaufentscheidungen, ø20% höhere Abschlussquote im Vertrieb" style="width:100%;height:auto;display:block;border-radius:14px;">
       </div>
     </div>
   </div>
@@ -1525,26 +1582,36 @@
     <div class="vproc">
 
       <div class="vp-item r">
-        <div class="vp-num">PHASE 01</div>
-        <div class="vp-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm.jpg');"></div>
-        <h3 class="vp-title">Analyse &amp; Strategie</h3>
-        <p class="vp-txt">Wir analysieren Ihre Ausgangslage, Ihre Zielkunden und Ihr Leistungsangebot. Welche Entscheider wollen Sie erreichen, in welchen Branchen und Regionen, mit welcher Botschaft. Sie bekommen einen klaren Plan, bevor die erste Kamera läuft.</p>
-        <div class="vp-line"></div>
+        <div class="vp-imgwrap">
+          <div class="vp-num">PHASE 01</div>
+          <div class="vp-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm.jpg');"></div>
+        </div>
+        <div class="vp-body">
+          <h3 class="vp-title">Analyse &amp; Strategie</h3>
+          <p class="vp-txt">Wir analysieren Ihre Ausgangslage, Ihre Zielkunden und Ihr Leistungsangebot. Welche Entscheider wollen Sie erreichen, in welchen Branchen und Regionen, mit welcher Botschaft. Sie bekommen einen klaren Plan, bevor die erste Kamera läuft.</p>
+        </div>
       </div>
 
       <div class="vp-item r">
-        <div class="vp-num">PHASE 02</div>
-        <div class="vp-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%281%29.jpg');"></div>
-        <h3 class="vp-title">Produktion &amp; Kampagne</h3>
-        <p class="vp-txt">Wir übernehmen die komplette Umsetzung: Skript, Drehtag, Schnitt und Kampagnenaufbau. Sie bekommen einen festen Ansprechpartner und regelmäßige Abstimmungen. 1 bis 2 Stunden Ihrer Zeit pro Woche reichen aus.</p>
-        <div class="vp-line"></div>
+        <div class="vp-imgwrap">
+          <div class="vp-num">PHASE 02</div>
+          <div class="vp-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%281%29.jpg');"></div>
+        </div>
+        <div class="vp-body">
+          <h3 class="vp-title">Produktion &amp; Kampagne</h3>
+          <p class="vp-txt">Wir übernehmen die komplette Umsetzung: Skript, Drehtag, Schnitt und Kampagnenaufbau. Sie bekommen einen festen Ansprechpartner und regelmäßige Abstimmungen. 1 bis 2 Stunden Ihrer Zeit pro Woche reichen aus.</p>
+        </div>
       </div>
 
       <div class="vp-item r">
-        <div class="vp-num">PHASE 03</div>
-        <div class="vp-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%282%29.jpg');"></div>
-        <h3 class="vp-title">Optimierung &amp; Skalierung</h3>
-        <p class="vp-txt">Wir messen jede Kampagne und jede Zielgruppe auf Tagesebene und optimieren laufend. Was funktioniert, wird ausgebaut. Parallel begleiten wir Sie bei der Verarbeitung der Anfragen, damit aus Interessenten Aufträge werden.</p>
+        <div class="vp-imgwrap">
+          <div class="vp-num">PHASE 03</div>
+          <div class="vp-img" style="background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%282%29.jpg');"></div>
+        </div>
+        <div class="vp-body">
+          <h3 class="vp-title">Optimierung &amp; Skalierung</h3>
+          <p class="vp-txt">Wir messen jede Kampagne und jede Zielgruppe auf Tagesebene und optimieren laufend. Was funktioniert, wird ausgebaut. Parallel begleiten wir Sie bei der Verarbeitung der Anfragen, damit aus Interessenten Aufträge werden.</p>
+        </div>
       </div>
 
     </div>
@@ -1807,14 +1874,16 @@
 <section id="kontakt" class="cta-sec">
   <div class="container" style="position:relative;">
     <div class="r">
-      <div class="slabel" style="color:rgba(255,255,255,0.4);">Jetzt starten</div>
+      <div class="slabel" style="color:rgba(255,255,255,0.4);justify-content:center;">Jetzt starten</div>
       <h2>Wenn Sie bis hierher gelesen haben, lohnt sich das Gespräch</h2>
-      <p>Die Unternehmen, mit denen wir heute arbeiten, hatten eines gemeinsam: Sie haben entschieden, bevor es eng wurde. 30 Minuten Ihrer Zeit entscheiden, ob Ihr Vertrieb in 12 Monaten planbar wächst oder weiterläuft wie bisher.</p>
-      <a href="https://mehrwertfilm.de/mehrwertfilm-kennenlernen" class="btn btn-primary btn-lg" target="_blank" style="white-space:normal;max-width:280px;text-align:center;">
-        Erstgespräch vereinbaren
-      </a>
-      <p class="cta-sub">Kein Verkaufsdruck. 100% kostenlos. Konkrete Ideen für Ihren Betrieb.</p>
-      <p class="cta-sub" style="max-width:560px;margin-left:auto;margin-right:auto;">P.S. Jeder Monat, in dem Ihre Akquise vom Zufall abhängt, ist ein Monat, in dem Ihre Wettbewerber Sichtbarkeit bei Ihren Wunschkunden aufbauen. 30 Minuten kosten Sie nichts. Nicht zu reden, schon.</p>
+      <p class="cta-lead">Die Unternehmen, mit denen wir heute arbeiten, hatten eines gemeinsam: Sie haben entschieden, bevor es eng wurde. 30 Minuten Ihrer Zeit entscheiden, ob Ihr Vertrieb in 12 Monaten planbar wächst oder weiterläuft wie bisher.</p>
+      <a href="https://mehrwertfilm.de/mehrwertfilm-kennenlernen" class="btn btn-primary btn-lg" target="_blank">Jetzt kostenfreies Erstgespräch anfragen</a>
+      <div class="cta-trust">
+        <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Kein Verkaufsdruck</span>
+        <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>100% kostenlos</span>
+        <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Konkrete Ideen für Ihren Betrieb</span>
+      </div>
+      <p class="cta-ps"><strong>P.S.</strong> Jeder Monat, in dem Ihre Akquise vom Zufall abhängt, ist ein Monat, in dem Ihre Wettbewerber Sichtbarkeit bei Ihren Wunschkunden aufbauen. 30 Minuten kosten Sie nichts. Nicht zu reden, schon.</p>
     </div>
   </div>
 </section>
