@@ -143,6 +143,21 @@
     }
     .hero-h1 span { color: var(--accent); }
 
+    /* Mehrwert-Karten (2x2) */
+    .mw-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 36px 0 8px; text-align: left; }
+    @media (min-width: 700px) { .mw-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+    .mw-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .mw-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(255,216,135,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .mw-icon svg { width: 24px; height: 24px; color: var(--accent-d); }
+    .mw-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
+    .mw-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    /* Kunden-Logo-Raster (statisch) */
+    .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: center; }
+    @media (min-width: 600px) { .logo-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+    .logo-grid .lg-cell { background: #fff; border-radius: 10px; padding: 16px 14px; display: flex; align-items: center; justify-content: center; aspect-ratio: 3/2; }
+    .logo-grid img { max-width: 100%; max-height: 46px; width: auto; object-fit: contain; }
+
     /* 2-Spalten-Grid */
     .hero-grid {
       display: grid;
@@ -956,7 +971,7 @@
 
   <div class="hero-wrap">
     <div class="hero-label">Entwickelt aus der Praxis. 40-fach erprobt im technischen Mittelstand.</div>
-    <h1 class="hero-h1">Wie Hersteller, Lohnfertiger und Industrie-Dienstleister mit Film <span>planbar neue Aufträge</span> gewinnen. Ohne Messen. Ohne Kaltakquise.</h1>
+    <h1 class="hero-h1">Wie Hersteller, Lohnfertiger und Industrie-Dienstleister mit Film <span>planbar Budgetfreigaben</span> gewinnen. Ohne Messen. Ohne Kaltakquise.</h1>
 
     <div class="hero-grid">
       <!-- Links: Video + Rating + Ticker -->
@@ -1059,30 +1074,33 @@
     <div class="tc r" style="max-width:760px;margin-left:auto;margin-right:auto;">
       <div class="slabel" style="justify-content:center;">Ihr Mehrwert</div>
       <h2>Werden Sie 365 Tage im Jahr bei Ihrer Zielgruppe sichtbar</h2>
-      <p class="mt4">Als Hersteller, Lohnfertiger oder Industrie-Dienstleister erhalten Sie mit einem strategisch eingesetzten Film konstant und zuverlässig qualifizierte Anfragen für Ihr technisches Angebot.</p>
-      <div class="check-list">
-        <div class="check-item r">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <p><strong>Erreichen Sie Entscheider in Geschäftsführung und Fachabteilungen</strong>, Monate bevor die Ausschreibung startet. Nicht erst, wenn der Wettbewerber den Auftrag schon hat.</p>
+      <p class="mt4">Mit einem strategisch eingesetzten Film erhalten Sie konstant qualifizierte Anfragen für Ihr technisches Angebot.</p>
+      <div class="mw-grid">
+        <div class="mw-card r">
+          <div class="mw-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.46 12C3.73 7.94 7.52 5 12 5s8.27 2.94 9.54 7c-1.27 4.06-5.06 7-9.54 7S3.73 16.06 2.46 12z"/></svg></div>
+          <h3>Sichtbar beim Entscheider</h3>
+          <p>Erreichen Sie Geschäftsführung und Fachabteilungen, bevor die Ausschreibung startet.</p>
         </div>
-        <div class="check-item r" style="transition-delay:0.06s;">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <p><strong>Generieren Sie planbar qualifizierte Anfragen pro Monat</strong>, statt auf Messen, Empfehlungen und Zufall zu hoffen. Marschall PW: 150+ Anfragen in 2 Monaten.</p>
+        <div class="mw-card r" style="transition-delay:0.06s;">
+          <div class="mw-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+          <h3>Planbare Anfragen</h3>
+          <p>Qualifizierte Anfragen pro Monat statt Zufall. Marschall PW: 150+ in 2 Monaten.</p>
         </div>
-        <div class="check-item r" style="transition-delay:0.12s;">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <p><strong>Dokumentierter ROI unserer Kunden: 3- bis 10-fach</strong> auf das eingesetzte Werbebudget. Jeder Euro ist exakt zuordenbar.</p>
+        <div class="mw-card r" style="transition-delay:0.12s;">
+          <div class="mw-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.66 0-3 .9-3 2s1.34 2 3 2 3 .9 3 2-1.34 2-3 2m0-8c1.11 0 2.08.4 2.6 1M12 8V7m0 9v1m0-1c-1.11 0-2.08-.4-2.6-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3>3- bis 10-fach ROI</h3>
+          <p>Dokumentierter ROI auf das Werbebudget. Jeder Euro ist exakt zuordenbar.</p>
         </div>
-        <div class="check-item r" style="transition-delay:0.18s;">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <p><strong>Machen Sie sich unabhängig von einzelnen Großkunden</strong> und bauen Sie einen eigenen Kanal zu neuen Zielkunden auf.</p>
+        <div class="mw-card r" style="transition-delay:0.18s;">
+          <div class="mw-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.36-1.86M17 20H7m10 0v-2c0-.66-.13-1.3-.36-1.86m0 0a5 5 0 00-9.28 0M7 20H2v-2a3 3 0 015.36-1.86M7 20v-2c0-.66.13-1.3.36-1.86m0 0a5 5 0 019.28 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <h3>Unabhängig von Großkunden</h3>
+          <p>Eigener Kanal zu neuen Zielkunden, statt von einzelnen Auftraggebern abhängig zu sein.</p>
         </div>
       </div>
-      <div class="r"><a href="#kontakt" class="btn btn-primary btn-lg">Erstgespräch vereinbaren</a></div>
+      <div class="r" style="margin-top:8px;"><a href="#kontakt" class="btn btn-primary btn-lg">Jetzt kostenfreies Erstgespräch anfragen</a></div>
       <div class="proof-row r">
         <span class="bafa">BAFA-gelisteter Berater</span>
         <span class="bafa" style="color:var(--accent-d);background:rgba(255,216,135,0.12);border-color:rgba(232,192,96,0.3);">★ 5,0 Google Bewertungen</span>
-        <span class="ph-tag" style="margin-bottom:0;">Platzhalter: weiteres Siegel / Mitgliedschaft</span>
       </div>
     </div>
   </div>
@@ -1106,9 +1124,19 @@
         </div>
       </div>
       <div class="r" style="transition-delay:0.1s;">
-        <div class="ph-box client-map">
-          <span class="ph-tag" style="margin-bottom:0;">Platzhalter</span>
-          DACH-Karte mit Kundenstandorten<br>(Grafik noch zu erstellen)
+        <div class="logo-grid">
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Logo_Dresselhaus_Trademark_HKS8.png" alt="Dresselhaus"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/BeyondEye_Wortmarke.png" alt="Beyond Eye"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Hausmann-und-Haensgen-Logo-300x138.png" alt="Hausmann & Haensgen"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="SERR Haustechnik"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/3-Axis.png" alt="3axis Group"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/neu-akt%20kuepper%20farbig%20eng%20rgb_ohne%20Hintergrund.png" alt="Artur Küpper"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/NORTEC_Logo_RGB_S_Claim_EN_RZ.png" alt="Nortec"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/LK-Logo.png" alt="LK"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Krueger_Logo_FS2008.png" alt="Krüger"></div>
+          <div class="lg-cell"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Vogel_Business_Communications_Logo.png" alt="Vogel"></div>
         </div>
       </div>
     </div>
