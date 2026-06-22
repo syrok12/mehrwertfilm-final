@@ -778,12 +778,15 @@
     /* INDUSTRIES */
     .ind-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 44px; }
     .ind-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 22px 18px; text-align: center; transition: all 0.2s;
+      position: relative; overflow: hidden;
+      border: 1px solid var(--border); border-radius: var(--r);
+      aspect-ratio: 4/3; transition: all 0.25s; cursor: default;
     }
-    .ind-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(255,216,135,0.12); }
-    .ind-ico { font-size: 1.9rem; margin-bottom: 10px; }
-    .ind-card h3 { font-size: 0.87rem; }
+    .ind-card .ind-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .ind-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,3,6,0.88) 0%, rgba(1,3,6,0.35) 55%, rgba(1,3,6,0.15) 100%); }
+    .ind-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
+    .ind-card:hover .ind-img { transform: scale(1.07); }
+    .ind-card h3 { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; margin: 0; padding: 14px 12px; color: #fff; font-size: 0.9rem; line-height: 1.25; text-align: center; }
     @media (max-width: 768px) { .ind-grid { grid-template-columns: repeat(2,1fr); } }
 
     /* FAQ */
@@ -1688,26 +1691,26 @@
       <p class="mt4" style="max-width:560px;margin-left:auto;margin-right:auto;">Wenn Ihre Kunden online recherchieren, bevor sie anfragen, funktioniert Videomarketing auch in Ihrer Branche.</p>
     </div>
     <div class="ind-grid">
-      <div class="ind-card r"><div class="ind-ico">⚙️</div><h3>Maschinenbau</h3></div>
-      <div class="ind-card r" style="transition-delay:0.03s;"><div class="ind-ico">🏭</div><h3>Sondermaschinenbau</h3></div>
-      <div class="ind-card r" style="transition-delay:0.06s;"><div class="ind-ico">🔩</div><h3>Anlagenbau</h3></div>
-      <div class="ind-card r" style="transition-delay:0.09s;"><div class="ind-ico">🚗</div><h3>Automotive &amp; Fahrzeugbau</h3></div>
-      <div class="ind-card r" style="transition-delay:0.12s;"><div class="ind-ico">🩺</div><h3>Medizintechnik</h3></div>
-      <div class="ind-card r" style="transition-delay:0.15s;"><div class="ind-ico">⚡</div><h3>Elektrotechnik &amp; Elektronik</h3></div>
-      <div class="ind-card r" style="transition-delay:0.18s;"><div class="ind-ico">🛠️</div><h3>Metallverarbeitung &amp; Zerspanung</h3></div>
-      <div class="ind-card r" style="transition-delay:0.21s;"><div class="ind-ico">🧪</div><h3>Kunststoffverarbeitung</h3></div>
-      <div class="ind-card r" style="transition-delay:0.24s;"><div class="ind-ico">🍽️</div><h3>Lebensmittel- &amp; Getränkeindustrie</h3></div>
-      <div class="ind-card r" style="transition-delay:0.27s;"><div class="ind-ico">🏗️</div><h3>Bauwesen &amp; Handwerk</h3></div>
-      <div class="ind-card r" style="transition-delay:0.3s;"><div class="ind-ico">🔋</div><h3>Energieversorgung</h3></div>
-      <div class="ind-card r" style="transition-delay:0.33s;"><div class="ind-ico">♻️</div><h3>Umwelt- &amp; Recyclingtechnik</h3></div>
-      <div class="ind-card r" style="transition-delay:0.36s;"><div class="ind-ico">📦</div><h3>Verpackungs- &amp; Montagetechnik</h3></div>
-      <div class="ind-card r" style="transition-delay:0.39s;"><div class="ind-ico">⚗️</div><h3>Chemieindustrie</h3></div>
-      <div class="ind-card r" style="transition-delay:0.42s;"><div class="ind-ico">💊</div><h3>Pharmaindustrie</h3></div>
-      <div class="ind-card r" style="transition-delay:0.45s;"><div class="ind-ico">💻</div><h3>IT &amp; Software</h3></div>
-      <div class="ind-card r" style="transition-delay:0.48s;"><div class="ind-ico">📐</div><h3>Ingenieurdienstleister</h3></div>
-      <div class="ind-card r" style="transition-delay:0.51s;"><div class="ind-ico">🚚</div><h3>Logistik &amp; Fördertechnik</h3></div>
-      <div class="ind-card r" style="transition-delay:0.54s;"><div class="ind-ico">🔧</div><h3>Technische Dienstleister</h3></div>
-      <div class="ind-card r" style="transition-delay:0.57s;"><div class="ind-ico">🤝</div><h3>B2B-Dienstleister</h3></div>
+      <div class="ind-card r"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/257700/pexels-photo-257700.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Maschinenbau</h3></div>
+      <div class="ind-card r" style="transition-delay:0.03s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Sondermaschinenbau</h3></div>
+      <div class="ind-card r" style="transition-delay:0.06s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/2381463/pexels-photo-2381463.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Anlagenbau</h3></div>
+      <div class="ind-card r" style="transition-delay:0.09s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Automotive &amp; Fahrzeugbau</h3></div>
+      <div class="ind-card r" style="transition-delay:0.12s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Medizintechnik</h3></div>
+      <div class="ind-card r" style="transition-delay:0.15s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Elektrotechnik &amp; Elektronik</h3></div>
+      <div class="ind-card r" style="transition-delay:0.18s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Metallverarbeitung &amp; Zerspanung</h3></div>
+      <div class="ind-card r" style="transition-delay:0.21s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Kunststoffverarbeitung</h3></div>
+      <div class="ind-card r" style="transition-delay:0.24s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Lebensmittel- &amp; Getränkeindustrie</h3></div>
+      <div class="ind-card r" style="transition-delay:0.27s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Bauwesen &amp; Handwerk</h3></div>
+      <div class="ind-card r" style="transition-delay:0.3s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Energieversorgung</h3></div>
+      <div class="ind-card r" style="transition-delay:0.33s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Umwelt- &amp; Recyclingtechnik</h3></div>
+      <div class="ind-card r" style="transition-delay:0.36s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/4498135/pexels-photo-4498135.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Verpackungs- &amp; Montagetechnik</h3></div>
+      <div class="ind-card r" style="transition-delay:0.39s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Chemieindustrie</h3></div>
+      <div class="ind-card r" style="transition-delay:0.42s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Pharmaindustrie</h3></div>
+      <div class="ind-card r" style="transition-delay:0.45s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>IT &amp; Software</h3></div>
+      <div class="ind-card r" style="transition-delay:0.48s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Ingenieurdienstleister</h3></div>
+      <div class="ind-card r" style="transition-delay:0.51s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Logistik &amp; Fördertechnik</h3></div>
+      <div class="ind-card r" style="transition-delay:0.54s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>Technische Dienstleister</h3></div>
+      <div class="ind-card r" style="transition-delay:0.57s;"><div class="ind-img" style="background-image:url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600');"></div><h3>B2B-Dienstleister</h3></div>
     </div>
   </div>
 </section>
