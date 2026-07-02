@@ -2251,7 +2251,6 @@
         <div class="fnl-opt" data-val="Sonstiges">Sonstiges</div>
       </div>
       <div class="fnl-err" id="fnlErr2">Bitte wählen Sie eine Option aus.</div>
-      <button class="btn btn-primary fnl-next" onclick="fnlGo(3)">Weiter zum nächsten Schritt</button>
     </div>
 
     <!-- Schritt 3: Kontaktzeit -->
@@ -2265,7 +2264,6 @@
         <div class="fnl-opt" data-val="Am frühen Abend (16-18 Uhr)">Am frühen Abend (16-18 Uhr)</div>
       </div>
       <div class="fnl-err" id="fnlErr3">Bitte wählen Sie eine Option aus.</div>
-      <button class="btn btn-primary fnl-next" onclick="fnlGo(4)">Weiter zum nächsten Schritt</button>
     </div>
 
     <!-- Schritt 4: Kontaktdaten -->
@@ -2359,15 +2357,18 @@
       if (!cal.src) cal.src = cal.getAttribute('data-src');
     }
   }
-  // Auswahl-Optionen (Thema + Zeit)
+  // Auswahl-Optionen (Thema + Zeit) -> nach Auswahl automatisch weiter
   ['fnlThema', 'fnlZeit'].forEach(function(gid) {
     document.getElementById(gid).addEventListener('click', function(e) {
       var opt = e.target.closest('.fnl-opt');
       if (!opt) return;
       this.querySelectorAll('.fnl-opt').forEach(function(o) { o.classList.remove('sel'); });
       opt.classList.add('sel');
-      if (gid === 'fnlThema') { fnlData.thema = opt.getAttribute('data-val'); document.getElementById('fnlErr2').classList.remove('show'); }
-      else { fnlData.zeit = opt.getAttribute('data-val'); document.getElementById('fnlErr3').classList.remove('show'); }
+      var nextStep;
+      if (gid === 'fnlThema') { fnlData.thema = opt.getAttribute('data-val'); document.getElementById('fnlErr2').classList.remove('show'); nextStep = 3; }
+      else { fnlData.zeit = opt.getAttribute('data-val'); document.getElementById('fnlErr3').classList.remove('show'); nextStep = 4; }
+      // kurz die Auswahl zeigen, dann automatisch zum nächsten Schritt
+      setTimeout(function() { fnlGo(nextStep); }, 260);
     });
   });
   async function fnlSubmit() {
