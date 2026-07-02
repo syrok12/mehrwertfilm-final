@@ -874,7 +874,7 @@
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
     .flogo { font-family: var(--head); font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 14px; }
     .flogo span { color: var(--accent); }
-    .fdesc { font-size: 0.85rem; line-height: 1.7; margin-bottom: 22px; }
+    .fdesc { font-size: 0.85rem; line-height: 1.7; margin-bottom: 22px; color: rgba(255,255,255,0.6); }
     .fcontact { display: flex; flex-direction: column; gap: 8px; }
     .fcontact a { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
     .fcontact a:hover { color: var(--accent); }
@@ -883,11 +883,11 @@
     .flinks a { font-size: 0.82rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
     .flinks a:hover { color: var(--accent); }
     .fbot { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 12px; }
-    .fbot p { font-size: 0.8rem; }
+    .fbot p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
     .fbot div { display: flex; gap: 20px; }
     .fbot a { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
     .fbot a:hover { color: var(--accent); }
-    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } .flogo-wrap { display: flex; justify-content: center; } .flogo-wrap img { margin: 0 auto; } }
 
     /* UTILS */
     .tc { text-align: center; }
@@ -1956,51 +1956,44 @@
   </div>
 </section>
 
-<!-- ═══ 14. PRESSE ═══ -->
-<section>
-  <div class="container">
-    <div class="tc r">
-      <div class="slabel" style="justify-content:center;">Presse</div>
-      <h2>Mehrwertfilm in der Presse</h2>
-      <p class="mt4" style="max-width:560px;margin-left:auto;margin-right:auto;">Was Fachmedien über unsere Arbeit im technischen Mittelstand schreiben.</p>
-    </div>
-    <div class="press-grid">
-      <div class="press-card r">
-        <span class="ph-tag">Platzhalter</span>
-        <div class="plogo"><div class="ph-box" style="padding:6px 14px;font-size:0.65rem;border-radius:6px;">Medien-Logo</div></div>
-        <h3>Platzhalter: Headline des Presseartikels über Mehrwertfilm</h3>
-        <a href="#">Zum Artikel →</a>
-      </div>
-      <div class="press-card r" style="transition-delay:0.06s;">
-        <span class="ph-tag">Platzhalter</span>
-        <div class="plogo"><div class="ph-box" style="padding:6px 14px;font-size:0.65rem;border-radius:6px;">Medien-Logo</div></div>
-        <h3>Platzhalter: Headline des Presseartikels über Mehrwertfilm</h3>
-        <a href="#">Zum Artikel →</a>
-      </div>
-      <div class="press-card r" style="transition-delay:0.12s;">
-        <span class="ph-tag">Platzhalter</span>
-        <div class="plogo"><div class="ph-box" style="padding:6px 14px;font-size:0.65rem;border-radius:6px;">Medien-Logo</div></div>
-        <h3>Platzhalter: Headline des Presseartikels über Mehrwertfilm</h3>
-        <a href="#">Zum Artikel →</a>
-      </div>
-      <div class="press-card r" style="transition-delay:0.18s;">
-        <span class="ph-tag">Platzhalter</span>
-        <div class="plogo"><div class="ph-box" style="padding:6px 14px;font-size:0.65rem;border-radius:6px;">Medien-Logo</div></div>
-        <h3>Platzhalter: Headline des Presseartikels über Mehrwertfilm</h3>
-        <a href="#">Zum Artikel →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ 15. BAFA (statt ISO-Zertifizierung) ═══ -->
 <section class="bg2">
   <div class="container">
     <div class="calc-grid">
       <div class="r" style="transition-delay:0.1s;">
-        <div class="ph-box" style="aspect-ratio:4/3;">
-          <span class="ph-tag" style="margin-bottom:0;">Platzhalter</span>
-          BAFA-Listungsnachweis / Urkunde<br>(Scan oder Grafik)
+        <div style="position:relative;aspect-ratio:4/3;border-radius:var(--rl);overflow:hidden;">
+          <div class="marquee-wrap">
+            <div class="marquee-track marquee-track-1">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_1%20-%20SMT.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_1-IMG_6646.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_2-IMG_6648.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02865.JPG" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_1%20-%20SMT.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_1-IMG_6646.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_2-IMG_6648.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02865.JPG" alt="">
+            </div>
+            <div class="marquee-track marquee-track-2">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_5-_00A8010.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_9%20-%20Sascha%20smile.png" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02579.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02974.JPG" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_5-_00A8010.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_9%20-%20Sascha%20smile.png" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02579.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC02974.JPG" alt="">
+            </div>
+            <div class="marquee-track marquee-track-3">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC03797.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_IMG_6486.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_Screenshot%202023-12-11%20at%2021.42.44.png" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_Screenshot%202023-12-11%20at%2021.42.47.png" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_DSC03797.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_IMG_6486.jpg" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_Screenshot%202023-12-11%20at%2021.42.44.png" alt="">
+              <img class="marquee-img" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/B%C3%BChne%20Slideshow/PRE-Final_Screenshot%202023-12-11%20at%2021.42.47.png" alt="">
+            </div>
+          </div>
         </div>
       </div>
       <div class="r">
@@ -2108,7 +2101,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div style="margin-bottom:16px;"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:36px;width:auto;display:block;"></div>
+        <div class="flogo-wrap" style="margin-bottom:16px;"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:36px;width:auto;display:block;"></div>
         <p class="fdesc">Verkaufspsychologisch aufgebaute Industriefilme für Industrie, Fertigung und technischen Mittelstand im DACH-Raum. Damit Ihre Kunden kaufen und die richtigen Fachkräfte Sie finden.</p>
         <div class="fcontact">
           <a href="mailto:info@mehrwert-film.de">
@@ -2298,6 +2291,23 @@
 </div>
 
 <script>
+  // ════════════════════════════════════════════════════════════════
+  //  META PIXEL BASISCODE
+  //  -> Trage unten bei META_PIXEL_ID deine Pixel-ID ein (nur Zahlen).
+  //  -> Laesst OnePage den Pixel bereits, wird KEIN zweiter geladen.
+  //  -> Bleibt die ID leer (''), passiert nichts (kein Fehler).
+  // ════════════════════════════════════════════════════════════════
+  var META_PIXEL_ID = ''; // z.B. '1234567890123456'
+  if (META_PIXEL_ID && typeof fbq !== 'function') {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
   // ── FUNNEL ──
   var FNL_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26713449/4b4fqhy/';
   var fnlData = { thema: '', zeit: '' };
@@ -2305,6 +2315,13 @@
   function fnlOpen() {
     document.getElementById('fnlOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
+    // Meta Pixel: Funnel geöffnet (Button-Klick)
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Mehrwertfilm B2B Erstgespräch',
+        content_category: 'B2B Videoproduktion'
+      });
+    }
   }
   function fnlClose() {
     document.getElementById('fnlOverlay').classList.remove('open');
@@ -2356,7 +2373,7 @@
       await fetch(FNL_WEBHOOK, { method: 'POST', body: new URLSearchParams(payload) });
     } catch (e2) { console.error('Zapier webhook error:', e2); }
 
-    // Meta Pixel Lead Event (Onepage CAPI greift das serverseitig auf)
+    // Meta Pixel: echte Anfrage abgeschickt -> Lead
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Mehrwertfilm B2B Erstgespräch',
