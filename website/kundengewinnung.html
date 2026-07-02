@@ -2395,7 +2395,12 @@
     var utms = fnlGetUtms();
     for (var uk in utms) { if (utms.hasOwnProperty(uk)) payload[uk] = utms[uk]; }
     try {
-      await fetch(FNL_WEBHOOK, { method: 'POST', body: new URLSearchParams(payload) });
+      // Als JSON senden -> Zapier Catch Hook parst jedes Feld einzeln
+      await fetch(FNL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
     } catch (e2) { console.error('Zapier webhook error:', e2); }
 
     // Meta Pixel: echte Anfrage abgeschickt -> Lead
