@@ -2312,6 +2312,26 @@
   var FNL_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26713449/4b4fqhy/';
   var fnlData = { thema: '', zeit: '' };
 
+  // ── UTM- & Klick-Parameter erfassen (persistent, damit sie bis zum Absenden erhalten bleiben) ──
+  var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'];
+  function fnlCaptureUtms() {
+    var params = new URLSearchParams(window.location.search);
+    UTM_KEYS.forEach(function(k) {
+      var v = params.get(k);
+      if (v) { try { sessionStorage.setItem('mwf_' + k, v); } catch(e) {} }
+    });
+  }
+  function fnlGetUtms() {
+    var out = {};
+    UTM_KEYS.forEach(function(k) {
+      var v = null;
+      try { v = sessionStorage.getItem('mwf_' + k); } catch(e) {}
+      out[k] = v || '';
+    });
+    return out;
+  }
+  fnlCaptureUtms(); // sofort beim Laden speichern
+
   function fnlOpen() {
     document.getElementById('fnlOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -2367,8 +2387,12 @@
       name: name, email: email, telefon: tel, unternehmen: firma,
       thema: fnlData.thema, kontaktzeit: fnlData.zeit,
       quelle: 'Mehrwertfilm Kundengewinnung LP',
+      landingpage: window.location.href,
       datum: new Date().toLocaleString('de-DE')
     };
+    // UTM- & Klick-Parameter mit an Zapier schicken
+    var utms = fnlGetUtms();
+    for (var uk in utms) { if (utms.hasOwnProperty(uk)) payload[uk] = utms[uk]; }
     try {
       await fetch(FNL_WEBHOOK, { method: 'POST', body: new URLSearchParams(payload) });
     } catch (e2) { console.error('Zapier webhook error:', e2); }
