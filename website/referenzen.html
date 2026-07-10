@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenzen &amp; Kundenstimmen | Mehrwertfilm</title>
+  <meta name="description" content="Über 40 Industrieprojekte im technischen Mittelstand: echte Fallstudien, Kundenstimmen und Referenzfilme von Marschall, Gesau Technology, SERR Haustechnik und Artur Küpper.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #FFFFFF;
+      --bg2:     #f7f7f7;
+      --dark:    #010306;
+      --card:    #FFFFFF;
+      --border:  rgba(0,0,0,0.10);
+      --accent:  #FFD887;
+      --accent-d:#e8c060;
+      --text:    #010306;
+      --muted:   #444444;
+      --dim:     #888888;
+      --green:   #16a34a;
+      --green-g: rgba(22,163,74,0.12);
+      --head:    'Chakra Petch', sans-serif;
+      --body:    'Work Sans', -apple-system, sans-serif;
+      --r:       12px;
+      --rl:      20px;
+    }
+
+    html, body { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+    body { font-family: var(--body); background: var(--bg); color: var(--text); line-height: 1.65; }
+
+    /* ── Globaler Schutz gegen horizontalen Overflow auf Mobile ── */
+    html { overflow-x: hidden; max-width: 100%; }
+    body { overflow-x: hidden; max-width: 100%; width: 100%; position: relative; }
+    img, iframe { max-width: 100%; }
+    section, footer, .feat-block { overflow-x: clip; max-width: 100%; }
+    .wistia_embed, .wistia_responsive_padding, .wistia_responsive_wrapper { max-width: 100% !important; }
+    /* Wistia-Player rendert intern überbreite canvas/UI -> hart begrenzen */
+    .vid-box, .cs-vid, .vgal-thumb { overflow: hidden !important; }
+    .vid-box *, .cs-vid *, .vgal-thumb * { max-width: 100% !important; }
+    .w-css-reset, .w-bottom-bar, [class*="w-bottom-bar"], [class*="w-vulcan"] { max-width: 100% !important; }
+    [class*="w-bottom-bar-right-inner-anchor"] { overflow: hidden !important; }
+    /* Auf Mobile darf kein Block breiter als der Viewport werden */
+    @media (max-width: 860px) {
+      .container, .hero-wrap, .hero-grid, .mw-grid, .logo-grid, .tgrid, .lever-grid,
+      .csx-grid, .about-dark-team, .vproc, .calc-grid, .standort-grid, .contact-grid,
+      .ind-grid, .faq-list, .footer-grid, .ticker-wrap {
+        max-width: 100%; min-width: 0;
+      }
+      .ticker-wrap { margin-left: 0; margin-right: 0; }
+      .btn, .hero-cta { max-width: 100%; white-space: normal; box-sizing: border-box; }
+    }
+    /* Lange Wörter umbrechen statt überlaufen */
+    .csx-points li span, .tcard .ttxt { overflow-wrap: anywhere; }
+    h1, h2, h3, h4, .hero-h1 { overflow-wrap: break-word; word-break: normal; hyphens: none; }
+    /* Flex/Grid-Items schrumpfen lassen (verhindert Overflow durch min-width:auto) */
+    .hero-grid > *, .csx-grid > *, .tgrid > *, .lever-grid > *, .about-dark-team > *,
+    .vproc > *, .calc-grid > *, .standort-grid > *, .contact-grid > *, .vid-box, .cs-vid { min-width: 0; }
+    .vid-box, .cs-vid, .vgal-thumb { max-width: 100%; }
+    h1,h2,h3,h4 { font-family: var(--head); line-height: 1.2; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; }
+    h3 { font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 600; }
+    p  { font-size: clamp(0.92rem, 1.5vw, 1rem); color: var(--muted); }
+    a  { text-decoration: none; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .bg2 { background: var(--bg2); }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 8px;
+      font-family: var(--body); font-weight: 700; font-size: 0.98rem;
+      cursor: pointer; border: none; text-decoration: none;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .btn-primary { background: var(--accent); color: #010306; border: 2px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-d); border-color: var(--accent-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,216,135,0.4); }
+    .btn-lg { padding: 18px 36px; font-size: 1.05rem; }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: #010306;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .nav.sc {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo { font-family: var(--head); font-weight: 700; font-size: 1.2rem; color: #fff; transition: color 0.3s; }
+    .nav-logo span { color: var(--accent); }
+    .nav.sc .nav-logo { color: var(--dark); }
+    .nav-logo { display: inline-flex; align-items: center; }
+    .nav-logo-white { display: block; }
+    .nav-logo-dark { display: none; }
+    .nav.sc .nav-logo-white { display: none; }
+    .nav.sc .nav-logo-dark { display: block; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav.sc .nav-links a { color: var(--muted); }
+    .nav.sc .nav-links a:hover { color: var(--dark); }
+    .nav-cta {
+      background: var(--accent); color: #010306 !important;
+      border-radius: 6px; padding: 9px 20px;
+      font-weight: 700; font-size: 0.85rem !important;
+      border: 2px solid var(--accent);
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-d) !important; border-color: var(--accent-d) !important; }
+    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-burger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: background 0.3s; }
+    .nav.sc .nav-burger span { background: var(--dark); }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-burger { display: flex; } }
+
+    .mob-nav {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: var(--dark); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 24px; flex-direction: column; gap: 4px;
+    }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { color: rgba(255,255,255,0.8); padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.95rem; font-weight: 500; }
+    .mob-nav a:last-child { border: none; margin-top: 12px; background: var(--accent); color: var(--dark) !important; text-align: center; border-radius: 8px; padding: 13px; font-weight: 700; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      background: #010306;
+      min-height: auto;
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; opacity: 0.13;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse 50% 60% at 72% 50%, rgba(255,216,135,0.06) 0%, transparent 70%);
+    }
+    .hero-wrap {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1160px;
+      margin: 0 auto;
+      padding: 52px 24px 72px;
+      box-sizing: border-box;
+    }
+    .hero-label {
+      font-family: var(--head); font-size: 0.72rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.13em;
+      margin-bottom: 16px;
+    }
+    .hero-h1 {
+      font-family: var(--head);
+      font-size: clamp(1.5rem, 3.1vw, 2.5rem);
+      font-weight: 700; line-height: 1.18; color: #fff;
+      margin-bottom: 36px;
+      max-width: 1100px; margin-left: auto; margin-right: auto;
+    }
+    .hero-h1 span { color: var(--accent); }
+    @media (min-width: 861px) {
+      .hero-h1 { font-size: clamp(1.5rem, 3.1vw, 2.5rem); line-height: 1.12; }
+    }
+
+    /* Mehrwert-Karten (2x2) */
+    .mw-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 36px 0 8px; text-align: left; }
+    @media (min-width: 700px) { .mw-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+    .mw-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .mw-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(255,216,135,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .mw-icon svg { width: 24px; height: 24px; color: var(--accent-d); }
+    .mw-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
+    .mw-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    /* Kunden-Logo-Raster (statisch) */
+    .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: center; }
+    @media (min-width: 600px) { .logo-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+    .logo-grid .lg-cell { background: #fff; border-radius: 10px; padding: 20px 18px; display: flex; align-items: center; justify-content: center; aspect-ratio: 16/10; }
+    .logo-grid img { max-width: 100%; max-height: 64px; width: auto; object-fit: contain; }
+    .logo-grid img[alt="3axis Group"],
+    .logo-grid img[alt="Hausmann &amp; Haensgen"],
+    .logo-grid img[alt="AS Equipment"],
+    .logo-grid img[alt="Marschall"] { max-height: 80px; }
+
+    /* 2-Spalten-Grid */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: 48px;
+      align-items: start;
+      width: 100%;
+    }
+    @media (min-width: 861px) {
+      .hero-grid { align-items: stretch; }
+      .hero-grid > *:first-child { display: flex; flex-direction: column; justify-content: space-between; order: 1; }
+      .hero-grid > .hero-right { order: 2; }
+      .hero-grid > .ticker-wrap { grid-column: 1 / -1; order: 3; }
+    }
+    @media (max-width: 860px) {
+      .hero-grid > .ticker-wrap { order: 5; }
+    }
+
+    .vid-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 14px;
+      background: #0a0e18;
+      box-shadow: 0 20px 56px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vid-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px; height: 70px;
+      background: var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 16px rgba(255,216,135,0.15);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .vid-play:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 0 22px rgba(255,216,135,0.1);
+    }
+    .vid-play svg { margin-left: 5px; }
+
+    /* Bekannt von */
+    .known-from { margin-top: 18px; text-align: center; }
+    .known-from-label { font-family: var(--head); font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 14px; }
+    .known-from img { width: 100%; max-width: 420px; height: auto; display: block; margin: 0 auto; }
+    @media (max-width: 860px) { .known-from img { max-width: 320px; } }
+
+    /* Google Rating */
+    .g-rating {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      margin-top: 14px; padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+    }
+    .g-stars { display: flex; gap: 2px; }
+    .g-stars svg { width: 16px; height: 16px; }
+    .g-text { display: flex; align-items: center; gap: 8px; }
+    .g-score { font-family: var(--head); font-weight: 700; font-size: 1rem; color: #fff; }
+    .g-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+    .g-logo { flex-shrink: 0; }
+
+    /* Logo-Ticker */
+    .ticker-wrap {
+      margin-top: 16px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 0;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    }
+    .ticker-track {
+      display: flex; align-items: center;
+      width: max-content;
+      animation: tick 26s linear infinite;
+    }
+    .ticker-track img {
+      height: 38px; width: auto; object-fit: contain;
+      flex-shrink: 0; padding: 0 28px;
+      opacity: 0.8; transition: opacity 0.2s;
+    }
+    .ticker-track img[alt="3axis Group"],
+    .ticker-track img[alt="Hausmann & Haensgen"],
+    .ticker-track img[alt="AS Equipment"],
+    .ticker-track img[alt="Marschall"] { height: 50px; }
+    .ticker-track img:hover { opacity: 1; }
+    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+
+    /* Rechte Spalte */
+    .hero-right {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .hero-right p {
+      font-size: 0.96rem; color: rgba(255,255,255,0.7);
+      line-height: 1.72; margin-bottom: 22px;
+    }
+    .hero-right p strong { color: #fff; }
+    .hero-bullets { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 13px; }
+    .hero-bullets li {
+      font-size: 0.92rem; color: rgba(255,255,255,0.8);
+      line-height: 1.6; padding-left: 18px; position: relative;
+    }
+    @media (min-width: 861px) {
+      .hero-right p { font-size: 1.08rem; }
+      .hero-bullets li { font-size: 1.04rem; }
+      .hero-label { font-size: 0.95rem; text-align: center; }
+      .hero-h1 { text-align: center; }
+    }
+    .hero-bullets li::before {
+      content: ''; position: absolute; left: 0; top: 8px;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    }
+    .hero-bullets li strong { color: #fff; }
+    .hero-bullets li em { color: var(--accent); font-style: normal; font-weight: 700; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent); color: #010306;
+      padding: 17px 36px; border-radius: 6px;
+      font-family: var(--body); font-weight: 700; font-size: 1rem;
+      text-decoration: none; border: 2px solid var(--accent); cursor: pointer; transition: all 0.2s;
+    }
+    .hero-cta:hover { background: var(--accent-d); border-color: var(--accent-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,216,135,0.4); }
+    .hero-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Mobile Trust im Hero */
+    .hero-trust-mob {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 22px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-trust-mob .ti {
+      font-size: 0.82rem; font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      justify-content: center;
+    }
+    .hero-trust-mob .ti svg { color: var(--accent); }
+
+    /* Mobile Hero */
+    @media (max-width: 860px) {
+      .hero { overflow: hidden; align-items: flex-start; min-height: unset; padding-top: 0 !important; }
+      .hero-svg { display: none; }
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .hero-h1 { font-size: clamp(1.15rem, 5.2vw, 2.4rem); line-height: 1.22; margin-bottom: 20px; text-align: center; }
+      .hero-wrap { padding: 76px 20px 0 !important; text-align: center; }
+      .hero-label { font-size: 0.68rem; margin-bottom: 12px; }
+      .hero-right { text-align: left; }
+      .hero-bullets { text-align: left; }
+      .hero-cta { display: inline-flex; }
+      .hero-right { display: flex; flex-direction: column; align-items: center; }
+      .hero-trust-mob { display: flex; }
+    }
+
+    /* TRUST BAR */
+    @media (max-width: 860px) { .trust-bar { display: none; } }
+    @media (max-width: 860px) { section { padding: 40px 0; } }
+    @media (max-width: 860px) {
+      .btn, a.btn, .btn-lg, a.btn-lg {
+        display: block; text-align: center; width: fit-content; max-width: 100%;
+        margin-left: auto; margin-right: auto;
+        white-space: normal !important; box-sizing: border-box; overflow-wrap: anywhere;
+      }
+    }
+    .trust-bar { padding: 26px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .trust-inner { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; justify-content: center; }
+    @media (min-width: 861px) { .trust-inner { flex-wrap: nowrap; gap: 28px; } }
+    .ti { display: flex; align-items: center; gap: 9px; font-size: 0.82rem; font-weight: 600; color: var(--muted); white-space: nowrap; }
+    .ti svg { color: var(--accent); flex-shrink: 0; }
+    .tdiv { width: 1px; height: 26px; background: var(--border); flex-shrink: 0; }
+    @media (max-width: 600px) { .tdiv { display: none; } .trust-inner { gap: 16px; } }
+
+    /* PROBLEM 2-SPALTEN */
+    .prob-layout { display: block; }
+    .prob-stats { display: none; }
+    @media (min-width: 861px) {
+      .prob-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: stretch; align-content: stretch; }
+      .prob-text { max-width: none; }
+      .prob-stats { display: flex; flex-direction: column; justify-content: center; gap: 70px; align-self: stretch; }
+      .prob-stat-card:first-child { margin-top: 100px; }
+      .prob-stat-card:last-child { margin-bottom: 100px; }
+      .prob-stat-card {
+        background: var(--bg2); border: 1px solid var(--border);
+        border-radius: 14px; padding: 22px 24px;
+        border-left: 3px solid var(--accent);
+      }
+      .prob-stat-num {
+        font-family: var(--head); font-size: 2rem; font-weight: 700;
+        color: var(--dark); line-height: 1; margin-bottom: 8px;
+      }
+      .prob-stat-num span { font-size: 1.1rem; color: var(--accent); }
+      .prob-stat-label { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
+    }
+
+    /* SECTION LABEL */
+    .slabel {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 800; color: #b8860b;
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px;
+    }
+    @media (min-width: 861px) { .slabel { font-size: 0.95rem; } }
+    .slabel::before { content: ''; width: 24px; height: 3px; background: var(--accent-d); border-radius: 2px; }
+    /* Auf dunklem Hintergrund bleibt das Label hell */
+    .feat-block .slabel, .vgal-sec .slabel, .about-dark .slabel, .cta-sec .slabel { color: var(--accent); }
+    .feat-block .slabel::before, .vgal-sec .slabel::before, .about-dark .slabel::before, .cta-sec .slabel::before { background: var(--accent); }
+
+    /* PROBLEM */
+    .prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 44px; }
+    .prob-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px 22px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .prob-card:hover { border-color: var(--accent); box-shadow: 0 6px 24px rgba(255,216,135,0.12); }
+    .prob-ico { font-size: 1.8rem; margin-bottom: 12px; }
+    .prob-card h3 { margin-bottom: 8px; }
+    @media (max-width: 900px) { .prob-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .prob-grid { grid-template-columns: 1fr; } }
+
+    /* SOLUTION */
+    .sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; margin-top: 44px; }
+    .sol-visual {
+      border-radius: var(--rl); overflow: hidden;
+      position: relative; min-height: 400px;
+    }
+    .sol-list { display: flex; flex-direction: column; gap: 24px; }
+    .sol-item { display: flex; gap: 18px; align-items: flex-start; }
+    .sol-num {
+      font-family: var(--head); font-size: 0.75rem; font-weight: 700;
+      color: var(--accent); background: rgba(255,216,135,0.12);
+      border: 1px solid rgba(255,216,135,0.25);
+      border-radius: 6px; padding: 5px 9px; flex-shrink: 0; margin-top: 2px;
+    }
+    .sol-item h3 { margin-bottom: 6px; }
+    @media (max-width: 768px) {
+      .sol-grid { grid-template-columns: 1fr; }
+      .sol-visual { display: block; height: 280px; min-height: unset; }
+    }
+
+    /* MARQUEE */
+    .marquee-wrap { width: 100%; height: 100%; position: absolute; inset: 0; overflow: hidden; border-radius: var(--rl); display: flex; flex-direction: column; gap: 4px; justify-content: space-between; padding: 0; }
+    .marquee-track { display: flex; gap: 4px; width: max-content; }
+    .marquee-track-1 { animation: marquee-left 60s linear infinite; }
+    .marquee-track-2 { animation: marquee-right 70s linear infinite; }
+    .marquee-track-3 { animation: marquee-left 65s linear infinite; }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    .marquee-img { height: 210px; width: auto; border-radius: 8px; object-fit: cover; flex-shrink: 0; display: block; }
+    @media (max-width: 860px) { .marquee-img { height: 88px; } }
+    @keyframes marquee-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+    /* RESULTS */
+    .res-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 44px; }
+    .res-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px 24px; text-align: center;
+    }
+    .res-card .num { font-family: var(--head); font-size: 2.8rem; font-weight: 800; color: #b8860b; line-height: 1; margin-bottom: 8px; }
+    .res-card .lbl { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+    .res-card .sub { font-size: 0.78rem; color: var(--dim); }
+    @media (max-width: 700px) { .res-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) and (min-width: 480px) { .res-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* TESTIMONIALS */
+    .tgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 44px; }
+    .tcard { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 26px; }
+    .tq { font-size: 2rem; line-height: 1; color: var(--accent); font-family: Georgia, serif; margin-bottom: 10px; }
+    .ttxt { font-size: 0.89rem; color: var(--muted); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .tau { display: flex; align-items: center; gap: 12px; }
+    .tav {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,216,135,0.15); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--head); font-weight: 700; font-size: 0.78rem; color: var(--accent);
+    }
+    .tlogo {
+      height: 40px; width: auto; max-width: 120px; flex-shrink: 0;
+      background: #fff; border: 1px solid var(--border); border-radius: 8px;
+      padding: 6px 10px; object-fit: contain; box-sizing: border-box;
+    }
+    .tau strong { display: block; font-size: 0.85rem; color: var(--text); }
+    .tau span { font-size: 0.77rem; color: var(--dim); }
+    .tcard .stars-row { margin-bottom: 12px; }
+    .tdivider { border: 0; border-top: 1px solid var(--border); margin: 18px 0; }
+    .tcard-cta {
+      background: var(--dark); border-color: var(--dark);
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .tcard-cta::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,216,135,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tcard-cta .tcc-badge {
+      font-family: var(--head); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.12em; color: #010306; background: var(--accent);
+      border-radius: 100px; padding: 6px 14px; align-self: center; margin-bottom: 16px;
+      position: relative;
+    }
+    .tcard-cta h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; position: relative; }
+    .tcard-cta p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.65; margin: 0 0 20px; position: relative; }
+    .tcard-cta .btn { position: relative; align-self: center; }
+    @media (max-width: 900px) { .tgrid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .tgrid { grid-template-columns: 1fr; } }
+
+    /* ICON FEATURES */
+    .feat-block { background: var(--dark); padding: 80px 0; }
+    .feat-intro { max-width: 620px; margin: 0 auto 56px; text-align: center; }
+    .feat-intro h2 { color: #fff; margin-bottom: 18px; }
+    .feat-intro p { color: rgba(255,255,255,0.6); font-size: 0.97rem; line-height: 1.75; }
+    .feat-list { display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 480px; margin: 0 auto; }
+    .feat-item { text-align: center; padding: 0 16px; }
+    .feat-icon {
+      width: 80px; height: 80px; margin: 0 auto 20px;
+      border: 2px solid rgba(255,255,255,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .feat-icon svg { width: 36px; height: 36px; stroke: #fff; fill: none; }
+    .feat-item h3 { color: #fff; font-size: 1.1rem; margin-bottom: 12px; }
+    .feat-item p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.75; }
+    .feat-divider { width: 1px; height: 48px; background: rgba(255,255,255,0.15); margin: 8px auto; }
+    .feat-cta { text-align: center; margin-top: 52px; }
+
+    .feat-arrow { display: none; }
+    @media (min-width: 861px) {
+      .feat-list { max-width: 100%; gap: 8px; align-items: flex-start; }
+      .feat-divider { display: none; }
+      .feat-arrow {
+        display: flex; width: 100%; height: 48px;
+        color: rgba(255,255,255,0.3); position: relative;
+      }
+      .feat-arrow svg { position: absolute; }
+      .feat-arrow-right svg { left: 44%; top: 0; }
+      .feat-arrow-left  svg { right: 44%; top: 0; }
+      .feat-item {
+        display: flex; flex-direction: row; gap: 24px;
+        align-items: flex-start; text-align: left; padding: 28px 32px;
+        background: rgba(255,255,255,0.04); border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.08);
+        width: 48%; box-sizing: border-box; transition: background 0.2s;
+      }
+      .feat-item:hover { background: rgba(255,255,255,0.07); }
+      .feat-left  { margin-left: 0; margin-right: auto; }
+      .feat-right { margin-left: auto; margin-right: 0; }
+      .feat-icon { margin: 0; flex-shrink: 0; }
+      .feat-item-txt { min-width: 0; flex: 1; }
+      .feat-item h3 { margin-bottom: 6px; }
+    }
+
+    /* CASE STUDIES */
+    .cs-list { display: flex; flex-direction: column; gap: 56px; margin-top: 56px; }
+    .cs-item { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .cs-item:nth-child(even) { direction: rtl; }
+    .cs-item:nth-child(even) > * { direction: ltr; }
+    .cs-vid {
+      width: 100%; aspect-ratio: 16/9; border-radius: 14px;
+      background: #0a0e18; position: relative; cursor: pointer;
+      overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    }
+    .cs-vid img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px; }
+    .cs-vid .vid-play { width: 60px; height: 60px; box-shadow: 0 0 0 14px rgba(255,216,135,0.15); }
+    .cs-vid .vid-play svg { width: 24px; height: 24px; }
+    .cs-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 20px; display: block; }
+    .cs-logo-ph { height: 36px; width: 120px; background: var(--border); border-radius: 6px; margin-bottom: 20px; }
+    .cs-txt { display: flex; flex-direction: column; gap: 0; }
+    .cs-block { margin-bottom: 18px; }
+    .cs-block-label { font-family: var(--head); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 4px; }
+    .cs-block p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin: 0; }
+    .csx-points { list-style: none; margin: 0 0 22px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .csx-points li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.98rem; color: var(--muted); line-height: 1.45; }
+    .csx-points li svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--accent-d); margin-top: 1px; }
+    .csx-points li strong { color: var(--text); font-weight: 700; }
+    .cs-result { font-family: var(--head); font-size: 2rem; font-weight: 800; color: #b8860b; line-height: 1; margin-bottom: 4px; }
+    .cs-result-sub { font-size: 0.82rem; color: var(--muted); }
+    @media (max-width: 860px) {
+      .cs-item { grid-template-columns: 1fr; gap: 24px; direction: ltr; }
+      .cs-item:nth-child(even) { direction: ltr; }
+    }
+
+    /* SLIDER SECTION */
+    .slider-sec { padding: 80px 0; background: var(--bg); overflow: hidden; }
+    .slider-head { max-width: 560px; margin-bottom: 40px; }
+    .slider-head .slabel { color: var(--accent); }
+    .slider-head h2 { margin-bottom: 14px; }
+    .slider-head p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+    @media (min-width: 861px) {
+      .slider-head { max-width: 100%; text-align: center; }
+      .slider-head h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+      .slider-head p { font-size: 1.1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+      .slider-head .slabel { font-size: 0.9rem; }
+    }
+    .slider-track-wrap { overflow: hidden; margin: 0 -24px; padding: 0 48px; cursor: grab; user-select: none; }
+    .slider-track-wrap:active { cursor: grabbing; }
+    .slider-track {
+      display: flex; gap: 16px;
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      will-change: transform;
+    }
+    .slide-card {
+      flex-shrink: 0;
+      width: 280px; height: 340px;
+      border-radius: 16px; overflow: hidden;
+      position: relative; background: #1a1a2e;
+    }
+    @media (min-width: 600px) { .slide-card { width: 320px; height: 380px; } }
+    .slide-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .slide-card-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(1,3,6,0.92) 0%, rgba(1,3,6,0.45) 50%, rgba(1,3,6,0.1) 100%);
+    }
+    .slide-card-txt {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 22px; z-index: 1;
+    }
+    .slide-card-txt h3 { color: #fff; font-size: 1rem; margin-bottom: 8px; }
+    .slide-card-txt p { color: rgba(255,255,255,0.75); font-size: 0.82rem; line-height: 1.6; margin: 0; }
+    .slider-dots { display: flex; gap: 7px; margin-top: 24px; align-items: center; }
+    .slider-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; padding: 0; transition: background 0.2s, width 0.2s; }
+    .slider-dot.active { background: var(--accent); width: 20px; border-radius: 4px; }
+    .slider-nav { display: flex; gap: 10px; margin-top: 24px; }
+    .slider-btn {
+      width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; color: var(--text);
+    }
+    .slider-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .slider-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; flex-wrap: wrap; gap: 12px; }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 52px; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 35px; left: 18%; right: 18%; height: 2px; background: linear-gradient(90deg, var(--accent), rgba(255,216,135,0.1)); }
+    .step { text-align: center; position: relative; }
+    .step-num {
+      width: 70px; height: 70px; margin: 0 auto 22px;
+      background: var(--card); border: 3px solid var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--head); font-weight: 700; font-size: 1.3rem; color: var(--accent);
+      position: relative; z-index: 1;
+    }
+    .step h3 { margin-bottom: 12px; font-size: 1.3rem; }
+    .step p { font-size: 1.02rem; line-height: 1.7; max-width: 340px; margin-left: auto; margin-right: auto; }
+    @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } .steps::before { display: none; } }
+
+    /* VERTICAL PROCESS */
+    .vproc { max-width: 520px; display: flex; flex-direction: column; gap: 24px; }
+    .vp-item {
+      position: relative; border-radius: 18px; overflow: hidden;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .vp-item:hover { transform: translateY(-6px); border-color: rgba(255,216,135,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+    .vp-imgwrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+    .vp-img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.6s ease;
+    }
+    .vp-item:hover .vp-img { transform: scale(1.06); }
+    .vp-imgwrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,3,6,0.95) 0%, rgba(1,3,6,0.25) 55%, rgba(1,3,6,0) 100%); }
+    .vp-num {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      font-family: var(--head); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.12em; color: #010306;
+      background: var(--accent); border-radius: 100px; padding: 7px 14px;
+    }
+    .vp-body { padding: 22px 24px 26px; }
+    .vp-title { color: #fff; font-size: 1.15rem; margin-bottom: 10px; }
+    .vp-txt { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.75; margin: 0; }
+    @media (min-width: 861px) {
+      .prozess-head { max-width: 100%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 56px; }
+      .vproc { max-width: 100%; flex-direction: row; gap: 28px; align-items: stretch; }
+      .vp-item { flex: 1; display: flex; flex-direction: column; }
+      .vp-body { flex: 1; padding: 26px 28px 30px; }
+      .prozess-cta { text-align: center; }
+      .vp-num { font-size: 0.78rem; }
+      .vp-title { font-size: 1.4rem; }
+      .vp-txt { font-size: 1.02rem; }
+    }
+
+    /* VIDEO GALLERY */
+    .vgal-sec { background: #010306; padding: 80px 0; }
+    .vgal-sec h2 { color: #fff; text-align: center; margin-bottom: 10px; }
+    .vgal-sec h2 span { text-decoration: underline; text-underline-offset: 4px; }
+    .vgal-sub { text-align: center; font-style: italic; color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 44px; }
+    .vgal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 700px) { .vgal-grid { grid-template-columns: 1fr; gap: 16px; } }
+    @media (min-width: 701px) and (max-width: 960px) { .vgal-grid { grid-template-columns: repeat(2, 1fr); } }
+    .vgal-card { cursor: pointer; }
+    .vgal-thumb {
+      width: 100%; aspect-ratio: 16/9; border-radius: 12px;
+      overflow: hidden; position: relative; background: #0a0e18;
+    }
+    .vgal-thumb .wistia_embed { width: 100%; height: 100%; }
+    .vgal-label { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 600; margin-top: 10px; text-align: center; }
+    .vgal-cta { text-align: center; margin-top: 44px; padding: 0 24px; }
+    .vgal-cta .btn { white-space: normal; max-width: 100%; }
+
+    /* ABOUT TEAM */
+    .about-dark {
+      position: relative; overflow: hidden;
+      background: #010306; padding: 80px 0;
+    }
+    .about-dark-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/about-bg.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.16;
+    }
+    .about-dark::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1,3,6,0.65) 0%, rgba(1,3,6,0.85) 100%); z-index: 0; }
+    .about-dark-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .about-dark-inner h2 { color: #fff; margin-bottom: 20px; }
+    .about-dark-inner > p { color: #fff; font-size: 0.97rem; line-height: 1.8; margin-bottom: 44px; }
+    .about-dark-intro { margin-bottom: 48px; text-align: center; }
+    .about-dark p { color: #fff; }
+    .about-dark-team { display: flex; flex-direction: column; gap: 24px; }
+    .team-person {
+      background: rgba(20,24,32,0.82);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px; padding: 34px 28px; text-align: center;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .team-person img {
+      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--accent); margin: 0 auto 20px; display: block;
+    }
+    .team-person h3 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
+    .team-role { font-size: 0.85rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px; }
+    .team-person p { color: rgba(255,255,255,0.8) !important; font-size: 0.95rem; line-height: 1.75; }
+    @media (min-width: 861px) {
+      .about-dark { padding: 100px 0; }
+      .about-dark-inner { max-width: 1100px; text-align: center; }
+      .about-dark-intro { margin-bottom: 64px; }
+      .about-dark-intro h2 { font-size: clamp(2rem, 3vw, 2.8rem); color: #fff; }
+      .about-dark-intro > p { font-size: 1.12rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
+      .about-dark-team { flex-direction: row; gap: 28px; justify-content: center; align-items: stretch; }
+      .team-person { flex: 1; max-width: 350px; padding: 38px 30px; }
+      .team-person img { width: 140px; height: 140px; }
+      .team-person h3 { font-size: 1.4rem; }
+      .team-role { font-size: 0.98rem; }
+      .team-person p { font-size: 1.02rem; }
+    }
+
+    /* STANDORT */
+    .standort-sec { padding: 80px 0; background: var(--bg); }
+    .standort-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 0; }
+    .standort-txt h2 { margin-bottom: 18px; }
+    .standort-txt p { color: var(--muted); font-size: 0.97rem; line-height: 1.8; }
+    .standort-city-img { display: block; width: 100%; margin: 8px 0 24px; border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; }
+    .standort-city-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (min-width: 861px) {
+      .standort-sec { padding: 100px 0; }
+      .standort-grid { display: block; }
+      .standort-txt { max-width: 760px; margin: 0 auto; text-align: center; }
+      .standort-txt .slabel { text-align: center; }
+      .standort-txt h2 { font-size: clamp(2.2rem, 3.5vw, 3.2rem); }
+      .standort-txt p { font-size: 1.15rem; line-height: 1.85; }
+      .standort-city-img { display: block; width: 100%; max-width: 760px; margin: 20px auto 32px; border-radius: 16px; overflow: hidden; aspect-ratio: 16/7; }
+      .standort-city-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    }
+    .standort-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+    .standort-img { border-radius: 12px; overflow: hidden; aspect-ratio: 3/4; }
+    .standort-img:first-child { margin-top: 32px; }
+    .standort-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 768px) {
+      .standort-grid { grid-template-columns: 1fr; gap: 32px; }
+      .standort-imgs { grid-template-columns: 1fr 1fr; margin-top: 0; }
+      .standort-img:first-child { margin-top: 0; }
+    }
+
+    /* INDUSTRIES */
+    .ind-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 44px; }
+    .ind-card {
+      position: relative; overflow: hidden;
+      border: 1px solid var(--border); border-radius: var(--r);
+      aspect-ratio: 4/3; transition: all 0.25s; cursor: default;
+    }
+    .ind-card .ind-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .ind-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,3,6,0.88) 0%, rgba(1,3,6,0.35) 55%, rgba(1,3,6,0.15) 100%); }
+    .ind-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
+    .ind-card:hover .ind-img { transform: scale(1.07); }
+    .ind-card h3 { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; margin: 0; padding: 14px 12px; color: #fff; font-size: 0.9rem; line-height: 1.25; text-align: center; }
+    @media (max-width: 768px) { .ind-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* FAQ */
+    .faq-list { margin-top: 44px; display: flex; flex-direction: column; gap: 10px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; padding: 18px 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--body); font-weight: 600; font-size: 0.95rem; color: var(--text);
+    }
+    .faq-q svg { flex-shrink: 0; transition: transform 0.3s; color: var(--accent); }
+    .faq-item.open .faq-q svg { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 22px 18px; font-size: 0.89rem; color: var(--muted); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+
+    @media (min-width: 861px) {
+      #faq .slabel { font-size: 0.98rem; }
+      #faq h2 { font-size: clamp(2.2rem, 3.5vw, 3.2rem); }
+      .faq-list { max-width: 860px; }
+      .faq-q { font-size: 1.15rem; padding: 22px 28px; }
+      .faq-a { font-size: 1.05rem; padding: 0 28px 22px; line-height: 1.8; }
+    }
+
+    /* CTA SECTION */
+    .cta-sec {
+      background: var(--dark); color: #fff; text-align: center; padding: 100px 0;
+      position: relative; overflow: hidden;
+    }
+    .cta-sec::before {
+      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,216,135,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-sec h2 { color: #fff; margin-bottom: 18px; position: relative; }
+    .cta-sec .cta-lead { color: rgba(255,255,255,0.62); max-width: 560px; margin: 0 auto 32px; font-size: 1.05rem; line-height: 1.7; position: relative; }
+    .cta-sec .btn-lg { position: relative; white-space: normal; text-align: center; max-width: 100%; }
+    .cta-trust { position: relative; display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; margin: 22px auto 0; }
+    .cta-trust span { display: inline-flex; align-items: center; gap: 7px; font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+    .cta-trust svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; }
+    .cta-ps {
+      position: relative; max-width: 600px; margin: 40px auto 0;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 20px 26px;
+      font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7); text-align: left;
+    }
+    .cta-ps strong { color: var(--accent); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-vis {
+      background: var(--dark); border-radius: var(--rl);
+      aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; position: relative; overflow: hidden;
+    }
+    .about-vis::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,216,135,0.12) 0%, transparent 60%); }
+    .about-txt h2 { margin-bottom: 18px; }
+    .about-txt p { margin-bottom: 14px; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .about-tag { background: rgba(255,216,135,0.12); border: 1px solid rgba(255,216,135,0.25); border-radius: 100px; padding: 5px 13px; font-size: 0.8rem; font-weight: 600; color: var(--dark); }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } .about-vis { display: none; } }
+
+    /* INLINE QUOTE */
+    .iq {
+      border-left: 4px solid var(--accent);
+      background: rgba(255,216,135,0.08);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 18px 22px; margin: 28px 0;
+      font-style: italic; font-size: 0.95rem; color: var(--text);
+    }
+    .iq cite { display: block; margin-top: 8px; font-style: normal; font-size: 0.8rem; color: var(--dim); font-weight: 600; }
+
+    /* BAFA BADGE */
+    .bafa {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-g); border: 1px solid rgba(22,163,74,0.2);
+      border-radius: 100px; padding: 7px 16px;
+      font-size: 0.8rem; font-weight: 600; color: var(--green);
+    }
+    .bafa::before { content: '✓'; font-weight: 700; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 60px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+    .flogo { font-family: var(--head); font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 14px; }
+    .flogo span { color: var(--accent); }
+    .fdesc { font-size: 0.85rem; line-height: 1.7; margin-bottom: 22px; color: rgba(255,255,255,0.6); }
+    .fcontact { display: flex; flex-direction: column; gap: 8px; }
+    .fcontact a { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .fcontact a:hover { color: var(--accent); }
+    .fcol h4 { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 16px; font-family: var(--head); }
+    .flinks { display: flex; flex-direction: column; gap: 8px; }
+    .flinks a { font-size: 0.82rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .flinks a:hover { color: var(--accent); }
+    .fbot { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 12px; }
+    .fbot p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .fbot div { display: flex; gap: 20px; }
+    .fbot a { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .fbot a:hover { color: var(--accent); }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } .flogo-wrap { display: flex; justify-content: center; } .flogo-wrap img { margin: 0 auto; } }
+
+    /* UTILS */
+    .tc { text-align: center; }
+    .mt4 { margin-top: 16px; }
+    .mt12 { margin-top: 48px; }
+
+    @media (max-width: 860px) { .hide-mob { display: none !important; } }
+
+    /* SCROLL REVEAL */
+    .r { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .r.v { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img class="nav-logo-white" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:32px;width:auto;">
+      <img class="nav-logo-dark" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x.png" alt="Mehrwertfilm" style="height:32px;width:auto;">
+    </a>
+    <div class="nav-links">
+      <a href="#fallstudien">Fallstudien</a>
+      <a href="#filme">Referenzfilme</a>
+      <a href="#stimmen">Kundenstimmen</a>
+      <a href="https://www.mehrwertfilm.de/industrie">Kundengewinnung</a>
+      <a href="#kontakt" class="nav-cta">Erstgespräch vereinbaren</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMob()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#fallstudien" onclick="closeMob()">Fallstudien</a>
+  <a href="#filme" onclick="closeMob()">Referenzfilme</a>
+  <a href="#stimmen" onclick="closeMob()">Kundenstimmen</a>
+  <a href="https://www.mehrwertfilm.de/industrie" onclick="closeMob()">Kundengewinnung</a>
+  <a href="#kontakt" onclick="closeMob()">Erstgespräch vereinbaren</a>
+</div>
+
+<style>
+  /* ═══ KUNDENGEWINNUNG-SPEZIFISCH ═══ */
+
+  /* Platzhalter-Markierung */
+  .ph-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--head); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #b45309; background: rgba(255,216,135,0.18);
+    border: 1px dashed #d97706; border-radius: 4px;
+    padding: 3px 8px; margin-bottom: 10px;
+  }
+  .ph-box {
+    border: 2px dashed rgba(217,119,6,0.4); border-radius: 14px;
+    background: rgba(255,216,135,0.06);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; text-align: center; padding: 24px; color: #b45309;
+    font-family: var(--head); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+  }
+
+  /* Sterne */
+  .stars-row { color: var(--accent); font-size: 1.05rem; letter-spacing: 3px; line-height: 1; margin-bottom: 12px; }
+
+  /* Problem-Cards: 2 Spalten Desktop, 1 Spalte Mobile */
+  .prob-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 540px) { .prob-grid-2 { grid-template-columns: 1fr; } }
+
+  /* Hero Presse-Strip */
+  .press-strip { margin-top: 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .press-strip-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .press-strip .ph-box { padding: 8px 18px; border-radius: 8px; font-size: 0.7rem; flex-direction: row; }
+
+  /* Value Prop Checkliste */
+  .check-list { display: flex; flex-direction: column; gap: 18px; margin: 32px 0; text-align: left; }
+  .check-item { display: flex; gap: 14px; align-items: flex-start; }
+  .check-item svg { flex-shrink: 0; width: 22px; height: 22px; color: var(--green); margin-top: 3px; }
+  .check-item p { font-size: 0.95rem; color: var(--text); line-height: 1.65; margin: 0; }
+  .check-item p strong { color: var(--dark); }
+  .proof-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; }
+
+  /* Clients / Karte */
+  .client-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; margin-top: 44px; }
+  @media (max-width: 860px) { .client-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .client-map { aspect-ratio: 4/3; }
+
+  /* Case Studies (Schwaben-Format) */
+  .csx { background: var(--card); border: 1px solid var(--border); border-radius: var(--rl); padding: clamp(28px, 4vw, 48px); margin-top: 28px; }
+  .csx-header { text-align: center; max-width: 720px; margin: 0 auto 32px; display: flex; flex-direction: column; align-items: center; }
+  .csx-logo { height: 44px; width: auto; max-width: 190px; object-fit: contain; margin-bottom: 18px; display: block; }
+  .csx-head { font-family: var(--head); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+  .csx-result { font-family: var(--head); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--accent-d); line-height: 1.12; margin-bottom: 16px; }
+  .csx-meta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 0; }
+  .csx-meta span { font-size: 0.75rem; font-weight: 600; color: var(--muted); background: var(--bg2); border: 1px solid var(--border); border-radius: 100px; padding: 5px 13px; }
+  .csx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+  @media (max-width: 860px) { .csx-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .csx-quote { background: var(--bg2); border-left: 4px solid var(--accent); border-radius: 0 var(--r) var(--r) 0; padding: 20px 22px; margin-top: 20px; }
+  .csx-quote p { font-style: italic; font-size: 0.92rem; color: var(--text); margin: 0 0 14px; }
+  .csx-person { display: flex; align-items: center; gap: 12px; }
+  .csx-person .tav { width: 44px; height: 44px; font-size: 0.85rem; }
+  .csx-person strong { display: block; font-size: 0.88rem; color: var(--text); }
+  .csx-person span { font-size: 0.78rem; color: var(--dim); }
+
+  /* 4 Hebel Zeilen */
+  .lever-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 48px; }
+  @media (min-width: 700px) { .lever-grid { grid-template-columns: 1fr 1fr; gap: 22px; } }
+  @media (min-width: 960px) { .lever-grid { grid-template-columns: repeat(3, 1fr); } }
+  .lever-card {
+    position: relative; overflow: hidden;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px; padding: 30px 28px;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .lever-card:hover { transform: translateY(-6px); border-color: rgba(255,216,135,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+  .lever-card::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(255,216,135,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lever-top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; position: relative; }
+  .lever-ico {
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    background: rgba(255,216,135,0.15); border: 1px solid rgba(255,216,135,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lever-ico svg { width: 26px; height: 26px; color: var(--accent); }
+  .lever-stat { font-family: var(--head); font-size: 1.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .lever-stat span { display: block; font-family: var(--body); font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 5px; }
+  .lever-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 9px; position: relative; }
+  .lever-card p { color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.65; margin: 0; position: relative; }
+
+  /* Rechner Teaser */
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+  /* Presse Karten */
+  .press-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 44px; }
+  @media (max-width: 980px) { .press-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .press-grid { grid-template-columns: 1fr; } }
+  .press-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .press-card .plogo { height: 30px; display: flex; align-items: center; }
+  .press-card h3 { font-size: 0.92rem; line-height: 1.45; flex: 1; }
+  .press-card a { font-size: 0.82rem; font-weight: 700; color: var(--accent-d); }
+
+  /* Kontakt */
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; text-align: center; transition: all 0.2s; }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(255,216,135,0.12); }
+  .contact-card svg { width: 28px; height: 28px; color: var(--accent-d); margin: 0 auto 14px; display: block; }
+  .contact-card .clbl { font-family: var(--head); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 6px; }
+  .contact-card a, .contact-card .cval { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+  .contact-card a:hover { color: var(--accent-d); }
+
+  /* Gründer */
+  .founder-grid { display: flex; flex-direction: row; gap: 60px; justify-content: center; align-items: flex-start; }
+  @media (max-width: 768px) { .founder-grid { flex-direction: column; gap: 36px; align-items: center; } }
+  .founder { flex: 1; max-width: 360px; text-align: center; }
+  .founder img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,216,135,0.3); margin: 0 auto 18px; display: block; }
+  .founder h3 { color: #fff; font-size: 1.25rem; margin-bottom: 4px; }
+  .founder .frole { font-size: 0.88rem; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 12px; }
+  .founder p { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.75; }
+  .founder-social { display: flex; justify-content: center; gap: 12px; margin-top: 14px; }
+  .founder-social a { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all 0.2s; }
+  .founder-social a:hover { border-color: var(--accent); color: var(--accent); }
+  .founder-social svg { width: 15px; height: 15px; }
+
+  /* Footer Social */
+  .fsocial { display: flex; gap: 10px; margin-top: 16px; }
+  .fsocial a { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.55); transition: all 0.2s; }
+  .fsocial a:hover { border-color: var(--accent); color: var(--accent); }
+  .fsocial svg { width: 14px; height: 14px; }
+
+  /* ── WAS IST EIN MEHRWERTFILM ── */
+  .mwf-sec { position: relative; overflow: hidden; background: var(--dark); padding: 84px 0; }
+  .mwf-sec::before {
+    content: ''; position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,216,135,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .mwf-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; text-align: center; }
+  .mwf-sec .slabel { color: var(--accent); justify-content: center; }
+  .mwf-sec .slabel::before { background: var(--accent); }
+  .mwf-lead { color: #fff; font-family: var(--head); font-weight: 700; line-height: 1.3; font-size: clamp(1.3rem, 3vw, 2rem); margin: 14px auto 0; max-width: 820px; }
+  .mwf-lead span { color: var(--accent); }
+  .mwf-sub { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 18px auto 0; }
+  .mwf-flow { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 48px; align-items: stretch; }
+  @media (min-width: 760px) { .mwf-flow { grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; } }
+  .mwf-step {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px; padding: 30px 24px; text-align: center;
+    transition: transform 0.35s ease, border-color 0.35s ease;
+  }
+  .mwf-step:hover { transform: translateY(-5px); border-color: rgba(255,216,135,0.4); }
+  .mwf-ico { width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 16px; background: rgba(255,216,135,0.15); border: 1px solid rgba(255,216,135,0.3); display: flex; align-items: center; justify-content: center; }
+  .mwf-ico svg { width: 30px; height: 30px; color: var(--accent); }
+  .mwf-num { font-family: var(--head); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
+  .mwf-step h3 { color: #fff; font-size: clamp(1.05rem, 2.3vw, 1.2rem); margin-bottom: 8px; }
+  .mwf-step p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+  .mwf-arrow { display: flex; align-items: center; justify-content: center; color: rgba(255,216,135,0.5); padding: 6px 14px; }
+  .mwf-arrow svg { width: 26px; height: 26px; }
+  @media (max-width: 759px) { .mwf-arrow { transform: rotate(90deg); padding: 0; } }
+  .mwf-cta { margin-top: 44px; }
+
+  /* ── FUNNEL MODAL ── */
+  .fnl-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(1,3,6,0.78);
+    display: none; align-items: flex-start; justify-content: center;
+    overflow-y: auto; padding: 5vh 16px 40px;
+  }
+  .fnl-overlay.open { display: flex; }
+  .fnl-modal {
+    background: #fff; border-radius: 16px;
+    max-width: 620px; width: 100%;
+    padding: 36px 32px 32px; position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+  }
+  .fnl-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none; font-size: 1.8rem; line-height: 1;
+    cursor: pointer; color: var(--dim); padding: 4px;
+  }
+  .fnl-close:hover { color: var(--dark); }
+  .fnl-progress { height: 6px; background: #ececec; border-radius: 3px; margin-bottom: 26px; overflow: hidden; }
+  .fnl-progress-bar { height: 100%; background: var(--accent); width: 20%; transition: width 0.35s; }
+  .fnl-step { display: none; }
+  .fnl-step.active { display: block; }
+  .fnl-step h3 { font-size: 1.35rem; margin-bottom: 14px; text-align: center; }
+  .fnl-step > p { text-align: center; font-size: 0.95rem; margin-bottom: 8px; }
+  .fnl-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 18px; border: 3px solid var(--accent); }
+  .fnl-options { display: flex; flex-direction: column; gap: 10px; margin: 22px 0 4px; }
+  .fnl-opt {
+    border: 2px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; cursor: pointer; font-weight: 600;
+    text-align: center; transition: all 0.15s; color: var(--text);
+  }
+  .fnl-opt:hover { border-color: var(--accent); }
+  .fnl-opt.sel { border-color: var(--accent); background: rgba(255,216,135,0.18); }
+  .fnl-fields { display: flex; flex-direction: column; gap: 12px; margin: 22px 0 4px; }
+  .fnl-fields input {
+    padding: 14px; border: 1px solid var(--border); border-radius: 8px;
+    font-family: var(--body); font-size: 0.95rem; width: 100%;
+  }
+  .fnl-fields input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .fnl-err { color: #d33; font-size: 0.85rem; text-align: center; margin-top: 10px; display: none; }
+  .fnl-err.show { display: block; }
+  .fnl-next { display: flex; width: 100%; justify-content: center; margin-top: 18px; }
+  .fnl-cal { width: 100%; height: 660px; border: none; border-radius: 10px; margin-top: 10px; }
+  @media (max-width: 640px) {
+    .fnl-overlay { padding: 0; }
+    .fnl-modal { border-radius: 0; min-height: 100vh; padding: 28px 20px; }
+    .fnl-cal { height: 70vh; }
+  }
+</style>
+<!-- ══════════ REFERENZEN: EIGENE STYLES ══════════ -->
+<style>
+  /* HERO */
+  .rf-hero {
+    background: #010306;
+    padding: 140px 0 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rf-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,216,135,0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .rf-hero-inner { position: relative; z-index: 1; text-align: center; max-width: 900px; margin: 0 auto; }
+  .rf-hero h1 {
+    font-family: var(--head);
+    font-size: clamp(1.5rem, 4.6vw, 3.1rem);
+    font-weight: 700; color: #fff; line-height: 1.14;
+    margin-bottom: 20px;
+  }
+  .rf-hero h1 span { color: var(--accent); }
+  .rf-hero p {
+    color: rgba(255,255,255,0.62);
+    font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+    max-width: 640px; margin: 0 auto 34px;
+  }
+  .rf-hero .slabel { justify-content: center; color: var(--accent); }
+  .rf-hero .slabel::before { background: var(--accent); }
+
+  /* STAT-BAR */
+  .rf-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 18px; max-width: 940px; margin: 44px auto 0;
+  }
+  @media (max-width: 760px) { .rf-stats { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+  .rf-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: var(--r);
+    padding: 20px 14px; text-align: center;
+  }
+  .rf-stat b {
+    display: block; font-family: var(--head);
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    font-weight: 800; color: var(--accent); line-height: 1.1;
+  }
+  .rf-stat span {
+    display: block; margin-top: 5px;
+    font-size: 0.76rem; font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.02em;
+  }
+
+  /* LOGO-BAND */
+  .rf-logoband { background: var(--bg2); padding: 46px 0; border-bottom: 1px solid var(--border); }
+  .rf-logoband-label {
+    text-align: center; font-size: 0.74rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 28px;
+  }
+  .rf-logogrid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 26px 20px; align-items: center; justify-items: center;
+    max-width: 1000px; margin: 0 auto;
+  }
+  @media (max-width: 960px) { .rf-logogrid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 560px) { .rf-logogrid { grid-template-columns: repeat(3, 1fr); gap: 22px 14px; } }
+  .rf-logogrid img {
+    max-height: 46px; max-width: 100%; width: auto;
+    object-fit: contain; opacity: 0.62;
+    filter: grayscale(100%);
+    transition: opacity 0.25s, filter 0.25s;
+  }
+  .rf-logogrid img:hover { opacity: 1; filter: grayscale(0%); }
+  .rf-logogrid img[alt="3axis Group"],
+  .rf-logogrid img[alt="Hausmann & Haensgen"],
+  .rf-logogrid img[alt="AS Equipment"],
+  .rf-logogrid img[alt="Marschall"] { max-height: 58px; }
+
+  /* SECTION-KOPF */
+  .rf-shead { text-align: center; max-width: 660px; margin: 0 auto 46px; }
+  .rf-shead .slabel { justify-content: center; }
+  .rf-shead p { margin-top: 12px; }
+
+  /* CASE STUDIES: Karten-Look */
+  .rf-case {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--rl);
+    padding: 32px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .rf-case:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.07); transform: translateY(-3px); }
+  @media (max-width: 700px) { .rf-case { padding: 22px 18px; } }
+
+  .rf-case-top { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .rf-case-logo { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
+  .rf-case-logo.big { height: 54px; max-width: 190px; }
+  .rf-case-badge {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--dark);
+    background: var(--accent); border-radius: 100px; padding: 5px 13px;
+  }
+  .rf-case-result {
+    font-family: var(--head);
+    font-size: clamp(1.35rem, 2.9vw, 2rem);
+    font-weight: 800; color: var(--text);
+    line-height: 1.15; margin-bottom: 8px;
+  }
+  .rf-case-result em { font-style: normal; color: var(--accent-d); }
+  .rf-case-sub { font-size: 0.92rem; color: var(--dim); margin-bottom: 24px; }
+
+  .rf-case-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 34px; align-items: center; }
+  @media (max-width: 860px) { .rf-case-grid { grid-template-columns: 1fr; gap: 22px; } }
+  .rf-case-grid > * { min-width: 0; }
+
+  .rf-vid {
+    position: relative; width: 100%; aspect-ratio: 16/9;
+    border-radius: 14px; overflow: hidden !important;
+    background: #000;
+  }
+  .rf-vid * { max-width: 100% !important; }
+  .rf-vid .wistia_embed, .rf-vid iframe { width: 100%; height: 100%; }
+
+  .rf-points { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .rf-points li { display: flex; gap: 11px; align-items: flex-start; font-size: 0.95rem; color: var(--muted); line-height: 1.45; }
+  .rf-points li svg { width: 21px; height: 21px; flex-shrink: 0; color: var(--accent-d); margin-top: 1px; }
+  .rf-points li strong { color: var(--text); font-weight: 700; }
+  .rf-points li span { overflow-wrap: anywhere; }
+
+  .rf-quote {
+    background: var(--bg2);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--r) var(--r) 0;
+    padding: 18px 20px;
+  }
+  .rf-quote p { font-style: italic; font-size: 0.93rem; color: var(--text); margin: 0 0 12px; }
+  .rf-quote strong { display: block; font-size: 0.88rem; color: var(--text); }
+  .rf-quote span { font-size: 0.78rem; color: var(--dim); }
+  .rf-stars { color: var(--accent-d); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 8px; }
+
+  /* MID-CTA (Band) */
+  .rf-midcta {
+    background: #010306; border-radius: var(--rl);
+    padding: 44px 32px; text-align: center;
+    margin: 12px 0 0;
+    position: relative; overflow: hidden;
+  }
+  .rf-midcta::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,216,135,0.13), transparent 65%);
+    pointer-events: none;
+  }
+  .rf-midcta > * { position: relative; z-index: 1; }
+  .rf-midcta h3 {
+    font-size: clamp(1.2rem, 2.6vw, 1.7rem); color: #fff;
+    font-weight: 700; margin-bottom: 10px; line-height: 1.25;
+  }
+  .rf-midcta h3 span { color: var(--accent); }
+  .rf-midcta p { color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 24px; font-size: 0.95rem; }
+
+  /* VIDEO-GALERIE */
+  .rf-gal { background: #010306; padding: 84px 0; }
+  .rf-gal h2 { color: #fff; text-align: center; margin-bottom: 10px; }
+  .rf-gal h2 span { color: var(--accent); }
+  .rf-gal .slabel { justify-content: center; color: var(--accent); }
+  .rf-gal .slabel::before { background: var(--accent); }
+  .rf-gal-sub { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.92rem; margin-bottom: 44px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .rf-gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 960px) { .rf-gal-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .rf-gal-grid { grid-template-columns: 1fr; gap: 16px; } }
+  .rf-gal-card { transition: transform 0.25s; }
+  .rf-gal-card:hover { transform: translateY(-4px); }
+  .rf-gal-thumb {
+    position: relative; width: 100%; aspect-ratio: 16/9;
+    border-radius: 12px; overflow: hidden !important;
+    background: #000; border: 1px solid rgba(255,255,255,0.08);
+  }
+  .rf-gal-thumb * { max-width: 100% !important; }
+  .rf-gal-thumb .wistia_embed { width: 100%; height: 100%; }
+  .rf-gal-label {
+    color: rgba(255,255,255,0.72); font-size: 0.84rem;
+    font-weight: 600; margin-top: 10px; text-align: center;
+  }
+
+  /* KUNDENSTIMMEN-GRID */
+  .rf-tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 940px) { .rf-tgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .rf-tgrid { grid-template-columns: 1fr; } }
+  .rf-tcard {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--rl); padding: 26px;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .rf-tcard:hover { box-shadow: 0 10px 34px rgba(0,0,0,0.07); transform: translateY(-3px); }
+  .rf-tcard .rf-ttxt { font-size: 0.95rem; color: var(--text); line-height: 1.6; margin: 10px 0 20px; flex-grow: 1; overflow-wrap: anywhere; }
+  .rf-tau { display: flex; align-items: center; gap: 13px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .rf-tlogo { height: 34px; width: auto; max-width: 92px; object-fit: contain; flex-shrink: 0; }
+  .rf-tau strong { display: block; font-size: 0.87rem; color: var(--text); }
+  .rf-tau span { font-size: 0.77rem; color: var(--dim); }
+
+  .rf-tcard-cta {
+    background: #010306; border-color: #010306;
+    align-items: flex-start; justify-content: center;
+  }
+  .rf-tcard-cta h3 { color: #fff; margin-bottom: 10px; font-size: 1.15rem; }
+  .rf-tcard-cta p { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 20px; }
+  .rf-tcc-badge {
+    display: inline-block; background: var(--accent); color: #010306;
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 100px;
+    padding: 5px 12px; margin-bottom: 14px;
+  }
+
+  /* FINAL CTA */
+  .rf-final {
+    background: #010306; padding: 92px 0;
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .rf-final::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255,216,135,0.12), transparent 62%);
+    pointer-events: none;
+  }
+  .rf-final-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .rf-final .slabel { justify-content: center; color: var(--accent); }
+  .rf-final .slabel::before { background: var(--accent); }
+  .rf-final h2 { color: #fff; margin-bottom: 16px; }
+  .rf-final h2 span { color: var(--accent); }
+  .rf-final p { color: rgba(255,255,255,0.6); margin-bottom: 30px; }
+  .rf-trust { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+  .rf-trust span {
+    font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 100px; padding: 7px 15px;
+  }
+</style>
+
+<!-- ═══ HERO ═══ -->
+<section class="rf-hero">
+  <div class="container">
+    <div class="rf-hero-inner">
+      <div class="slabel r">Referenzen &amp; Kundenstimmen</div>
+      <h1 class="r">Über 40 Industrieprojekte.<br>Echte Zahlen. <span>Echte Stimmen.</span></h1>
+      <p class="r">Geschäftsführer aus Maschinenbau, Fertigung und Handwerk über die Ergebnisse, die ihr Mehrwertfilm gebracht hat.</p>
+      <a href="#kontakt" class="btn btn-primary btn-lg r">Jetzt kostenfreies Erstgespräch anfragen</a>
+
+      <div class="rf-stats">
+        <div class="rf-stat r"><b>40+</b><span>Industrieprojekte</span></div>
+        <div class="rf-stat r" style="transition-delay:0.06s;"><b>400+</b><span>Geschäftsführer-Gespräche</span></div>
+        <div class="rf-stat r" style="transition-delay:0.12s;"><b>★ 5,0</b><span>Google Bewertungen</span></div>
+        <div class="rf-stat r" style="transition-delay:0.18s;"><b>DACH</b><span>Im gesamten Raum aktiv</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOGO-BAND ═══ -->
+<div class="rf-logoband">
+  <div class="container">
+    <div class="rf-logoband-label r">Vertrauen von führenden Unternehmen</div>
+    <div class="rf-logogrid r">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/marschall-pw-logo.png" alt="Marschall">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Logo_Dresselhaus_Trademark_HKS8.png" alt="Dresselhaus">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Hausmann-und-Haensgen-Logo-300x138.png" alt="Hausmann &amp; Haensgen">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/3-Axis.png" alt="3axis Group">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/AS-Equipment-Logo.png" alt="AS Equipment">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/neu-akt%20kuepper%20farbig%20eng%20rgb_ohne%20Hintergrund.png" alt="Artur Küpper">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/pgdigial-logo.png" alt="PG-Digital">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/LK-Logo.png" alt="LK-Recruiting">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/BeyondEye_Wortmarke.png" alt="BeyondEye">
+      <img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="SERR Haustechnik">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FALLSTUDIEN ═══ -->
+<section id="fallstudien">
+  <div class="container">
+    <div class="rf-shead r">
+      <div class="slabel">Fallstudien</div>
+      <h2>Ergebnisse aus über 40 Projekten im technischen Mittelstand</h2>
+      <p>Keine Versprechen, sondern dokumentierte Resultate. Hören Sie die Geschäftsführer selbst.</p>
+    </div>
+
+    <!-- Case 1: Marschall -->
+    <div class="rf-case r">
+      <div class="rf-case-top">
+        <img class="rf-case-logo big" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/marschall-pw-logo.png" alt="Marschall">
+        <span class="rf-case-badge">Kundengewinnung</span>
+      </div>
+      <div class="rf-case-result"><em>150+ B2B-Anfragen</em> in nur 2 Monaten</div>
+      <div class="rf-case-sub">Verpackung &amp; Etikettierung · Mittelständler mit klassischem Vertrieb über Messen und Außendienst</div>
+      <div class="rf-case-grid">
+        <div>
+          <div class="rf-vid">
+            <script src="https://fast.wistia.com/embed/medias/axo77xham9.jsonp" async></script>
+            <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+            <div class="wistia_embed wistia_async_axo77xham9 videoFoam=true stillUrl=https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/marschall-testimonial-thumb.jpg" style="width:100%;height:100%;"></div>
+          </div>
+        </div>
+        <div>
+          <ul class="rf-points">
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Über 150 B2B-Anfragen</strong> in nur 2 Monaten</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Neuer Akquisekanal</strong> neben Messen &amp; Außendienst</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Qualifizierter Leadpreis <strong>unter 10 €</strong></span></li>
+          </ul>
+          <div class="rf-quote">
+            <div class="rf-stars">★★★★★</div>
+            <p>"Wir haben über hundertfünfzig Anfragen gehabt. Den Erfolg hatte ich so nicht erwartet."</p>
+            <strong>Friedel Sellmann</strong>
+            <span>Geschäftsführer, Alfred MARSCHALL GmbH &amp; Co. KG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2: Gesau -->
+    <div class="rf-case r">
+      <div class="rf-case-top">
+        <img class="rf-case-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Gesau%20Logo-transparent.png" alt="Gesau Technology">
+        <span class="rf-case-badge">Kundengewinnung</span>
+      </div>
+      <div class="rf-case-result"><em>70+ qualifizierte Anfragen</em> in 4 Monaten</div>
+      <div class="rf-case-sub">Fräswerkzeuge · Technologieunternehmen ohne planbaren digitalen Akquisekanal</div>
+      <div class="rf-case-grid">
+        <div>
+          <div class="rf-vid">
+            <script src="https://fast.wistia.com/embed/medias/mgesb4sozd.jsonp" async></script>
+            <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+            <div class="wistia_embed wistia_async_mgesb4sozd videoFoam=true" style="width:100%;height:100%;"></div>
+          </div>
+        </div>
+        <div>
+          <ul class="rf-points">
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>70+ qualifizierte B2B-Anfragen</strong> in 4 Monaten</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Planbarer, digitaler Kanal</strong> statt nur Messen</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>2 bis 3 Interessenten</strong> pro Woche, ganz ohne Kaltakquise</span></li>
+          </ul>
+          <div class="rf-quote">
+            <div class="rf-stars">★★★★★</div>
+            <p>"Ich muss dem Kunden nichts mehr vorschlagen, sondern er kommt zu mir. Das ist der Game Changer bei der ganzen Thematik."</p>
+            <strong>Norman Hofmann</strong>
+            <span>Geschäftsführer, Gesau Technology GmbH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MID-CTA 1 -->
+    <div class="rf-midcta r">
+      <h3>Solche Zahlen möchten Sie auch <span>in Ihrem Vertrieb</span> sehen?</h3>
+      <p>Im kostenfreien Erstgespräch schauen wir konkret auf Ihre Branche und Ihr Anfragenpotenzial.</p>
+      <a href="#kontakt" class="btn btn-primary btn-lg">Jetzt Erstgespräch anfragen</a>
+    </div>
+  </div>
+</section>
+
+<section class="bg2">
+  <div class="container">
+    <!-- Case 3: SERR -->
+    <div class="rf-case r">
+      <div class="rf-case-top">
+        <img class="rf-case-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="SERR Haustechnik">
+        <span class="rf-case-badge">Mitarbeitergewinnung</span>
+      </div>
+      <div class="rf-case-result"><em>2 Einstellungen</em> in nur 5 Wochen</div>
+      <div class="rf-case-sub">Haustechnik (SHK) · Handwerksbetrieb mit Fachkräftemangel</div>
+      <div class="rf-case-grid">
+        <div>
+          <div class="rf-vid">
+            <script src="https://fast.wistia.com/embed/medias/kwt8i7s5hh.jsonp" async></script>
+            <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+            <div class="wistia_embed wistia_async_kwt8i7s5hh videoFoam=true stillUrl=https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/serr-testimonial-thumb.jpg" style="width:100%;height:100%;"></div>
+          </div>
+        </div>
+        <div>
+          <ul class="rf-points">
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>14 Bewerber</strong> in 5 Wochen</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>2 SHK-Fachkräfte</strong> eingestellt</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Planbare <strong>Bewerbungen statt Stellenanzeigen</strong></span></li>
+          </ul>
+          <div class="rf-quote">
+            <div class="rf-stars">★★★★★</div>
+            <p>"Das Geld habe ich hier wirklich gut investiert. Ich bin richtig happy, dass wir diesen Weg gegangen sind."</p>
+            <strong>Edgar Ser</strong>
+            <span>SERR Haustechnik</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 4: Küpper -->
+    <div class="rf-case r">
+      <div class="rf-case-top">
+        <img class="rf-case-logo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/neu-akt%20kuepper%20farbig%20eng%20rgb_ohne%20Hintergrund.png" alt="Artur Küpper">
+        <span class="rf-case-badge">Employer-Branding</span>
+      </div>
+      <div class="rf-case-result">Stärkeres <em>Employer-Branding</em> &amp; moderner Auftritt</div>
+      <div class="rf-case-sub">Wälzlager im Anlagen- und Sondermaschinenbau · Traditionsunternehmen mit Bedarf an moderner Außenwirkung</div>
+      <div class="rf-case-grid">
+        <div>
+          <div class="rf-vid">
+            <script src="https://fast.wistia.com/embed/medias/b5n4q8rzz8.jsonp" async></script>
+            <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+            <div class="wistia_embed wistia_async_b5n4q8rzz8 videoFoam=true" style="width:100%;height:100%;"></div>
+          </div>
+        </div>
+        <div>
+          <ul class="rf-points">
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Belegschaft <strong>stolz &amp; sichtbar gemacht</strong></span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Moderner Auftritt auf <strong>allen Kanälen</strong></span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Stärkere <strong>Arbeitgebermarke</strong></span></li>
+          </ul>
+          <div class="rf-quote">
+            <div class="rf-stars">★★★★★</div>
+            <p>"Alle waren begeistert und stolz darauf, dass ihre Arbeit gezeigt wird und sie so einen großen Mehrwert fürs Unternehmen geben konnten."</p>
+            <strong>Nils Küpper</strong>
+            <span>Artur Küpper GmbH &amp; Co. KG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 5: DMG MORI -->
+    <div class="rf-case r">
+      <div class="rf-case-top">
+        <span class="rf-case-badge">Maschinenbau</span>
+      </div>
+      <div class="rf-case-result">Höhere Marge &amp; <em>mehr Anfragen</em> durch einen Mehrwertfilm</div>
+      <div class="rf-case-sub">Maschinenreport in Kooperation mit einem Weltmarktführer im Maschinenbau · International</div>
+      <div class="rf-case-grid">
+        <div>
+          <div class="rf-vid">
+            <iframe src="https://www.youtube-nocookie.com/embed/iQJ70RQ4Ohk" title="Maschinenreport" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;display:block;border:0;"></iframe>
+          </div>
+        </div>
+        <div>
+          <ul class="rf-points">
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Komplexe Maschine als <strong>greifbarer Mehrwert</strong> erzählt</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Höhere Marge</strong> durch klare Wert-Argumentation</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Mehr qualifizierte Anfragen</strong> aus dem Zielmarkt</span></li>
+            <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Vom Reseller <strong>offiziell veröffentlicht</strong></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tc r" style="margin-top:38px;">
+      <a href="#kontakt" class="btn btn-primary btn-lg">Jetzt kostenfreies Erstgespräch anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEO-GALERIE ═══ -->
+<section class="rf-gal" id="filme">
+  <div class="container">
+    <div class="slabel r">Referenzfilme</div>
+    <h2 class="r">So könnte <span>IHR</span> Mehrwertfilm aussehen</h2>
+    <p class="rf-gal-sub r">Erfolgreiche Unternehmen liefern Mehrwert an ihre Kunden. Wir haben den passenden Film dazu.</p>
+    <div class="rf-gal-grid">
+
+      <div class="rf-gal-card r">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/zacn7mle1d.jsonp" async></script>
+          <div class="wistia_embed wistia_async_zacn7mle1d videoFoam=true stillUrl=https://onecdn.io/media/6d2bc702-62fa-40fe-bb6d-56d0ef02ba13/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">Gesau Technology GmbH</div>
+      </div>
+
+      <div class="rf-gal-card r" style="transition-delay:0.05s;">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/2hzjzw4aga.jsonp" async></script>
+          <div class="wistia_embed wistia_async_2hzjzw4aga videoFoam=true stillUrl=https://onecdn.io/media/3cabe3a5-6a30-45db-aad8-1342cb8e322f/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">Mehrwertfilm x Melitta Kaffee GmbH</div>
+      </div>
+
+      <div class="rf-gal-card r" style="transition-delay:0.1s;">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/8l7b4blflz.jsonp" async></script>
+          <div class="wistia_embed wistia_async_8l7b4blflz videoFoam=true stillUrl=https://onecdn.io/video-thumbnail/ad6f2e56-812f-4da6-bd80-0cf3cdeba9f8_dddd14cb-9772-4688-99a6-e9f1edb5096f/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">Produktfilm asP2t x BASLER AG</div>
+      </div>
+
+      <div class="rf-gal-card r" style="transition-delay:0.15s;">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/csobehdvei.jsonp" async></script>
+          <div class="wistia_embed wistia_async_csobehdvei videoFoam=true stillUrl=https://onecdn.io/media/a51385dc-b925-41dd-9651-55c9a27b5239/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">Anka-Metall</div>
+      </div>
+
+      <div class="rf-gal-card r">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/qghru4vqf2.jsonp" async></script>
+          <div class="wistia_embed wistia_async_qghru4vqf2 videoFoam=true stillUrl=https://onecdn.io/media/82ae4368-afb0-42d7-b835-7f3b58079944/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">Exquisa (Karwendel GmbH)</div>
+      </div>
+
+      <div class="rf-gal-card r" style="transition-delay:0.05s;">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/adzj589yqw.jsonp" async></script>
+          <div class="wistia_embed wistia_async_adzj589yqw videoFoam=true stillUrl=https://onecdn.io/media/e6287a17-243f-4780-bdb7-1c19835a58c5/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">HBT-Group</div>
+      </div>
+
+      <div class="rf-gal-card r" style="transition-delay:0.1s;">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/5v05hhmz2c.jsonp" async></script>
+          <div class="wistia_embed wistia_async_5v05hhmz2c videoFoam=true stillUrl=https://onecdn.io/media/b703dfe1-b335-4830-9352-924b967694e6/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">NORTEC 24</div>
+      </div>
+
+      <div class="rf-gal-card r" style="transition-delay:0.15s;">
+        <div class="rf-gal-thumb">
+          <script src="https://fast.wistia.com/embed/medias/hrdgulqaxd.jsonp" async></script>
+          <div class="wistia_embed wistia_async_hrdgulqaxd videoFoam=true stillUrl=https://onecdn.io/media/9449df57-5753-4b21-8a8d-ee3cbed4ce11/md2x" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="rf-gal-label">Dresselhaus x Schraubtec</div>
+      </div>
+
+    </div>
+    <div class="tc r" style="margin-top:44px;">
+      <a href="#kontakt" class="btn btn-primary btn-lg" style="white-space:normal;text-align:center;max-width:340px;">Jetzt kostenfreies Erstgespräch anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KUNDENSTIMMEN ═══ -->
+<section id="stimmen">
+  <div class="container">
+    <div class="rf-shead r">
+      <div class="slabel">Kundenstimmen</div>
+      <h2>Stimmen aus dem technischen Mittelstand</h2>
+      <p>Geschäftsführer und Inhaber aus Industrie, Produktion und Technik über die Zusammenarbeit mit uns.</p>
+    </div>
+    <div class="rf-tgrid">
+
+      <div class="rf-tcard r">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Mehrwertfilm ist der stärkste Videopartner, den ich in den letzten Jahren gesehen habe."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/360%20Grad%20Praxismarketing.jpg" alt="360 Grad Praxismarketing">
+          <div><strong>360 Grad Praxismarketing</strong><span>Marketing &amp; Beratung</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r" style="transition-delay:0.06s;">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Über den Videofunnel im Bestandskundenvertrieb erreichen wir 40% Öffnungsrate und Abschlussquoten von 50 bis 75 Prozent."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Hausmann-und-Haensgen-Logo-300x138.png" alt="Hausmann + Haensgen">
+          <div><strong>Hausmann + Haensgen</strong><span>feat. Melitta | Antriebstechnik</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r" style="transition-delay:0.12s;">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Über 600 Patientenanfragen und ein fünfstelliger monatlicher Zusatzumsatz. Der Mehrwertfilm trägt sich seit zwei Jahren selbst."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/BeyondEye_Wortmarke.png" alt="BeyondEye">
+          <div><strong>BeyondEye GmbH</strong><span>Medizin &amp; Augenheilkunde</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Über den Mehrwertfilm haben wir in kürzester Zeit einen komplett neuen Akquisekanal aufgebaut, der echte Anfragen bringt."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/marschall-pw-logo.png" alt="Marschall">
+          <div><strong>Marschall PW</strong><span>Verpackung &amp; Etikettierung</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r" style="transition-delay:0.06s;">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Fabian Dalhoff ist mit vollem Einsatz und Herzblut bei der Sache. Er arbeitet sich in die Prozesse und Produkte seiner Kunden ein und überzeugt durch seine Expertise."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/ANKA_Logo_2c.png" alt="Anka-Metall">
+          <div><strong>Anka-Metall</strong><span>Geschäftsführer | Metallbearbeitung</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r" style="transition-delay:0.12s;">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Über den Recruiting-Film haben wir innerhalb von 5 Wochen zwei SHK-Fachkräfte eingestellt. Genau die richtigen Bewerber."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/Serr-Haustechnik-Logo.png" alt="SERR Haustechnik">
+          <div><strong>SERR Haustechnik</strong><span>Haustechnik (SHK)</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Sehr selbstständig in der Abwicklung, termingerecht und zügig. Es lohnt sich, in gute Videoleistungen zu investieren."</p>
+        <div class="rf-tau">
+          <img class="rf-tlogo" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/logos/drive-download-20260610T120617Z-3-001/LK-Logo.png" alt="LK-Recruiting">
+          <div><strong>Jan Liebing</strong><span>LK-Recruiting GmbH | Dienstleistung</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard r" style="transition-delay:0.06s;">
+        <div class="rf-stars">★★★★★</div>
+        <p class="rf-ttxt">"Gut angeleitet, hatten alle Beteiligten eine Menge Spaß an der Produktion. Eine klare Empfehlung."</p>
+        <div class="rf-tau">
+          <div><strong>Karwendel GmbH / Exquisa</strong><span>Lebensmittel</span></div>
+        </div>
+      </div>
+
+      <div class="rf-tcard rf-tcard-cta r" style="transition-delay:0.12s;">
+        <div class="rf-tcc-badge">Sie als Nächstes?</div>
+        <h3>Ihre Erfolgsgeschichte fehlt noch</h3>
+        <p>Lassen Sie uns im kostenfreien Erstgespräch klären, mit welchem Anfragen- und Umsatzpotenzial Sie in Ihrer Branche realistisch rechnen können.</p>
+        <a href="#kontakt" class="btn btn-primary">Jetzt Erstgespräch anfragen</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="rf-final" id="erstgespraech">
+  <div class="container">
+    <div class="rf-final-inner">
+      <div class="slabel r">Ihr nächster Schritt</div>
+      <h2 class="r">Werden Sie unsere <span>nächste Referenz</span></h2>
+      <p class="r">Im kostenfreien Erstgespräch schauen wir gemeinsam auf Ihre Branche, Ihre Zielkunden und Ihr realistisches Anfragenpotenzial. Unverbindlich und konkret.</p>
+      <a href="#kontakt" class="btn btn-primary btn-lg r">Jetzt kostenfreies Erstgespräch anfragen</a>
+      <div class="rf-trust r">
+        <span>100% unverbindlich</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Wistia Modal -->
+<div id="wModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;">
+  <button onclick="closeWistia()" style="position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;">×</button>
+  <div style="width:min(90vw,900px);aspect-ratio:16/9;" id="wContainer"></div>
+</div>
+
+<!-- ═══ 20. FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="flogo-wrap" style="margin-bottom:16px;"><img src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/md2x-white.png" alt="Mehrwertfilm" style="height:36px;width:auto;display:block;"></div>
+        <p class="fdesc">Verkaufspsychologisch aufgebaute Industriefilme für Industrie, Fertigung und technischen Mittelstand im DACH-Raum. Damit Ihre Kunden kaufen und die richtigen Fachkräfte Sie finden.</p>
+        <div class="fcontact">
+          <a href="mailto:info@mehrwert-film.de">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            info@mehrwert-film.de
+          </a>
+          <a href="tel:+491633429170">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            0163 3429170
+          </a>
+          <a href="https://maps.google.com/?q=L%C3%BCbberstra%C3%9Fe+12,+32052+Herford" target="_blank">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Lübberstraße 12, 32052 Herford
+          </a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Angebot</h4>
+        <div class="flinks">
+          <a href="https://www.mehrwertfilm.de/">Startseite</a>
+          <a href="https://www.mehrwertfilm.de/industrie">Kundengewinnung</a>
+          <a href="https://www.mehrwertfilm.de/referenzen">Referenzen</a>
+          <a href="#fallstudien">Fallstudien</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Referenzen</h4>
+        <div class="flinks">
+          <a href="#fallstudien">Fallstudien</a>
+          <a href="#filme">Referenzfilme</a>
+          <a href="#stimmen">Kundenstimmen</a>
+          <a href="#kontakt">Erstgespräch</a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© by Fabian Dalhoff</p>
+      <div>
+        <a href="https://www.mehrwertfilm.de/datenschutz" target="_blank">Datenschutz</a>
+        <a href="https://www.mehrwertfilm.de/impressum" target="_blank">Impressum</a>
+      </div>
+    </div>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.18);line-height:1.65;padding-top:20px;margin-top:20px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
+      Diese Website ist nicht Teil der Facebook-Website oder von Facebook Inc. Darüber hinaus wird diese Website in keiner Weise von Facebook unterstützt. Facebook ist eine Marke von Facebook, Inc. Wir verwenden auf dieser Website Remarketing-Pixel/Cookies von Google, um erneut mit den Besuchern unserer Website zu kommunizieren und sicherzustellen, dass wir sie in Zukunft mit relevanten Nachrichten und Informationen erreichen können. Google schaltet unsere Anzeigen auf Websites Dritter im Internet, um unsere Botschaft zu kommunizieren und die richtigen Personen zu erreichen, die in der Vergangenheit Interesse an unseren Informationen gezeigt haben.
+    </p>
+  </div>
+</footer>
+
+
+<script>
+  const obs = new IntersectionObserver(
+    e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); }),
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('sc', window.scrollY > window.innerHeight * 0.7);
+  }, { passive: true });
+
+  function faq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+  function toggleMob() { document.getElementById('mobNav').classList.toggle('open'); }
+  function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+
+  // Slider
+  (function(){
+    const track = document.getElementById('sliderTrack');
+    const wrap  = document.getElementById('sliderWrap');
+    const dotsEl= document.getElementById('sliderDots');
+    if (!track) return;
+    const cards = track.querySelectorAll('.slide-card');
+    const total = cards.length;
+    let current = 0;
+    const cardW = () => cards[0].offsetWidth + 16;
+
+    // Dots
+    cards.forEach((_,i) => {
+      const d = document.createElement('button');
+      d.className = 'slider-dot' + (i===0?' active':'');
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+    });
+
+    function go(n) {
+      current = Math.max(0, Math.min(n, total-1));
+      track.style.transform = `translateX(-${current * cardW()}px)`;
+      dotsEl.querySelectorAll('.slider-dot').forEach((d,i) => d.classList.toggle('active', i===current));
+    }
+
+    document.getElementById('sliderNext').addEventListener('click', () => go(current < total-1 ? current+1 : 0));
+    document.getElementById('sliderPrev').addEventListener('click', () => go(current > 0 ? current-1 : total-1));
+
+    // Touch/drag
+    let startX=0, dragging=false;
+    wrap.addEventListener('mousedown',  e => { dragging=true; startX=e.clientX; });
+    wrap.addEventListener('mousemove',  e => { if(!dragging) return; });
+    wrap.addEventListener('mouseup',    e => { if(!dragging) return; dragging=false; e.clientX-startX < -50 ? go(current+1) : e.clientX-startX > 50 ? go(current-1) : null; });
+    wrap.addEventListener('mouseleave', () => dragging=false);
+    wrap.addEventListener('touchstart', e => { startX=e.touches[0].clientX; }, {passive:true});
+    wrap.addEventListener('touchend',   e => { const dx=e.changedTouches[0].clientX-startX; dx < -50 ? go(current+1) : dx > 50 ? go(current-1) : null; }, {passive:true});
+  })();
+
+  // Wistia Modal
+  function openWistia(id) {
+    const modal = document.getElementById('wModal');
+    document.getElementById('wContainer').innerHTML =
+      '<script src="https://fast.wistia.com/embed/medias/'+id+'.jsonp" async><\/script>' +
+      '<script src="https://fast.wistia.com/assets/external/E-v1.js" async><\/script>' +
+      '<div class="wistia_embed wistia_async_'+id+' videoFoam=true" style="width:100%;height:100%;"></div>';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeWistia() {
+    document.getElementById('wModal').style.display = 'none';
+    document.getElementById('wContainer').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('wModal').addEventListener('click', function(e){ if(e.target===this) closeWistia(); });
+</script>
+
+<!-- FUNNEL MODAL -->
+<div class="fnl-overlay" id="fnlOverlay">
+  <div class="fnl-modal">
+    <button class="fnl-close" onclick="fnlClose()" aria-label="Schließen">&times;</button>
+    <div class="fnl-progress"><div class="fnl-progress-bar" id="fnlBar"></div></div>
+
+    <!-- Schritt 1: Intro -->
+    <div class="fnl-step active" data-step="1">
+      <img class="fnl-avatar" src="https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/sm%20%283%29.jpg" alt="Fabian Dalhoff">
+      <h3>Hallo! Mein Name ist Fabian Dalhoff.</h3>
+      <p>Um Ihr unverbindliches Erstgespräch zu erhalten, beantworten Sie uns bitte ein paar kurze Fragen, damit wir wissen, wie wir Ihnen weiterhelfen können.</p>
+      <button class="btn btn-primary fnl-next" onclick="fnlGo(2)">Weiter zum nächsten Schritt</button>
+    </div>
+
+    <!-- Schritt 2: Thema -->
+    <div class="fnl-step" data-step="2">
+      <h3>Welches Thema möchten Sie verbessern?</h3>
+      <div class="fnl-options" id="fnlThema">
+        <div class="fnl-opt" data-val="Kundengewinnung">Kundengewinnung</div>
+        <div class="fnl-opt" data-val="Mitarbeitergewinnung">Mitarbeitergewinnung</div>
+        <div class="fnl-opt" data-val="Sonstiges">Sonstiges</div>
+      </div>
+      <div class="fnl-err" id="fnlErr2">Bitte wählen Sie eine Option aus.</div>
+    </div>
+
+    <!-- Schritt 3: Kontaktzeit -->
+    <div class="fnl-step" data-step="3">
+      <h3>Wann möchten Sie gerne für Ihr unverbindliches Erstgespräch kontaktiert werden?</h3>
+      <div class="fnl-options" id="fnlZeit">
+        <div class="fnl-opt" data-val="Morgens (8-10 Uhr)">Morgens (8-10 Uhr)</div>
+        <div class="fnl-opt" data-val="Vormittags (10-12 Uhr)">Vormittags (10-12 Uhr)</div>
+        <div class="fnl-opt" data-val="Mittags (12-14 Uhr)">Mittags (12-14 Uhr)</div>
+        <div class="fnl-opt" data-val="Nachmittags (14-16 Uhr)">Nachmittags (14-16 Uhr)</div>
+        <div class="fnl-opt" data-val="Am frühen Abend (16-18 Uhr)">Am frühen Abend (16-18 Uhr)</div>
+      </div>
+      <div class="fnl-err" id="fnlErr3">Bitte wählen Sie eine Option aus.</div>
+    </div>
+
+    <!-- Schritt 4: Kontaktdaten -->
+    <div class="fnl-step" data-step="4">
+      <h3>Super, gerne sichern wir ein unverbindliches Erstgespräch für Sie!</h3>
+      <p>Bitte hinterlassen Sie uns noch Ihre Kontaktdaten, damit wir uns bei Ihnen melden können.</p>
+      <div class="fnl-fields">
+        <input id="fnlName" type="text" placeholder="Voller Name*" autocomplete="name">
+        <input id="fnlEmail" type="email" placeholder="E-Mail*" autocomplete="email">
+        <input id="fnlTel" type="tel" placeholder="Telefon*" autocomplete="tel">
+        <input id="fnlFirma" type="text" placeholder="Unternehmen*" autocomplete="organization">
+      </div>
+      <div class="fnl-err" id="fnlErr4"></div>
+      <button class="btn btn-primary fnl-next" id="fnlSubmitBtn" onclick="fnlSubmit()">Jetzt absenden</button>
+    </div>
+
+    <!-- Schritt 5: Danke + Calendly -->
+    <div class="fnl-step" data-step="5">
+      <h3>Vielen Dank! Wählen Sie jetzt direkt Ihren Wunschtermin:</h3>
+      <iframe class="fnl-cal" id="fnlCal" data-src="https://calendly.com/fabian-dalhoff/kostenloses-erstgesprach?hide_gdpr_banner=1" title="Calendly Terminbuchung"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ════════════════════════════════════════════════════════════════
+  //  META PIXEL BASISCODE
+  //  -> Trage unten bei META_PIXEL_ID deine Pixel-ID ein (nur Zahlen).
+  //  -> Laesst OnePage den Pixel bereits, wird KEIN zweiter geladen.
+  //  -> Bleibt die ID leer (''), passiert nichts (kein Fehler).
+  // ════════════════════════════════════════════════════════════════
+  var META_PIXEL_ID = ''; // z.B. '1234567890123456'
+  if (META_PIXEL_ID && typeof fbq !== 'function') {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  // ── FUNNEL ──
+  var FNL_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26713449/4b4fqhy/';
+  var fnlData = { thema: '', zeit: '' };
+
+  // ── UTM- & Klick-Parameter erfassen (persistent, damit sie bis zum Absenden erhalten bleiben) ──
+  var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'];
+  function fnlCaptureUtms() {
+    var params = new URLSearchParams(window.location.search);
+    UTM_KEYS.forEach(function(k) {
+      var v = params.get(k);
+      if (v) { try { sessionStorage.setItem('mwf_' + k, v); } catch(e) {} }
+    });
+  }
+  function fnlGetUtms() {
+    var out = {};
+    UTM_KEYS.forEach(function(k) {
+      var v = null;
+      try { v = sessionStorage.getItem('mwf_' + k); } catch(e) {}
+      out[k] = v || '';
+    });
+    return out;
+  }
+  fnlCaptureUtms(); // sofort beim Laden speichern
+
+  function fnlOpen() {
+    document.getElementById('fnlOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Meta Pixel: Funnel geöffnet (Button-Klick)
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Mehrwertfilm B2B Erstgespräch',
+        content_category: 'B2B Videoproduktion'
+      });
+    }
+  }
+  function fnlClose() {
+    document.getElementById('fnlOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function fnlGo(n) {
+    if (n === 3 && !fnlData.thema) { document.getElementById('fnlErr2').classList.add('show'); return; }
+    if (n === 4 && !fnlData.zeit)  { document.getElementById('fnlErr3').classList.add('show'); return; }
+    document.querySelectorAll('.fnl-step').forEach(function(s) {
+      s.classList.toggle('active', s.getAttribute('data-step') === String(n));
+    });
+    document.getElementById('fnlBar').style.width = (n * 20) + '%';
+    if (n === 5) {
+      var cal = document.getElementById('fnlCal');
+      if (!cal.src) cal.src = cal.getAttribute('data-src');
+    }
+  }
+  // Auswahl-Optionen (Thema + Zeit) -> nach Auswahl automatisch weiter
+  ['fnlThema', 'fnlZeit'].forEach(function(gid) {
+    document.getElementById(gid).addEventListener('click', function(e) {
+      var opt = e.target.closest('.fnl-opt');
+      if (!opt) return;
+      this.querySelectorAll('.fnl-opt').forEach(function(o) { o.classList.remove('sel'); });
+      opt.classList.add('sel');
+      var nextStep;
+      if (gid === 'fnlThema') { fnlData.thema = opt.getAttribute('data-val'); document.getElementById('fnlErr2').classList.remove('show'); nextStep = 3; }
+      else { fnlData.zeit = opt.getAttribute('data-val'); document.getElementById('fnlErr3').classList.remove('show'); nextStep = 4; }
+      // kurz die Auswahl zeigen, dann automatisch zum nächsten Schritt
+      setTimeout(function() { fnlGo(nextStep); }, 260);
+    });
+  });
+  async function fnlSubmit() {
+    var name  = document.getElementById('fnlName').value.trim();
+    var email = document.getElementById('fnlEmail').value.trim();
+    var tel   = document.getElementById('fnlTel').value.trim();
+    var firma = document.getElementById('fnlFirma').value.trim();
+    var err   = document.getElementById('fnlErr4');
+    if (!name || !email || !tel || !firma) { err.textContent = 'Bitte füllen Sie alle Felder aus.'; err.classList.add('show'); return; }
+    if (!/^\S+@\S+\.\S+$/.test(email)) { err.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'; err.classList.add('show'); return; }
+    if (tel.replace(/\D/g, '').length < 6) { err.textContent = 'Bitte geben Sie eine gültige Telefonnummer ein.'; err.classList.add('show'); return; }
+    err.classList.remove('show');
+    var btn = document.getElementById('fnlSubmitBtn');
+    btn.disabled = true; btn.textContent = 'Wird gesendet...';
+
+    var payload = {
+      name: name, email: email, telefon: tel, unternehmen: firma,
+      thema: fnlData.thema, kontaktzeit: fnlData.zeit,
+      quelle: 'Mehrwertfilm Referenzen LP',
+      landingpage: window.location.href,
+      datum: new Date().toLocaleString('de-DE')
+    };
+    // UTM- & Klick-Parameter mit an Zapier schicken
+    var utms = fnlGetUtms();
+    for (var uk in utms) { if (utms.hasOwnProperty(uk)) payload[uk] = utms[uk]; }
+    try {
+      // Als JSON senden -> Zapier Catch Hook parst jedes Feld einzeln
+      await fetch(FNL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (e2) { console.error('Zapier webhook error:', e2); }
+
+    // Meta Pixel: echte Anfrage abgeschickt -> Lead
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {
+        content_name: 'Mehrwertfilm B2B Erstgespräch',
+        content_category: 'B2B Videoproduktion'
+      });
+    }
+
+    btn.disabled = false; btn.textContent = 'Jetzt absenden';
+    fnlGo(5);
+  }
+  // Alle Erstgespräch-Buttons öffnen das Modal statt zu scrollen
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href="#kontakt"]');
+    if (a) { e.preventDefault(); fnlOpen(); }
+  });
+  // Klick auf dunklen Hintergrund oder ESC schließt
+  document.getElementById('fnlOverlay').addEventListener('click', function(e) { if (e.target === this) fnlClose(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') fnlClose(); });
+</script>
+
+</body>
