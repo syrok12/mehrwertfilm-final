@@ -1190,8 +1190,8 @@
     <div class="hero-grid">
       <!-- Links: Video + Rating + Ticker -->
       <div style="min-width:0;overflow:hidden;">
-        <div class="vid-box" style="overflow:hidden;height:auto;aspect-ratio:16/9;">
-          <div data-wistia-lazy class="wistia_embed wistia_async_4q4965k88p videoFoam=true playButton=false stillUrl=https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/hero-thumbnail.jpg" style="width:100%;height:100%;border-radius:14px;overflow:hidden;"></div>
+        <div class="vid-box" style="overflow:hidden;height:auto;aspect-ratio:16/9;border-radius:14px;">
+          <div class="hero-vid-lazy" data-wistia-id="4q4965k88p" style="width:100%;height:100%;cursor:pointer;background:#000 center/cover no-repeat;background-image:url('https://raw.githubusercontent.com/syrok12/mehrwertfilm-final/master/website/assets/hero-thumbnail.jpg');border-radius:14px;"></div>
         </div>
         <!-- Bekannt von -->
         <div class="known-from">
@@ -2444,6 +2444,23 @@
     s.src = 'https://fast.wistia.com/embed/medias/' + id + '.jsonp';
     s.async = true;
     document.body.appendChild(s);
+  }
+
+  // Hero-Video Lazy: Thumbnail -> Wistia-Player erst bei Klick (LCP-Optimierung)
+  var heroVid = document.querySelector('.hero-vid-lazy');
+  if (heroVid) {
+    heroVid.addEventListener('click', function () {
+      var id = heroVid.getAttribute('data-wistia-id');
+      // Player-Container aufbauen, autoPlay damit das Video sofort startet
+      heroVid.innerHTML = '<div class="wistia_embed wistia_async_' + id + ' videoFoam=true autoPlay=true" style="width:100%;height:100%;border-radius:14px;overflow:hidden;"></div>';
+      heroVid.style.cursor = 'default';
+      heroVid.style.backgroundImage = 'none';
+      loadEv1();
+      var s = document.createElement('script');
+      s.src = 'https://fast.wistia.com/embed/medias/' + id + '.jsonp';
+      s.async = true;
+      document.body.appendChild(s);
+    });
   }
 
   // YouTube Lazy: Thumbnail -> echtes iframe erst bei Klick
