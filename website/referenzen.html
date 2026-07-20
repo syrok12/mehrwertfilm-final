@@ -2016,6 +2016,23 @@
     fbq('track', 'PageView');
   }
 
+  // ════════════════════════════════════════════════════════════════
+  //  LINKEDIN INSIGHT TAG (Partner-ID 9394346)
+  //  -> Baut die Retargeting-Zielgruppe im LinkedIn Campaign Manager auf.
+  // ════════════════════════════════════════════════════════════════
+  window._linkedin_partner_id = "9394346";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
+  (function(l) {
+    if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+    window.lintrk.q=[]}
+    var s = document.getElementsByTagName("script")[0];
+    var b = document.createElement("script");
+    b.type = "text/javascript"; b.async = true;
+    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+    s.parentNode.insertBefore(b, s);
+  })(window.lintrk);
+
   // ── FUNNEL ──
   var FNL_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26713449/4b4fqhy/';
   var fnlData = { thema: '', zeit: '' };
@@ -2120,6 +2137,13 @@
       fbq('track', 'Lead', {
         content_name: 'Mehrwertfilm B2B Erstgespräch',
         content_category: 'B2B Videoproduktion'
+      });
+    }
+
+    // Google Ads: Conversion "SEA Lead Mehrwertfilm" (Submit lead form)
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17374957751/xDWXCOnk5accELehg91A'
       });
     }
 
