@@ -2147,6 +2147,11 @@
       });
     }
 
+    // LinkedIn: Conversion "Lead Mehrwertfilm Erstgespräch" (handlungsspezifisch)
+    if (typeof window.lintrk === 'function') {
+      window.lintrk('track', { conversion_id: 28806346 });
+    }
+
     btn.disabled = false; btn.textContent = 'Jetzt absenden';
     fnlGo(5);
   }
