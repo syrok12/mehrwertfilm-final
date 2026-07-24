@@ -2057,6 +2057,18 @@
   }
   fnlCaptureUtms(); // sofort beim Laden speichern
 
+  // ── Fallback Stufe 3: unversendete Leads aus frueherem Besuch nachsenden ──
+  (function () {
+    var pend = null;
+    try { pend = localStorage.getItem('mwf_pending_lead'); } catch (e) {}
+    if (!pend) return;
+    try {
+      fetch(FNL_WEBHOOK, { method: 'POST', body: pend }).then(function (r) {
+        if (r && r.ok) { try { localStorage.removeItem('mwf_pending_lead'); } catch (e) {} }
+      }).catch(function () {});
+    } catch (e) {}
+  })();
+
   function fnlOpen() {
     document.getElementById('fnlOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -2121,16 +2133,27 @@
     // UTM- & Klick-Parameter mit an Zapier schicken
     var utms = fnlGetUtms();
     for (var uk in utms) { if (utms.hasOwnProperty(uk)) payload[uk] = utms[uk]; }
+    // ── Lead senden mit 3-stufigem Fallback (Daten duerfen NIE verloren gehen) ──
+    // Stufe 1: POST als JSON-Body OHNE Content-Type-Header (kein CORS-Preflight).
+    var fnlGesendet = false;
     try {
-      // Als JSON-Body senden, aber OHNE Content-Type-Header:
-      // Ein 'application/json'-Header loest im Browser einen CORS-Preflight aus,
-      // den der Zapier Catch Hook nicht erlaubt -> Request wird geblockt.
-      // Ohne Header = "simple request" ohne Preflight; Zapier parst den JSON-Body trotzdem.
-      await fetch(FNL_WEBHOOK, {
-        method: 'POST',
-        body: JSON.stringify(payload)
-      });
-    } catch (e2) { console.error('Zapier webhook error:', e2); }
+      var fnlRes = await fetch(FNL_WEBHOOK, { method: 'POST', body: JSON.stringify(payload) });
+      fnlGesendet = !!(fnlRes && fnlRes.ok);
+    } catch (e2) { fnlGesendet = false; }
+    if (!fnlGesendet) {
+      // Stufe 2: GET-Pixel-Fallback. Bild-Requests unterliegen keinem CORS;
+      // Zapier legt die URL-Parameter als einzelne Felder ab.
+      try {
+        var fnlQs = [];
+        for (var fk in payload) { if (payload.hasOwnProperty(fk)) fnlQs.push(encodeURIComponent(fk) + '=' + encodeURIComponent(payload[fk])); }
+        fnlQs.push('transport=pixel_fallback');
+        new Image().src = FNL_WEBHOOK + '?' + fnlQs.join('&');
+      } catch (e3) {}
+      // Stufe 3: lokal puffern -> wird beim naechsten Seitenbesuch automatisch nachgesendet.
+      try { payload.transport = 'retry_pageload'; localStorage.setItem('mwf_pending_lead', JSON.stringify(payload)); } catch (e4) {}
+    } else {
+      try { localStorage.removeItem('mwf_pending_lead'); } catch (e5) {}
+    }
 
     // Meta Pixel: echte Anfrage abgeschickt -> Lead
     if (typeof fbq === 'function') {
