@@ -2409,13 +2409,12 @@
       fnlGesendet = !!(fnlRes && fnlRes.ok);
     } catch (e2) { fnlGesendet = false; }
     if (!fnlGesendet) {
-      // Stufe 2: GET-Pixel-Fallback. Bild-Requests unterliegen keinem CORS;
-      // Zapier legt die URL-Parameter als einzelne Felder ab.
+      // Stufe 2: sendBeacon-Fallback. Sendet denselben JSON-Body wie der Normalweg
+      // (-> identische Feldnamen in Zapier, Filter + Mail-Template greifen korrekt),
+      // ist frei von CORS-Preflights und uebersteht sogar das Schliessen der Seite.
       try {
-        var fnlQs = [];
-        for (var fk in payload) { if (payload.hasOwnProperty(fk)) fnlQs.push(encodeURIComponent(fk) + '=' + encodeURIComponent(payload[fk])); }
-        fnlQs.push('transport=pixel_fallback');
-        new Image().src = FNL_WEBHOOK + '?' + fnlQs.join('&');
+        payload.transport = 'beacon_fallback';
+        if (navigator.sendBeacon) { navigator.sendBeacon(FNL_WEBHOOK, JSON.stringify(payload)); }
       } catch (e3) {}
       // Stufe 3: lokal puffern -> wird beim naechsten Seitenbesuch automatisch nachgesendet.
       try { payload.transport = 'retry_pageload'; localStorage.setItem('mwf_pending_lead', JSON.stringify(payload)); } catch (e4) {}
